@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Android 中东阿拉伯语适配，看这一篇够了 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,">
+  
+
+  <meta name="description" content="RTL 语言由来RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比：    LTR RTL        那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？ 答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 中东阿拉伯语适配，看这一篇够了">
+<meta property="og:url" content="http://yoursite.com/2017/06/06/android-rtl/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RTL 语言由来RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比：    LTR RTL        那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？ 答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynl1pdvj30u01hch6o.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1g24ynn1uvzj30u01hc1dp.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g24ynotpm0j30so0l2adt.jpg">
+<meta property="og:updated_time" content="2019-06-11T16:40:57.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 中东阿拉伯语适配，看这一篇够了">
+<meta name="twitter:description" content="RTL 语言由来RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比：    LTR RTL        那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？ 答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynl1pdvj30u01hch6o.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#RTL-语言由来"><span class="toc-text">RTL 语言由来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前提条件"><span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换语言"><span class="toc-text">切换语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AS-一键适配"><span class="toc-text">AS 一键适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用第三方插件"><span class="toc-text">利用第三方插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用全局样式"><span class="toc-text">使用全局样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#EditText"><span class="toc-text">EditText</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TextView"><span class="toc-text">TextView</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断是否是-RTL-布局"><span class="toc-text">判断是否是 RTL 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对集合进行倒序处理"><span class="toc-text">对集合进行倒序处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码动态设置控件-setMargins"><span class="toc-text">代码动态设置控件 setMargins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViewPager"><span class="toc-text">ViewPager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配总结"><span class="toc-text">适配总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建议计划"><span class="toc-text">建议计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-rtl" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Android 中东阿拉伯语适配，看这一篇够了</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>G军仔</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="RTL-语言由来"><a href="#RTL-语言由来" class="headerlink" title="RTL 语言由来"></a>RTL 语言由来</h3><p>RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。</p>
+<p>看一下对比：</p>
+<table>
+<thead>
+<tr>
+<th>LTR</th>
+<th>RTL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynl1pdvj30u01hch6o.jpg" width="270px" height="480"></td>
+<td><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g24ynn1uvzj30u01hc1dp.jpg" width="270px" height="480"></td>
+</tr>
+</tbody></table>
+<p>那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？</p>
+<p>答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时支持 RTL 和 LTR。</p>
+<p>接下来我将介绍如何一步一步适配阿拉伯语。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><table>
+<thead>
+<tr>
+<th>name</th>
+<th>desc</th>
+<th>chinese</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:layoutDirection</td>
+<td>attribute for setting the direction of a component’s layout</td>
+<td>设置组件的布局排列方向</td>
+</tr>
+<tr>
+<td>android:textDirection</td>
+<td>attribute for setting the direction of a component’s text</td>
+<td>设置组件的文字排列方向</td>
+</tr>
+<tr>
+<td>android:textAlignment</td>
+<td>attribute for setting the alignment of a component’s text</td>
+<td>设置文字的对齐方式</td>
+</tr>
+<tr>
+<td>getLayoutDirectionFromLocale()</td>
+<td>method for getting the Locale-specified direction</td>
+<td>获取指定地区的惯用布局方式</td>
+</tr>
+</tbody></table>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><p>在 AndroidManifest.xml 文件中 application 节点添加支持从右到左布局方式代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;application</span><br><span class="line">        ...</span><br><span class="line">        android:supportsRtl=&quot;true&quot; &gt;</span><br><span class="line">        ...</span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换语言"><a href="#切换语言" class="headerlink" title="切换语言"></a>切换语言</h3><p>相关链接：<a href="https://stackoverflow.com/questions/2900023/change-language-programmatically-in-android" target="_blank" rel="noopener">change-language-programmatically-in-android</a><br>对应国家语言代码: <a href="https://stackoverflow.com/questions/7973023/what-is-the-list-of-supported-languages-locales-on-android" target="_blank" rel="noopener">what-is-the-list-of-supported-languages-locales-on-android</a><br>下面切换语言方式 updateConfiguration 方法在 Api 25 已经过时, 新的切换方式实例 <a href="https://github.com/DroidKaigi/conference-app-2017/pull/315/files" target="_blank" rel="noopener">地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String languageToLoad  = &quot;ar&quot;; // your language</span><br><span class="line">Resources res = getResources(); </span><br><span class="line">DisplayMetrics dm = res.getDisplayMetrics();</span><br><span class="line">Locale locale = new Locale(languageToLoad); </span><br><span class="line">Locale.setDefault(locale);</span><br><span class="line">Configuration config = new Configuration();</span><br><span class="line">config.locale = locale;</span><br><span class="line">res.updateConfiguration(conf, dm);</span><br></pre></td></tr></table></figure>
+
+<h3 id="AS-一键适配"><a href="#AS-一键适配" class="headerlink" title="AS 一键适配"></a>AS 一键适配</h3><p>AS 支持一键适配 RTL，主要是在原来 Layout 中设置 Left 和 Right 属性的补充添加 Start 和 End 属性（你们在写布局的时候是不是很少用到 paddingStart、marginStart？接下来你们写布局的时候可不能再偷懒了，该加的还是得加上)</p>
+<p>Start 属性在 LTR 中对应 Left，在 RTL 中对应 Right，在API 17开始支持，为了兼容低版本，需要同时有 Left 和 Start。从市场来看，Android 4.2 系统以下的手机用户已经不多了，我的建议是可以不兼容，具体还得你们看自家产品在 4.2 系统以下用户数。</p>
+<blockquote>
+<p>Refactor &gt; Add RTL Support Where Possible…</p>
+</blockquote>
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24ynotpm0j30so0l2adt.jpg" width="516px" height="379px">
+
+<h3 id="利用第三方插件"><a href="#利用第三方插件" class="headerlink" title="利用第三方插件"></a>利用第三方插件</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/znyang/gradle-android-rtl" target="_blank" rel="noopener">gradle-android-rtl</a></td>
+<td>自动修复布局文件中未添加RTL支持的标签</td>
+</tr>
+</tbody></table>
+<p>与 AS 插件的比较：</p>
+<ul>
+<li>性能更好。在处理大批量文件修改时，用AS工具会出现卡顿</li>
+<li>支持padding标签的补齐</li>
+</ul>
+<h3 id="使用全局样式"><a href="#使用全局样式" class="headerlink" title="使用全局样式"></a>使用全局样式</h3><h4 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h4><p>发现 EditText 控件基本都需要设置下面两个属性<br>相关链接：<a href="https://stackoverflow.com/questions/10903647/set-a-consistent-style-to-all-edittext-for-e-g" target="_blank" rel="noopener">set-a-consistent-style-to-all-edittext-for-e-g</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:textAlignment=&quot;viewStart&quot;</span><br><span class="line">android:gravity=&quot;start&quot;</span><br></pre></td></tr></table></figure>
+
+<p>那我们就可以在 style.xml 样式中全部 EditText 都设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">       ...</span><br><span class="line">       &lt;item name=&quot;editTextStyle&quot;&gt;@style/EditTextStyle.Alignment&lt;/item&gt;</span><br><span class="line">       ...</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;style name=&quot;EditTextStyle.Alignment&quot; parent=&quot;@android:style/Widget.EditText&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:textAlignment&quot;&gt;viewStart&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:gravity&quot;&gt;start&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:textDirection&quot;&gt;locale&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h4><p>全局给所有 TextView 添加一个 RTL 属性<br>相关链接:<a href="https://stackoverflow.com/questions/3078081/setting-global-styles-for-views-in-android" target="_blank" rel="noopener">setting-global-styles-for-views-in-android</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">       ...</span><br><span class="line">       &lt;item name=&quot;android:textViewStyle&quot;&gt;@style/TextViewStyle.TextDirection&lt;/item&gt;</span><br><span class="line">       ...</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;style name=&quot;TextViewStyle.TextDirection&quot; parent=&quot;android:Widget.TextView&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:textDirection&quot;&gt;locale&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断是否是-RTL-布局"><a href="#判断是否是-RTL-布局" class="headerlink" title="判断是否是 RTL 布局"></a>判断是否是 RTL 布局</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == LayoutDirection.RTL</span><br></pre></td></tr></table></figure>
+
+<h3 id="对集合进行倒序处理"><a href="#对集合进行倒序处理" class="headerlink" title="对集合进行倒序处理"></a>对集合进行倒序处理</h3><p>在某些场合下, 这个方法很有用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.reverse(List&lt;?&gt; list);</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码动态设置控件-setMargins"><a href="#代码动态设置控件-setMargins" class="headerlink" title="代码动态设置控件 setMargins"></a>代码动态设置控件 setMargins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(</span><br><span class="line">                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);</span><br><span class="line">params.setMargins(10, 0, 10, 0);</span><br><span class="line">params.setMarginEnd(10);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ViewPager"><a href="#ViewPager" class="headerlink" title="ViewPager"></a>ViewPager</h3><p>相关链接: <a href="https://stackoverflow.com/questions/37196714/tabs-swipe-direction-in-right-to-left-android-app" target="_blank" rel="noopener">tabs-swipe-direction-in-right-to-left-android-app</a></p>
+<blockquote>
+<p>Android 官方控件大多支持 RTL，ViewPager 除外，GitHub 上面有人对 ViewPager 进行修改支持 RTL, <a href="https://github.com/diego-gomez-olvera/RtlViewPager" target="_blank" rel="noopener">地址</a></p>
+</blockquote>
+<h3 id="适配总结"><a href="#适配总结" class="headerlink" title="适配总结"></a>适配总结</h3><ol>
+<li>横向布局 LinearLayout ，可以使用 FrameLayout，控件需要靠左或靠右可以使用 layout_gravity 设置对应属性</li>
+<li>切换阿拉伯语时，网格布局 item 之间的距离会出现增大问题，处理方法是：网格分割线 ItemDecoration 需要加入语言来判断，调换原来设置左右的边距即可</li>
+<li>禁止掉之前的侧滑返回，以免出现冲突</li>
+<li>一些方向图标，重新做一个相对方向的放到 mipmap-ldrtl-xxxhdpi 包下</li>
+<li>动画翻转, 放在 anim-ldrtl 将对应的动画进行反向处理</li>
+<li>布局里如果设置了 paddingLeft、drawableLeft 等等这些属性更改为一个支持 RTL 的属性 paddingStart、drawableStart；但是有些地方可以不加的，例如：购物车上的数量徽章，加了之后感觉怪怪的，所以还是不加了</li>
+<li>利用在 AS 右边的预览布局工具中的语言切换工具，切换成阿拉伯语，能实时看到布局的效果图</li>
+<li>EditText 添加 android:layoutDirection=”locale” ，如果外面有 TextInputLayout 的需给它设置 android:textDirection=”locale” ，如果输入类型时密码时还需添加一个属性 android:textAlignment=”viewStart”</li>
+<li>TextView 需要加上 android:textAlignment=”viewStart 或 viewEnd” 以及 android:textDirection=”locale”</li>
+<li>RecyclerView 网络布局的可以考虑使用 StaggeredGridLayoutManager ，如果数量太多的网格布局，不太建议使用，可能会出现滑动混乱</li>
+<li>阿拉伯语目录下的 String.xml 文件, 出现占位符 d% 需要注意改为 %d, 但又并不是所有都改成这样, 目前我发现当代码中使用了 Toast 和 SpannableString 属性的就需要更改为 %d</li>
+</ol>
+<h3 id="建议计划"><a href="#建议计划" class="headerlink" title="建议计划"></a>建议计划</h3><ol>
+<li>从基础类开始入手，判断是否是阿拉伯语，如果是需要将界面设置为从右到左的显示方式</li>
+<li>分模块进行适配</li>
+<li>复杂的模块，可以放到 layout-ldrtl 包下，单独做一个布局来适配阿拉伯语，例如详情页</li>
+</ol>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
+<li><a href="https://android-developers.googleblog.com/2013/03/native-rtl-support-in-android-42.html" target="_blank" rel="noopener">https://android-developers.googleblog.com/2013/03/native-rtl-support-in-android-42.html</a></li>
+<li><a href="https://medium.com/@zhangqichuan/rtl-support-in-android-898e11f31561" target="_blank" rel="noopener">https://medium.com/@zhangqichuan/rtl-support-in-android-898e11f31561</a></li>
+<li><a href="https://mobikul.com/just-few-steps-to-make-your-app-rtl-supportable/" target="_blank" rel="noopener">https://mobikul.com/just-few-steps-to-make-your-app-rtl-supportable/</a></li>
+<li><a href="https://blog.robustastudio.com/featured/android-rtl-support/" target="_blank" rel="noopener">https://blog.robustastudio.com/featured/android-rtl-support/</a></li>
+<li><a href="http://blog.csdn.net/figo0423/article/details/50241363" target="_blank" rel="noopener">http://blog.csdn.net/figo0423/article/details/50241363</a></li>
+<li><a href="http://blog.csdn.net/wxx614817/article/details/50586388" target="_blank" rel="noopener">http://blog.csdn.net/wxx614817/article/details/50586388</a></li>
+<li><a href="http://jiajixin.cn/2016/10/08/android_adapt_rtl/" target="_blank" rel="noopener">http://jiajixin.cn/2016/10/08/android_adapt_rtl/</a></li>
+<li><a href="http://www.apkbus.com/blog-327085-57866.html" target="_blank" rel="noopener">http://www.apkbus.com/blog-327085-57866.html</a></li>
+<li><a href="http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html" target="_blank" rel="noopener">http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html</a></li>
+<li><a href="http://chuansong.me/n/920084451521" target="_blank" rel="noopener">http://chuansong.me/n/920084451521</a></li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/01/01/git-command/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/12/12/surge/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

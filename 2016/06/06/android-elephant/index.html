@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>开发 Material Design+RxJava+Retrofit+MVP App 参考资料 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,Material Design,">
+  
+
+  <meta name="description" content="这里记录了我开发 大象 项目时，所学习的开发资料以及参考的开源项目，稍微整理了一下，全当笔记记录，跟大家一起分享，也许能给正在使用 RxJava + Retrofit + MVP + Material Design 框架开发的人一个参考学习，如果有人从我分享的资料当中学习到东西，那是我的荣幸，希望大家能与我一起努力。 之前看到很多人都使用 RxJava+Retrofit+MVP 来开发 App,">
+<meta name="keywords" content="Android,Material Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发 Material Design+RxJava+Retrofit+MVP App 参考资料">
+<meta property="og:url" content="http://yoursite.com/2016/06/06/android-elephant/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这里记录了我开发 大象 项目时，所学习的开发资料以及参考的开源项目，稍微整理了一下，全当笔记记录，跟大家一起分享，也许能给正在使用 RxJava + Retrofit + MVP + Material Design 框架开发的人一个参考学习，如果有人从我分享的资料当中学习到东西，那是我的荣幸，希望大家能与我一起努力。 之前看到很多人都使用 RxJava+Retrofit+MVP 来开发 App,">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://camo.githubusercontent.com/f1311ea870976ad82f3f827bc81dbf731b75db5b/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3030367842316c7367773166386f667539663073386a33316b77317a75316b392e6a7067">
+<meta property="og:updated_time" content="2019-06-11T16:33:57.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发 Material Design+RxJava+Retrofit+MVP App 参考资料">
+<meta name="twitter:description" content="这里记录了我开发 大象 项目时，所学习的开发资料以及参考的开源项目，稍微整理了一下，全当笔记记录，跟大家一起分享，也许能给正在使用 RxJava + Retrofit + MVP + Material Design 框架开发的人一个参考学习，如果有人从我分享的资料当中学习到东西，那是我的荣幸，希望大家能与我一起努力。 之前看到很多人都使用 RxJava+Retrofit+MVP 来开发 App,">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/f1311ea870976ad82f3f827bc81dbf731b75db5b/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3030367842316c7367773166386f667539663073386a33316b77317a75316b392e6a7067">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我"><span class="toc-text">关于我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大象源码链接"><span class="toc-text">大象源码链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava-与-Retrofit-参考学习的资料"><span class="toc-text">RxJava 与 Retrofit 参考学习的资料</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#文章"><span class="toc-text">文章</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#项目"><span class="toc-text">项目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#视频"><span class="toc-text">视频</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#MVP-参考学习的资料"><span class="toc-text">MVP 参考学习的资料</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#文章-1"><span class="toc-text">文章</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#项目-1"><span class="toc-text">项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多主题切换"><span class="toc-text">多主题切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考项目"><span class="toc-text">参考项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI-设计"><span class="toc-text">UI 设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#参考-App"><span class="toc-text">参考 App</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#图标素材来源"><span class="toc-text">图标素材来源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Material-Design-设计规范"><span class="toc-text">Material Design 设计规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设计灵感来源"><span class="toc-text">设计灵感来源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢"><span class="toc-text">感谢</span></a>
+  </li></div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-elephant" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">开发 Material Design+RxJava+Retrofit+MVP App 参考资料</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>G军仔</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><img src="https://camo.githubusercontent.com/f1311ea870976ad82f3f827bc81dbf731b75db5b/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3030367842316c7367773166386f667539663073386a33316b77317a75316b392e6a7067" alt></p>
+<p>这里记录了我开发 <a href="https://github.com/Freelander/Elephant" target="_blank" rel="noopener">大象</a> 项目时，所学习的开发资料以及参考的开源项目，稍微整理了一下，全当笔记记录，跟大家一起分享，也许能给正在使用 RxJava + Retrofit + MVP + Material Design 框架开发的人一个参考学习，如果有人从我分享的资料当中学习到东西，那是我的荣幸，希望大家能与我一起努力。</p>
+<p>之前看到很多人都使用 RxJava+Retrofit+MVP 来开发 App, 然而自己一直没有时间来实践，最近有空就开始着手开发 PHPHub 社区第三方 Android 客戶端，至于我为什么选择了开发 PHPHub 社区，有兴趣的哥们可以到 <a href="https://laravel-china.org/topics/3083" target="_blank" rel="noopener">这里</a> 去看看。</p>
+<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><blockquote>
+<p>欢迎关注我 <a href="https://github.com/Freelander" target="_blank" rel="noopener">Github</a> 以及 <a href="http://weibo.com/gaojunhuang" target="_blank" rel="noopener">微博</a></p>
+</blockquote>
+<h3 id="大象源码链接"><a href="#大象源码链接" class="headerlink" title="大象源码链接"></a>大象源码链接</h3><blockquote>
+<p><a href="https://github.com/Freelander/Elephant" target="_blank" rel="noopener">https://github.com/Freelander/Elephant</a></p>
+</blockquote>
+<h3 id="RxJava-与-Retrofit-参考学习的资料"><a href="#RxJava-与-Retrofit-参考学习的资料" class="headerlink" title="RxJava 与 Retrofit 参考学习的资料"></a>RxJava 与 Retrofit 参考学习的资料</h3><h5 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h5><ul>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">给 Android 开发者的 RxJava 详解</a></li>
+<li><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="noopener">RxJava 与 Retrofit 结合的最佳实践</a></li>
+<li><a href="http://blog.csdn.net/theone10211024/article/details/50435325" target="_blank" rel="noopener">可能是东半球最全的 RxJava 使用场景小结</a></li>
+<li><a href="http://www.jianshu.com/p/64aa976a46be" target="_blank" rel="noopener">Rxjava 实战</a></li>
+<li><a href="http://wuxiaolong.me/2016/06/18/retrofits/" target="_blank" rel="noopener">Android Retrofit 2.0 使用-补充篇</a></li>
+</ul>
+<h5 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h5><ul>
+<li><a href="https://github.com/rengwuxian/RxJavaSamples" target="_blank" rel="noopener">RxJavaSamples</a></li>
+<li><a href="https://github.com/kaushikgopal/RxJava-Android-Samples" target="_blank" rel="noopener">RxJava-Android-Samples</a></li>
+</ul>
+<h5 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h5><ul>
+<li><a href="http://boolan.com/lecture/1000001243#0-tsina-1-68759-397232819ff9a47a7b7e80a40613cfe1" target="_blank" rel="noopener">Android 开发者们一定会喜欢的 RxJava</a></li>
+<li><a href="https://realm.io/cn/news/droidcon-jake-wharton-simple-http-retrofit-2/" target="_blank" rel="noopener">用 Retrofit 2 简化 HTTP 请求</a></li>
+<li><a href="https://realm.io/cn/news/kau-felipe-lima-adopting-rxjava-airbnb-android/" target="_blank" rel="noopener">Airbnb：我们的安卓客户端是如何使用 RxJava 的</a></li>
+</ul>
+<h5 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h5><ul>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">ReactiveX/RxJava 文档中文版</a></li>
+</ul>
+<h3 id="MVP-参考学习的资料"><a href="#MVP-参考学习的资料" class="headerlink" title="MVP 参考学习的资料"></a>MVP 参考学习的资料</h3><h5 id="文章-1"><a href="#文章-1" class="headerlink" title="文章"></a>文章</h5><ul>
+<li><a href="http://www.zjutkz.net/2016/04/13/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC%EF%BC%8CMVP%E5%92%8CMVVM/" target="_blank" rel="noopener">选择恐惧症的福音, 教你认清 MVC, MVP 和 MVVM</a></li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0202/2397.html" target="_blank" rel="noopener">在 Android 开发中使用 MVP 模式</a></li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0413/4139.html" target="_blank" rel="noopener">Android官方MVP架构示例项目解析</a></li>
+</ul>
+<h5 id="项目-1"><a href="#项目-1" class="headerlink" title="项目"></a>项目</h5><ul>
+<li><a href="https://github.com/antoniolg/androidmvp" target="_blank" rel="noopener">androidmvp</a></li>
+<li><a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">android-architecture</a></li>
+<li><a href="https://github.com/north2014/T-MVP" target="_blank" rel="noopener">T-MVP</a></li>
+</ul>
+<h3 id="多主题切换"><a href="#多主题切换" class="headerlink" title="多主题切换"></a>多主题切换</h3><ul>
+<li><a href="http://www.jianshu.com/p/3b55e84742e5" target="_blank" rel="noopener">知乎和简书的夜间模式实现套路</a></li>
+</ul>
+<h3 id="参考项目"><a href="#参考项目" class="headerlink" title="参考项目"></a>参考项目</h3><ul>
+<li><a href="https://github.com/drakeet/Meizhi" target="_blank" rel="noopener">Meizhi</a> (非常棒的一个项目, 参考了挺多)</li>
+<li><a href="https://github.com/CycloneAxe/phphub-android" target="_blank" rel="noopener">PHPHub-Android</a>（PHPHub 官方客户端）</li>
+</ul>
+<h3 id="UI-设计"><a href="#UI-设计" class="headerlink" title="UI 设计"></a>UI 设计</h3><h5 id="参考-App"><a href="#参考-App" class="headerlink" title="参考 App"></a>参考 App</h5><ul>
+<li><a href="http://zhihu.com/" target="_blank" rel="noopener">知乎</a></li>
+<li><a href="http://gold.xitu.io/" target="_blank" rel="noopener">掘金</a></li>
+<li><a href="https://github.com/CycloneAxe/phphub-android" target="_blank" rel="noopener">PHPHub-Android</a></li>
+</ul>
+<h5 id="图标素材来源"><a href="#图标素材来源" class="headerlink" title="图标素材来源"></a>图标素材来源</h5><ul>
+<li><a href="https://icons8.com/" target="_blank" rel="noopener">Ions8</a></li>
+</ul>
+<h5 id="Material-Design-设计规范"><a href="#Material-Design-设计规范" class="headerlink" title="Material Design 设计规范"></a>Material Design 设计规范</h5><ul>
+<li><a href="https://material.google.com/" target="_blank" rel="noopener">Material design</a></li>
+<li><a href="https://github.com/1sters/material_design_zh_2" target="_blank" rel="noopener">Material Design 中文版</a></li>
+</ul>
+<h5 id="设计灵感来源"><a href="#设计灵感来源" class="headerlink" title="设计灵感来源"></a>设计灵感来源</h5><ul>
+<li><a href="https://material.uplabs.com/" target="_blank" rel="noopener">Uplabs</a></li>
+<li><a href="https://dribbble.com/" target="_blank" rel="noopener">Dribbble</a></li>
+<li><a href="http://www.uisdc.com/" target="_blank" rel="noopener">优设</a></li>
+</ul>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>感谢以上所有分享的资料以及开源项目大神们。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/12/12/android-resume/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

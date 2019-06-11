@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>常用 Git 相关命令清单 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Git,">
+  
+
+  <meta name="description" content="Git git config --global user.name &amp;quot;Your Name&amp;quot; (安装完 git 后，设置用户名与邮箱)  git config --global user.email &amp;quot;Your email&amp;quot; (设置邮箱)  ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; (创建 S">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用 Git 相关命令清单">
+<meta property="og:url" content="http://yoursite.com/2017/01/01/git-command/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Git git config --global user.name &amp;quot;Your Name&amp;quot; (安装完 git 后，设置用户名与邮箱)  git config --global user.email &amp;quot;Your email&amp;quot; (设置邮箱)  ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; (创建 S">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g24ynbs6mij318w0u0k4f.jpg">
+<meta property="og:updated_time" content="2019-06-11T16:36:15.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用 Git 相关命令清单">
+<meta name="twitter:description" content="Git git config --global user.name &amp;quot;Your Name&amp;quot; (安装完 git 后，设置用户名与邮箱)  git config --global user.email &amp;quot;Your email&amp;quot; (设置邮箱)  ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; (创建 S">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g24ynbs6mij318w0u0k4f.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Flow"><span class="toc-text">Git-Flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Submodule"><span class="toc-text">Git-Submodule</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim"><span class="toc-text">vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Flow-规范理解与延伸"><span class="toc-text">Git-Flow 规范理解与延伸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Commit-规范"><span class="toc-text">Git Commit 规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-git-command" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">常用 Git 相关命令清单</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.01.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>G军仔</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><ol>
+<li><p><code>git config --global user.name &quot;Your Name&quot;</code> (安装完 git 后，设置用户名与邮箱)</p>
+</li>
+<li><p><code>git config --global user.email &quot;Your email&quot;</code> (设置邮箱)</p>
+</li>
+<li><p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code> (创建 SSH key)</p>
+</li>
+<li><p><code>ssh-agent -s</code> (查看 ssh 是否启用)</p>
+</li>
+<li><p><code>ssh -T git@github.com</code> (验证)</p>
+</li>
+<li><p><code>git init</code> (初始化一个本地仓库)</p>
+</li>
+<li><p><code>git add .</code>(将所有文件加入到跟踪列表)</p>
+</li>
+<li><p><code>git commit -m &quot;write something title&quot;</code> (提交到本地仓库)</p>
+</li>
+<li><p><code>git status</code> (查看 git 文件哪处发生改动)</p>
+</li>
+<li><p><code>git remote add origin git@github.com:github账户名/github创建的库.git</code> (将本地仓库关联到 github 上远程仓库)</p>
+</li>
+<li><p><code>git push -u origin master</code> (将本地仓库的所有内容推送到远程库上，下一次推送时直接 git push)</p>
+</li>
+<li><p><code>git clone URL</code> (克隆远程仓库)</p>
+</li>
+<li><p><code>git branch</code> (查看当前分支)</p>
+</li>
+<li><p><code>git checkout -- filename</code> (文件恢复到最新版本，但丢失最近一次提交后你修改的内容)</p>
+</li>
+<li><p><code>git checkout name</code> (切换分支，name 为分支名称)</p>
+</li>
+<li><p><code>git reset --hard commitNumber</code> (回滚到某个 commit 不保存之前改动过的内容文件)</p>
+</li>
+<li><p><code>git push --force</code> (上条命令回滚之后的变更强行推送至服务器)</p>
+</li>
+<li><p><code>git tag</code> (查看本地 tag 列表)</p>
+</li>
+<li><p><code>git tag -d tagName</code> (删除本地 tag)</p>
+</li>
+<li><p><code>git push origin --tags</code> (将本地 tag 提交到远程)</p>
+</li>
+</ol>
+<h3 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git-Flow"></a>Git-Flow</h3><ol>
+<li><p><code>git flow init</code> (初始化)</p>
+</li>
+<li><p><code>git flow feature start MYFEATURE</code> (开始新 Feature)</p>
+</li>
+<li><p><code>git flow feature publish MYFEATURE</code> (Publish 一个 Feature (也就是 push 到远程))</p>
+</li>
+<li><p><code>git flow feature pull origin MYFEATURE</code> (获取 Publish 的 Feature)</p>
+</li>
+<li><p><code>git flow feature finish MYFEATURE</code> (完成一个 Feature)</p>
+</li>
+<li><p><code>git flow release start RELEASE [BASE]</code> (开始一个 Release)</p>
+</li>
+<li><p><code>git flow release publish RELEASE</code> (Publish 一个 Release)</p>
+</li>
+<li><p><code>git flow release finish RELEASE</code> (发布 Release)</p>
+</li>
+<li><p><code>git push --tags</code> (发布 Release 后进行，push 到远程)</p>
+</li>
+<li><p><code>git flow hotfix start VERSION [BASENAME]</code> (开始一个 Hotfix)</p>
+</li>
+<li><p><code>git flow hotfix finish VERSION</code> (发布一个 Hotfix)</p>
+</li>
+</ol>
+<h3 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git-Submodule"></a>Git-Submodule</h3><ol>
+<li><p><code>git submodule add git@github.com:github账户名/github创建的库.git</code> (在已存在 git 仓库添加子仓库)</p>
+</li>
+<li><p><code>git submodule init</code> (初始化 Submodule)</p>
+</li>
+<li><p><code>git submodule update</code> (更新 Submodule)</p>
+</li>
+</ol>
+<h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><ol>
+<li><p><code>vim filename</code> (打开编辑文件)</p>
+</li>
+<li><p>按一下 <code>i</code> 键 (进行编辑文件)</p>
+</li>
+<li><p>按一下 <code>Esc</code> 键 (退出 <code>i</code> (插入)命令进行其它命令使用)</p>
+</li>
+<li><p><code>:wq</code> (保存文件并退出)</p>
+</li>
+<li><p><code>:q!</code> (强制退出,不保存)</p>
+</li>
+<li><p><code>:w filename</code> (将文件以指定的文件名 filename 保存)</p>
+</li>
+</ol>
+<h3 id="Git-Flow-规范理解与延伸"><a href="#Git-Flow-规范理解与延伸" class="headerlink" title="Git-Flow 规范理解与延伸"></a>Git-Flow 规范理解与延伸</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24ynbs6mij318w0u0k4f.jpg" alt></p>
+<h3 id="Git-Commit-规范"><a href="#Git-Commit-规范" class="headerlink" title="Git Commit 规范"></a>Git Commit 规范</h3><p>为了更加方便查找 git commit 的日志，因此有必要在 commit 的时候进行备注说明类型  </p>
+<p>参考阮老师的文章：<a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">地址</a></p>
+<p>与团队成员约定在 commit 填写 message 的时候，在前面加多一个 type，具体的类型如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>feat</td>
+<td>新功能（Feature）</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>修补 bug</td>
+</tr>
+<tr>
+<td>style</td>
+<td>界面样式变动（不影响原有业务代码逻辑）</td>
+</tr>
+<tr>
+<td>build</td>
+<td>Gradle 构建的变动，例如第三方库版本号变动</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>例子：feat: 完成登录注册功能</p>
+</blockquote>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">常用 Git 命令清单</a></li>
+<li><a href="https://www.zybuluo.com/Roy270490837/note/835720" target="_blank" rel="noopener">git-flow流程规范</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Git 工具 - 子模块</a></li>
+<li><a href="http://blog.devtang.com/2013/05/08/git-submodule-issues/" target="_blank" rel="noopener">Git submodule的坑</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/12/12/android-resume/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/06/android-rtl/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
