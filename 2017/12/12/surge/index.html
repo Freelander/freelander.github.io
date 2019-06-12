@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="简单了解Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事情，比如阻挡广告、网络调试、流量跟踪、代理上网等等。 安装Mac 版下载 地址（Windows 暂不支持），下载完成后解压文件夹得">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynj9fsyj30yo0u0jzm.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1g24ynhr9kqj30ga0oqmzs.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1g24yndsrb9j318r0u0e81.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynga9bzj30z00u0wk3.jpg">
-<meta property="og:updated_time" content="2019-06-11T16:28:28.842Z">
+<meta property="og:image" content="http://yoursite.com/images/2017/12/02-1.png">
+<meta property="og:image" content="http://yoursite.com/images/2017/12/02-2.png">
+<meta property="og:image" content="http://yoursite.com/images/2017/12/02-3.png">
+<meta property="og:image" content="http://yoursite.com/images/2017/12/02-4.png">
+<meta property="og:updated_time" content="2019-06-12T16:54:50.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="带你玩转 Surge 网络调试神器">
 <meta name="twitter:description" content="简单了解Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事情，比如阻挡广告、网络调试、流量跟踪、代理上网等等。 安装Mac 版下载 地址（Windows 暂不支持），下载完成后解压文件夹得">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynj9fsyj30yo0u0jzm.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/2017/12/02-1.png">
 
   
 
@@ -179,8 +179,7 @@
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Mac 版下载 <a href="https://nssurge.com/" target="_blank" rel="noopener">地址</a>（Windows 暂不支持），下载完成后解压文件夹得到 Surge 程序，将其拖放到应用程序中打开。</p>
 <p>启动 Surge 后勾选下拉菜单中的 <strong>Set as System Proxy</strong> 即可自动向系统网络设置添加必要的参数，因为需要修改系统网络设置，首次勾选时需要输入管理员密码进行确认，去掉 Set as System Proxy 的勾选，会清除网络设置中的代理相关设置。</p>
 <p>打开「系统偏好设置 — 网络 - Wi-Fi高级」设置 HTTP 和 HTTPS 代理： 127.0.0.1:6152 ，以及 SOCKS 代理中设置为 127.0.0.1:6153，<br>并添加忽略这些主机与域的代理设置（Bypass Proxy）：127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local</p>
-<img src="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynj9fsyj30yo0u0jzm.jpg" width="520px" height="450px">
-
+<p><img src="/images/2017/12/02-1.png" alt></p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Surge 默认配置文件的路径在 /Users/Freelander/Documents/Surge 下 Default.conf，文件夹还提供简单中文配置例子，里面有很多注释教你如何配置。</p>
 <p>配置文件基础最终我选择了在一份 <a href="https://raw.githubusercontent.com/lhie1/Surge/master/Surge.conf" target="_blank" rel="noopener">开源配置文件</a> 基础上进行修改。已上传到 <a href="https://github.com/Freelander/Blog/blob/master/201708/code/MySurge.conf" target="_blank" rel="noopener">GitHub</a>。</p>
 <p>将其内容复制到上面所说的路径 Default.conf 文件中，然后保存点击下拉菜单中的 Reload Profile from File，此时配置文件中的配置就生效了。</p>
@@ -189,16 +188,13 @@
 
 <p>[Proxy]是具体的代理配置，它下面就是 5 个 ss 服务器节点, 这里只是 5 个国家例子，根据你拥有的 ss 账号数来决定，拥有几个账号就留下其中几个对应国旗配置就好。表面上看就是 5 个键值对(键可以自定义)，键中加上国旗可以很直观的区分不同国家的 ss 节点，值中的变量分别表示：<br>ss-server host: ss 主机，ip 或域名<br>ss-server port: ss 主机端口<br>ss encrypt type: 加密方式<br>ss-password: ss 密码<br>custom 不能改，是一个约定类型(ss 协议)。</p>
 <p>保存上面配置，点击下拉菜单中的 Reload Profile from File，配置生效，就会出现下图</p>
-<img src="https://ws2.sinaimg.cn/large/006tNc79ly1g24ynhr9kqj30ga0oqmzs.jpg" width="293px" height="445px">
-
+<p><img src="/images/2017/12/02-2.png" alt></p>
 <p>接着打开浏览器输入 <a href="https://www.youtube.com/" target="_blank" rel="noopener">https://www.youtube.com/</a> 回车<br>你会发现外面的世界如此精彩</p>
 <h3 id="共享上网"><a href="#共享上网" class="headerlink" title="共享上网"></a>共享上网</h3><p>在局域网内，其他设备无须再安装任何软件，即可与我一起到外面世界遨游。其他设备只需要简单的在 wifi 设置中添加一个 HTTP 代理即可</p>
 <p>图片来源 <a href="https://medium.com/@scomper/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B6%E4%BB%96%E8%AE%BE%E5%A4%87%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91-dd29e18853da" target="_blank" rel="noopener">地址</a></p>
-<img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24yndsrb9j318r0u0e81.jpg" width="681px" height="457px">
-
+<p><img src="/images/2017/12/02-3.png" alt></p>
 <h3 id="同时使用-Surge-Charles-分析网络"><a href="#同时使用-Surge-Charles-分析网络" class="headerlink" title="同时使用 Surge + Charles 分析网络"></a>同时使用 Surge + Charles 分析网络</h3><p>打开 Charles 的 External Proxy Settings 设置 Charles 的外部代理为 Surge 的端口，即与上面系统网络设置的代理一致</p>
-<img src="https://ws1.sinaimg.cn/large/006tNc79ly1g24ynga9bzj30z00u0wk3.jpg" width="435px" height="373px">
-
+<p><img src="/images/2017/12/02-4.png" alt></p>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 基于域名判断并屏蔽（REJECT）请求  </span><br><span class="line">DOMAIN,pingma.qq.com,REJECT  </span><br><span class="line">// 基于域名后缀判断屏蔽（REJECT）请求  </span><br><span class="line">DOMAIN-SUFFIX,flurry.com,REJECT  </span><br><span class="line">// 基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走</span><br><span class="line">Packet-Tunnel-Provider DOMAIN-KEYWORD,google,Proxy,force-remote-dns  </span><br><span class="line">// 基于域名后缀判断请求走直连（DIRECT）  </span><br><span class="line">DOMAIN-SUFFIX,126.net,DIRECT  </span><br><span class="line">// Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。  </span><br><span class="line">IP-CIDR,91.108.56.0/22,Proxy,no-resolve  </span><br><span class="line">// 判断是否是局域网，如果是，走直连  </span><br><span class="line">IP-CIDR,192.168.0.0/16,DIRECT  </span><br><span class="line">// 判断服务器所在地，如果是国内，走直连  </span><br><span class="line">GEOIP,CN,DIRECT  </span><br><span class="line">// 其他的全部走代理  </span><br><span class="line">FINAL,Proxy  </span><br><span class="line">// 其他的全部不走代理  </span><br><span class="line">FINAL,DIRECT</span><br></pre></td></tr></table></figure>
 
 <h3 id="注意坑"><a href="#注意坑" class="headerlink" title="注意坑"></a>注意坑</h3><p>写完 [Rule] 后面需要加</p>
