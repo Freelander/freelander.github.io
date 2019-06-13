@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>是时候让你项目用上 ViewBindings 了 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,DataBinding,ViewBindings,">
+  
+
+  <meta name="description" content="写在前面相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久的 Google IO 2019 上面提到了 ViewBindings 概念，后来我详细了解后，发现这个东西可以理解为">
+<meta name="keywords" content="Android,DataBinding,ViewBindings">
+<meta property="og:type" content="article">
+<meta property="og:title" content="是时候让你项目用上 ViewBindings 了">
+<meta property="og:url" content="http://yoursite.com/2019/06/13/android-viewbindings/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久的 Google IO 2019 上面提到了 ViewBindings 概念，后来我详细了解后，发现这个东西可以理解为">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-13T15:42:20.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="是时候让你项目用上 ViewBindings 了">
+<meta name="twitter:description" content="写在前面相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久的 Google IO 2019 上面提到了 ViewBindings 概念，后来我详细了解后，发现这个东西可以理解为">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建-DataBingding-环境"><span class="toc-text">构建 DataBingding 环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在基类配置-Bingding-代码"><span class="toc-text">在基类配置 Bingding 代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Activity"><span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fragment"><span class="toc-text">Fragment</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#布局"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图点击事件"><span class="toc-text">视图点击事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束"><span class="toc-text">结束</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-viewbindings" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">是时候让你项目用上 ViewBindings 了</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>G军仔</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？</p>
+<p>答案是有的，在前不久的 Google IO 2019 上面提到了 ViewBindings 概念，后来我详细了解后，发现这个东西可以理解为 DataBinding 的一部分，具体区别在于 ViewBindings 只是视图绑定部分。想更深入了解两者区别，可以看下 <a href="https://proandroiddev.com/new-in-android-viewbindings-the-difference-from-databinding-library-bef5945baf5e" target="_blank" rel="noopener">这篇文章</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="构建-DataBingding-环境"><a href="#构建-DataBingding-环境" class="headerlink" title="构建 DataBingding 环境"></a>构建 DataBingding 环境</h3><p>在 App 模块的 build.gradle 文件中添加 DataBinding 配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ....</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在基类配置-Bingding-代码"><a href="#在基类配置-Bingding-代码" class="headerlink" title="在基类配置 Bingding 代码"></a>在基类配置 Bingding 代码</h3><h4 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class CustomActivity&lt;VB extends ViewDataBinding&gt; extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private View mContentView;</span><br><span class="line">    protected VB mViewBinding;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void setContentView(@LayoutRes int layoutResID) &#123;</span><br><span class="line">        mContentView = View.inflate(this, layoutResID, null);</span><br><span class="line">        mViewBinding = DataBindingUtil.bind(mContentView);</span><br><span class="line">        super.setContentView(mContentView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class CustomFragment&lt;VB extends ViewDataBinding&gt; extends BaseFragment &#123;</span><br><span class="line">    </span><br><span class="line">    private View mContentView;</span><br><span class="line">    protected VB mViewBinding;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public View onCreateView(LayoutInflater inflater, ViewGroup container,</span><br><span class="line">                             Bundle savedInstanceState) &#123;</span><br><span class="line">        return mContentView;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void setContentView(int id) &#123;</span><br><span class="line">        this.mContentView = getActivity().getLayoutInflater().inflate(id, mContainer, false);</span><br><span class="line">        mViewBinding = DataBindingUtil.bind(mContentView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><p>在布局的最外层增加 <code>&lt;layout&gt;&lt;/layout&gt;</code> 标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layout&gt;</span><br><span class="line">    &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">        xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:background=&quot;@color/bg_grey_f2f2f2&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;com.chicdeals.widget.CustomRegularTextView</span><br><span class="line">            android:id=&quot;@+id/tv_app_cache&quot;</span><br><span class="line">            style=&quot;@style/CommonRippleStyle&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;@dimen/space_50&quot;</span><br><span class="line">            android:drawableEnd=&quot;@mipmap/ic_account_arrow_default&quot;</span><br><span class="line">            android:drawablePadding=&quot;@dimen/space_12&quot;</span><br><span class="line">            android:gravity=&quot;center_vertical&quot;</span><br><span class="line">            android:paddingStart=&quot;@dimen/space_12&quot;</span><br><span class="line">            android:paddingEnd=&quot;@dimen/space_12&quot;</span><br><span class="line">            android:text=&quot;@string/account_change_password&quot;</span><br><span class="line">            android:textColor=&quot;@color/text_grey_333333&quot;</span><br><span class="line">            android:textSize=&quot;@dimen/textSize_15&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class SettingActivity extends CustomActivity&lt;SettingActivityBinding&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.setting_activity);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void initView() &#123;</span><br><span class="line">        super.initView();</span><br><span class="line">        </span><br><span class="line">        mViewBinding.tvAppCache.setText(getCacheSize());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="视图点击事件"><a href="#视图点击事件" class="headerlink" title="视图点击事件"></a>视图点击事件</h3><p>在引入 DataBinding 时，发现如果处理视图点击，还是需要逐一给视图设置点击事件的绑定，没有其他更好的方法，此时我选择了继续保留 ButterKnife 框架，可以快速绑定视图的点击事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@OnClick(&#123;R.id.tv_change_pwd, R.id.tv_app_version, R.id.tv_app_cache, R.id.cv_sign_out&#125;)</span><br><span class="line">public void onViewClicked(View view) &#123;</span><br><span class="line">    switch (view.getId()) &#123;</span><br><span class="line">        case R.id.tv_change_pwd:</span><br><span class="line">            break;</span><br><span class="line">        case R.id.tv_app_version:</span><br><span class="line">            break;</span><br><span class="line">        case R.id.tv_app_cache:</span><br><span class="line">            break;</span><br><span class="line">        case R.id.cv_sign_out:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>到这里简述大概如何使用 DataBinding 中的 ViewBinding 部分了。此时有人疑惑为什么不说说 DataBinding 数据绑定部分？</p>
+<p>我简单说下几个原因：</p>
+<ol>
+<li>DataBinding 将部分逻辑移到布局文件，使得布局失去纯粹性，且逻辑变得有点乱，不利于阅读代码；</li>
+<li>如果某个布局 xml 中的 DataBinding 代码有误，编译时会全部布局文件报错，不好定位报错地方；</li>
+<li>在布局文件中插入了部分数据逻辑，使得文件失去了复用性。</li>
+</ol>
+<p>综上所述，我只建议大家使用 DataBinding 中的 View 绑定模块的 ViewBindings 框架，解决一个小小需求，替代 findViewById 使得项目代码更加简洁。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/12/hello-blog/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
