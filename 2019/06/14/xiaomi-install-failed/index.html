@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>小米手机 Application Installation Failed | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,">
+  
+
+  <meta name="description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤：  确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小米手机 Application Installation Failed">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/xiaomi-install-failed/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤：  确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2018/06/01-13.png">
+<meta property="og:updated_time" content="2019-06-14T14:43:05.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小米手机 Application Installation Failed">
+<meta name="twitter:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤：  确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运">
+<meta name="twitter:image" content="http://yoursite.com/images/2018/06/01-13.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-142037913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-xiaomi-install-failed" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">小米手机 Application Installation Failed</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>G军仔</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。</p>
+<p><img src="/images/2018/06/01-13.png" alt></p>
+<p>然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。</p>
+<p>解决步骤：</p>
+<ol>
+<li>确认打开开发者选项模式（设置-&gt;关于手机-&gt;MIUI版本,连续点击MIUI版本）</li>
+<li>开启开发者选项以及 USB 调试</li>
+<li>再运行项目看下是否可以</li>
+</ol>
+<p><strong>如果还是不行</strong></p>
+<ol start="4">
+<li>关闭 “开启MIUI优化”（设置-&gt;更多设置-&gt;开发者选项-&gt;启动MIUI优化）</li>
+<li>重启手机，再次运行项目看看</li>
+</ol>
+<p><strong>如果还是不行</strong></p>
+<p>回到 Android Studio 开发工具</p>
+<ol start="6">
+<li>在 File &gt; Settings &gt; Build,Execution,Deployment &gt; Instant Run &gt;取消选择 (Enable Instant Run to hot swap code)</li>
+<li>再次运行项目看看</li>
+</ol>
+<p><strong>如果还是不行</strong></p>
+<ol start="8">
+<li>尝试 Clen Project &gt;&gt; Rebuild Project &gt;&gt; 再尝试下运行项目</li>
+</ol>
+<blockquote>
+<p>还是不行，兄dei 那就换手机吧<br>还有一种情况是手机的存储太低了，导致无法安装 app</p>
+</blockquote>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ol>
+<li><a href="https://blog.csdn.net/forwardyzk/article/details/68489711" target="_blank" rel="noopener">https://blog.csdn.net/forwardyzk/article/details/68489711</a></li>
+<li><a href="https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio" target="_blank" rel="noopener">https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio</a></li>
+</ol>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/13/android-viewbindings/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
