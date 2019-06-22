@@ -12,6 +12,8 @@
   * [开发 Material Design+RxJava+Retrofit+MVP App 参考资料 ](https://gojun.me/2016/06/06/android-elephant/)
 * 随笔
   * [小米手机 Application Installation Failed](https://gojun.me/2018/01/13/xiaomi-install-failed/)
+  * [如何为小米手机安装 Charles 证书](https://gojun.me/2017/03/25/xiaomi-charles-crt/)
+  * [如何给 Android 原生模拟器配置代理](https://gojun.me/2017/03/02/android-setting-proxy/)
 * Blog
   * [欢迎来到我的新博客](https://gojun.me/2019/06/12/hello-blog/)
 * Git
