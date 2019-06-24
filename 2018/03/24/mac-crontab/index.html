@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="GoJun">
 <meta property="og:description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T14:35:35.951Z">
+<meta property="og:updated_time" content="2019-06-24T14:45:27.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 使用 Crontab 定时工具">
 <meta name="twitter:description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式">
@@ -185,12 +185,30 @@ ga('send', 'pageview');
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo crontab -e</span><br><span class="line"># 此时会进入 vi 编辑器！注意到，每项工作都是一行。</span><br><span class="line"># 基本格式：* * * * * command </span><br><span class="line">0 12 * * * mail dmtsai -s &quot;at 12:00&quot; &lt; /home/dmtsai/.bashrc</span><br><span class="line">#分 时 日 月 周 |&lt;==============指令串========================&gt;|</span><br><span class="line">$ sudo crontab -l</span><br><span class="line"># 查看已经添加的定时任务</span><br></pre></td></tr></table></figure>
 
-<p>前面五个参数(星号)代表的意义：<br>意义 | 分钟 | 小时 | 日 | 月 | 星期<br>—–| —–|——|——| ——|—-<br>数字范文 | 0<del>59 | 0</del>23 | 1<del>31 | 1</del>12 | 0~7（0:周日）</p>
+<p>前面五个参数(星号)代表的意义：</p>
+<table>
+<thead>
+<tr>
+<th>意义</th>
+<th>分钟</th>
+<th>小时</th>
+<th>日</th>
+<th>月</th>
+<th>星期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数字范文</td>
+<td>0~59</td>
+<td>0~23</td>
+<td>1~31</td>
+<td>1~12</td>
+<td>0~7（0:周日)</td>
+</tr>
+</tbody></table>
 <h3 id="Crontab-时区与系统不一致"><a href="#Crontab-时区与系统不一致" class="headerlink" title="Crontab 时区与系统不一致"></a>Crontab 时区与系统不一致</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
 
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" target="_blank" rel="noopener">https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</a></p>
-<p><a href="https://www.jianshu.com/p/4addd9b455f2" target="_blank" rel="noopener">https://www.jianshu.com/p/4addd9b455f2</a></p>
-<p><a href="https://blog.csdn.net/biyongyao/article/details/77791238" target="_blank" rel="noopener">https://blog.csdn.net/biyongyao/article/details/77791238</a></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" target="_blank" rel="noopener">OSX系统添加定时任务</a><br><a href="https://www.jianshu.com/p/4addd9b455f2" target="_blank" rel="noopener">Mac中的定时任务利器：launchctl</a><br><a href="https://blog.csdn.net/biyongyao/article/details/77791238" target="_blank" rel="noopener">Mac 开启 crontab 定时任务调试</a></p>
 
     
   </div>
