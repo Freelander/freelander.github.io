@@ -7,27 +7,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>小米手机 Application Installation Failed | GoJun</title>
+  <title>Mac 使用 Crontab 定时工具 | GoJun</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="G军仔,Github,Freelander,GitHubDaily,Android,Python,Flutter,GoJun">
+    <meta name="keywords" content="工具,">
   
 
-  <meta name="description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
+  <meta name="description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式">
+<meta name="keywords" content="工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小米手机 Application Installation Failed">
-<meta property="og:url" content="http://yoursite.com/2018/01/13/xiaomi-install-failed/index.html">
+<meta property="og:title" content="Mac 使用 Crontab 定时工具">
+<meta property="og:url" content="http://yoursite.com/2018/03/24/mac-crontab/index.html">
 <meta property="og:site_name" content="GoJun">
-<meta property="og:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
+<meta property="og:description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/2018/01/01.png">
-<meta property="og:updated_time" content="2019-06-22T14:34:40.326Z">
+<meta property="og:updated_time" content="2019-06-24T14:35:35.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小米手机 Application Installation Failed">
-<meta name="twitter:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
-<meta name="twitter:image" content="http://yoursite.com/images/2018/01/01.png">
+<meta name="twitter:title" content="Mac 使用 Crontab 定时工具">
+<meta name="twitter:description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式">
 
   
 
@@ -125,20 +124,20 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决步骤："><span class="toc-text">解决步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#相关命令"><span class="toc-text">相关命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加定时任务"><span class="toc-text">添加定时任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Crontab-时区与系统不一致"><span class="toc-text">Crontab 时区与系统不一致</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-xiaomi-install-failed" class="article article-type-post" itemprop="blogPost">
+   <article id="post-mac-crontab" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">小米手机 Application Installation Failed</h1>
+    <h1 class="post-title">Mac 使用 Crontab 定时工具</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2018.01.13</span>
+        <span>2018.03.24</span>
       </span>
 
       
@@ -151,7 +150,7 @@ ga('send', 'pageview');
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
   </span>
 
 
@@ -171,36 +170,27 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。</p>
-<p><img src="/images/2018/01/01.png" alt></p>
-<p>然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。</p>
-<h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><ol>
-<li>确认打开开发者选项模式（设置-&gt;关于手机-&gt;MIUI版本,连续点击MIUI版本）</li>
-<li>开启开发者选项以及 USB 调试</li>
-<li>再运行项目看下是否可以</li>
+      <h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><ol>
+<li><code>sudo /usr/sbin/cron start</code> (启动)</li>
+<li><code>sudo /usr/sbin/cron restart</code> (重启)</li>
+<li><code>sudo /usr/sbin/cron stop</code> (停止)</li>
+<li><code>sudo launchctl list | grep cron</code> (查看是否启动)</li>
+<li><code>man crontab</code> (查看crontab命令的用法)</li>
+<li><code>man 5 crontab</code> (查看crontab定时任务的格式)</li>
+<li><code>sudo crontab -e</code> (进入编辑器，添加或修改定时任务)</li>
+<li><code>sudo crontab -l</code> (查看已经添加的定时任务)</li>
 </ol>
-<p><strong>如果还是不行</strong></p>
-<ol start="4">
-<li>关闭 “开启MIUI优化”（设置-&gt;更多设置-&gt;开发者选项-&gt;启动MIUI优化）</li>
-<li>重启手机，再次运行项目看看</li>
-</ol>
-<p><strong>如果还是不行</strong></p>
-<p>回到 Android Studio 开发工具</p>
-<ol start="6">
-<li>在 File &gt; Settings &gt; Build,Execution,Deployment &gt; Instant Run &gt;取消选择 (Enable Instant Run to hot swap code)</li>
-<li>再次运行项目看看</li>
-</ol>
-<p><strong>如果还是不行</strong></p>
-<ol start="8">
-<li>尝试 Clen Project &gt;&gt; Rebuild Project &gt;&gt; 再尝试下运行项目</li>
-</ol>
-<blockquote>
-<p>还是不行，兄dei 那就换手机吧<br>还有一种情况是手机的存储太低了，导致无法安装 app</p>
+<h3 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h3><blockquote>
+<p>55 23 * * * python3 /Users/hugo/Development/GooglePlayReview/app_reviews.py</p>
 </blockquote>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
-<li><a href="https://blog.csdn.net/forwardyzk/article/details/68489711" target="_blank" rel="noopener">https://blog.csdn.net/forwardyzk/article/details/68489711</a></li>
-<li><a href="https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio" target="_blank" rel="noopener">https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio</a></li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo crontab -e</span><br><span class="line"># 此时会进入 vi 编辑器！注意到，每项工作都是一行。</span><br><span class="line"># 基本格式：* * * * * command </span><br><span class="line">0 12 * * * mail dmtsai -s &quot;at 12:00&quot; &lt; /home/dmtsai/.bashrc</span><br><span class="line">#分 时 日 月 周 |&lt;==============指令串========================&gt;|</span><br><span class="line">$ sudo crontab -l</span><br><span class="line"># 查看已经添加的定时任务</span><br></pre></td></tr></table></figure>
+
+<p>前面五个参数(星号)代表的意义：<br>意义 | 分钟 | 小时 | 日 | 月 | 星期<br>—–| —–|——|——| ——|—-<br>数字范文 | 0<del>59 | 0</del>23 | 1<del>31 | 1</del>12 | 0~7（0:周日）</p>
+<h3 id="Crontab-时区与系统不一致"><a href="#Crontab-时区与系统不一致" class="headerlink" title="Crontab 时区与系统不一致"></a>Crontab 时区与系统不一致</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" target="_blank" rel="noopener">https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</a></p>
+<p><a href="https://www.jianshu.com/p/4addd9b455f2" target="_blank" rel="noopener">https://www.jianshu.com/p/4addd9b455f2</a></p>
+<p><a href="https://blog.csdn.net/biyongyao/article/details/77791238" target="_blank" rel="noopener">https://blog.csdn.net/biyongyao/article/details/77791238</a></p>
 
     
   </div>
@@ -238,10 +228,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017/12/12/surge/">
+    <a class="show pull-left" href="/2018/01/13/xiaomi-install-failed/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/03/24/mac-crontab/">
+    <a class="show pull-right" href="/2018/06/06/google-clound/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
