@@ -7,27 +7,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>小米手机 Application Installation Failed | GoJun</title>
+  <title>使用 Python3 对在 Play 商店应用的评论爬取调研 | GoJun</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="G军仔,Github,Freelander,GitHubDaily,Android,Python,Flutter,GoJun">
+    <meta name="keywords" content="爬虫,Python,">
   
 
-  <meta name="description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
+  <meta name="description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
+<meta name="keywords" content="爬虫,Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小米手机 Application Installation Failed">
-<meta property="og:url" content="http://yoursite.com/2018/01/13/xiaomi-install-failed/index.html">
+<meta property="og:title" content="使用 Python3 对在 Play 商店应用的评论爬取调研">
+<meta property="og:url" content="http://yoursite.com/2018/03/02/play-reviews-research/index.html">
 <meta property="og:site_name" content="GoJun">
-<meta property="og:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
+<meta property="og:description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/2018/01/01.png">
-<meta property="og:updated_time" content="2019-06-22T14:34:40.326Z">
+<meta property="og:updated_time" content="2019-06-26T16:11:12.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小米手机 Application Installation Failed">
-<meta name="twitter:description" content="今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。  然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解决步骤： 确认打开开发者选项模式（设置-&amp;gt;关于手机-&amp;gt;MIUI版本,连续点击MIUI版本） 开启开发者选项以及 USB 调试 再运行">
-<meta name="twitter:image" content="http://yoursite.com/images/2018/01/01.png">
+<meta name="twitter:title" content="使用 Python3 对在 Play 商店应用的评论爬取调研">
+<meta name="twitter:description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
 
   
 
@@ -125,20 +124,20 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决步骤："><span class="toc-text">解决步骤：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景-需求"><span class="toc-text">背景/需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景-需求-1"><span class="toc-text">背景/需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调研"><span class="toc-text">调研</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一"><span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二"><span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式三"><span class="toc-text">方式三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式四"><span class="toc-text">方式四</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-xiaomi-install-failed" class="article article-type-post" itemprop="blogPost">
+   <article id="post-play-reviews-research" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">小米手机 Application Installation Failed</h1>
+    <h1 class="post-title">使用 Python3 对在 Play 商店应用的评论爬取调研</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2018.01.13</span>
+        <span>2018.03.02</span>
       </span>
 
       
@@ -151,7 +150,7 @@ ga('send', 'pageview');
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
   </span>
 
 
@@ -171,35 +170,28 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。</p>
-<p><img src="/images/2018/01/01.png" alt></p>
-<p>然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。</p>
-<h3 id="解决步骤："><a href="#解决步骤：" class="headerlink" title="解决步骤："></a>解决步骤：</h3><ol>
-<li>确认打开开发者选项模式（设置-&gt;关于手机-&gt;MIUI版本,连续点击MIUI版本）</li>
-<li>开启开发者选项以及 USB 调试</li>
-<li>再运行项目看下是否可以</li>
+      <h2 id="背景-需求"><a href="#背景-需求" class="headerlink" title="背景/需求"></a>背景/需求</h2><h2 id="背景-需求-1"><a href="#背景-需求-1" class="headerlink" title="背景/需求"></a>背景/需求</h2><p>方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。</p>
+<p>两个数据表：</p>
+<ol>
+<li>评论明细表（评论时间，评论内容，设备信息等）</li>
+<li>评论汇总统计(每天有多少1星，多少2星等)</li>
 </ol>
-<p><strong>如果还是不行</strong></p>
-<ol start="4">
-<li>关闭 “开启MIUI优化”（设置-&gt;更多设置-&gt;开发者选项-&gt;启动MIUI优化）</li>
-<li>重启手机，再次运行项目看看</li>
-</ol>
-<p><strong>如果还是不行</strong></p>
-<p>回到 Android Studio 开发工具</p>
-<ol start="6">
-<li>在 File &gt; Settings &gt; Build,Execution,Deployment &gt; Instant Run &gt;取消选择 (Enable Instant Run to hot swap code)</li>
-<li>再次运行项目看看</li>
-</ol>
-<p><strong>如果还是不行</strong></p>
-<ol start="8">
-<li>尝试 Clen Project &gt;&gt; Rebuild Project &gt;&gt; 再尝试下运行项目</li>
-</ol>
-<blockquote>
-<p>还是不行，兄dei 那就换手机吧<br>还有一种情况是手机的存储太低了，导致无法安装 app</p>
-</blockquote>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
-<li><a href="https://blog.csdn.net/forwardyzk/article/details/68489711" target="_blank" rel="noopener">https://blog.csdn.net/forwardyzk/article/details/68489711</a></li>
-<li><a href="https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio" target="_blank" rel="noopener">https://stackoverflow.com/questions/42687607/application-installation-failed-in-android-studio</a></li>
+<h2 id="调研"><a href="#调研" class="headerlink" title="调研"></a>调研</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不是实时的，获取到的数据不是最新，延迟了两天数据，没法拿到最新一天的评论因此放弃该方式。</p>
+<p>相关链接：<br><a href="https://developers.google.com/android-publisher/api-ref/reviews/list" target="_blank" rel="noopener">https://developers.google.com/android-publisher/api-ref/reviews/list</a><br><a href="https://stackoverflow.com/questions/11348025/api-to-get-android-google-play-reviewsgetting-device-name-and-app-version" target="_blank" rel="noopener">https://stackoverflow.com/questions/11348025/api-to-get-android-google-play-reviewsgetting-device-name-and-app-version</a></p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>网上查找下有没有 demo，在 GitHub 上面找到一个例子。</p>
+<p>相关链接：<a href="https://github.com/amrrs/Google-Play-Store-Review-Extractor" target="_blank" rel="noopener">https://github.com/amrrs/Google-Play-Store-Review-Extractor</a></p>
+<p>查看源码不符合需求。</p>
+<h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><p>试图从google应用商店入手，发现商店上面的评论并不是实时的，而且貌似是会根据访问的 ip 是什么来返回评论数据，并且提供的筛选功能不能满足我们的需求。</p>
+<h3 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h3><p>从应用后台入手，只有后台的评论数据才是实时的，并具备满足我们要求的筛选，以及统计数据。可以使用 Python 中的无头浏览器进行爬取。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>使用<code>方式四</code>完成需求</p>
+<p>大概步骤：</p>
+<ol>
+<li>设置代理</li>
+<li>模拟登陆 Google 发布应用后台</li>
+<li>进入评价模块</li>
+<li>开始抓取评论数据</li>
+<li>解析评论数据</li>
+<li>数据进库</li>
 </ol>
 
     
@@ -238,10 +230,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017/12/12/surge/">
+    <a class="show pull-left" href="/2018/01/13/xiaomi-install-failed/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/03/02/play-reviews-research/">
+    <a class="show pull-right" href="/2018/03/24/mac-crontab/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
