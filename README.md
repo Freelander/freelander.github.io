@@ -21,3 +21,8 @@
 * 翻墙
   * [如何利用 Google Cloud 搭建 VPS](https://gojun.me/2018/06/06/google-clound/)
   * [带你玩转 Surge 网络调试神器](https://gojun.me/2017/12/12/surge/)
+* Python
+  * [使用 Python3 爬取 play 商店后台评论笔记记录](https://gojun.me/2018/03/13/python-learn/)
+  * [使用 Python3 对在 Play 商店应用的评论爬取调研](https://gojun.me/2018/03/02/play-reviews-research/)
+* 工具
+  * [Mac 使用 Crontab 定时工具](https://gojun.me/2018/03/24/mac-crontab/)
