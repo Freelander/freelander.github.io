@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Android 如何快速全局更换字体 | GoJun</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,Font,">
+  
+
+  <meta name="description" content="在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的，当然也有一些第三方开源库来帮助处理，其中最多人推荐使用的是 Calligraphy。现在有了此特性，我们就可以非常容易全局更">
+<meta name="keywords" content="Android,Font">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 如何快速全局更换字体">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/android-change-font/index.html">
+<meta property="og:site_name" content="GoJun">
+<meta property="og:description" content="在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的，当然也有一些第三方开源库来帮助处理，其中最多人推荐使用的是 Calligraphy。现在有了此特性，我们就可以非常容易全局更">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2019/07/01.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/07/02.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/07/03.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/07/04.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/07/05.png">
+<meta property="og:updated_time" content="2019-07-06T15:04:51.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 如何快速全局更换字体">
+<meta name="twitter:description" content="在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的，当然也有一些第三方开源库来帮助处理，其中最多人推荐使用的是 Calligraphy。现在有了此特性，我们就可以非常容易全局更">
+<meta name="twitter:image" content="http://yoursite.com/images/2019/07/01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-142037913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何引入第三方字体包"><span class="toc-text">如何引入第三方字体包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何全局字体替换更改"><span class="toc-text">如何全局字体替换更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现不同语言使用不同字体"><span class="toc-text">如何实现不同语言使用不同字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐阅读"><span class="toc-text">推荐阅读</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-change-font" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Android 如何快速全局更换字体</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.07.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>GoJun</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 <a href="https://developer.android.google.cn/guide/topics/ui/look-and-feel/fonts-in-xml.html#java" target="_blank" rel="noopener">地址</a>。</p>
+<p>网上搜索了很多资料，在未有此特性时处理是相当麻烦的，当然也有一些第三方开源库来帮助处理，其中最多人推荐使用的是 <a href="https://github.com/InflationX/Calligraphy" target="_blank" rel="noopener">Calligraphy</a>。现在有了此特性，我们就可以非常容易全局更改 App 字体。</p>
+<h2 id="如何引入第三方字体包"><a href="#如何引入第三方字体包" class="headerlink" title="如何引入第三方字体包"></a>如何引入第三方字体包</h2><ol>
+<li><p>右键单击资源 res 文件夹，选择 New &gt; Android resource directory；</p>
+</li>
+<li><p>在资源类型列表中选择 font，然后点击 OK；</p>
+</li>
+</ol>
+<p><img src="/images/2019/07/01.png" alt="image"></p>
+<ol start="3">
+<li>将你的第三方字体包放到添加到刚创建的 font 文件夹；</li>
+</ol>
+<p><img src="/images/2019/07/02.png" alt="image"></p>
+<ol start="4">
+<li>Android Studio 支持预览字体，你可以双击字体包即可预览</li>
+</ol>
+<p><img src="/images/2019/07/03.png" alt="image"></p>
+<p>至此你已成功引入第三方字体包了，接下来介绍如何使用以及一些技巧。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在 xml 文件中给所需要更换字体的控件增加一个属性 fontFamily</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&quot;Hello World!&quot;</span><br><span class="line">    android:fontFamily=&quot;@font/hind_siliguri_regular&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在代码中动态更改控件的字体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Typeface typeface = ResourcesCompat.getFont(context, R.font.hind_siliguri_regular);</span><br><span class="line">// 若是粗体使用 Typeface.BOLD</span><br><span class="line">textView.setTypeface(typeface, Typeface.NORMAL);</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何全局字体替换更改"><a href="#如何全局字体替换更改" class="headerlink" title="如何全局字体替换更改"></a>如何全局字体替换更改</h2><p>在 styles.xml 文件中找到 App 主题增加自定义字体属性；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Base application theme. --&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    &lt;!--自定义字体--&gt;</span><br><span class="line">    &lt;item name=&quot;android:fontFamily&quot;&gt;@font/hind_siliguri_regular&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 AndroidManifest.xml 文件的程序定义里，应用此主题；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">    android:allowBackup=&quot;true&quot;</span><br><span class="line">    android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">    android:label=&quot;@string/app_name&quot;</span><br><span class="line">    android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">    android:supportsRtl=&quot;true&quot;</span><br><span class="line">    android:theme=&quot;@style/AppTheme&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样就全局更换字体样式了。</p>
+<h2 id="如何实现不同语言使用不同字体"><a href="#如何实现不同语言使用不同字体" class="headerlink" title="如何实现不同语言使用不同字体"></a>如何实现不同语言使用不同字体</h2><p>通过上面方法可以实现了 App 使用第三方字体，可这时候如果产品要求在不同语言下使用不同的字体；</p>
+<p>那么如何实现呢？很简单只需要复制一份 styles.xml 文件在对应的语言 values 文件下，更换所对应的字体即可。</p>
+<ol>
+<li>右键单击资源 res 文件夹，选择 New &gt; Android resource directory；</li>
+<li>在资源类型列表中选择 values，左边边选择 Locale，然后选择你对应的语言，然后点击 OK；</li>
+</ol>
+<p><img src="/images/2019/07/04.png" alt="image"></p>
+<ol start="3">
+<li>这时候会看到新建了一个文件夹 values-ar</li>
+</ol>
+<p><img src="/images/2019/07/05.png" alt="image"></p>
+<ol start="4">
+<li>复制一份 styles.xml 文件到 values-ar 文件夹下，修改主题下的字体配置;</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Base application theme. --&gt;</span><br><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    &lt;item name=&quot;android:fontFamily&quot;&gt;@font/ar_regular&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>到这里当你切换语言到中东阿拉伯语的时候，就会显示对应字体了。</p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><p><a href="https://gojun.me/2017/06/06/android-rtl/" target="_blank" rel="noopener">Android 中东阿拉伯语适配，看这一篇够了</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/06/13/android-viewbindings/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '82ef894572a7fb681648',
+  clientSecret: '38fcfcf9b9e5d9dcb6b6751468aa5560236b852c',
+  repo: 'blog-comment',
+  owner: 'Freelander',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['Freelander'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
