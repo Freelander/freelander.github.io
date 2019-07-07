@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://yoursite.com/images/2019/07/03.png">
 <meta property="og:image" content="http://yoursite.com/images/2019/07/04.png">
 <meta property="og:image" content="http://yoursite.com/images/2019/07/05.png">
-<meta property="og:updated_time" content="2019-07-06T15:04:51.690Z">
+<meta property="og:updated_time" content="2019-07-06T15:11:00.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 如何快速全局更换字体">
 <meta name="twitter:description" content="在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的，当然也有一些第三方开源库来帮助处理，其中最多人推荐使用的是 Calligraphy。现在有了此特性，我们就可以非常容易全局更">
@@ -210,8 +210,10 @@ ga('send', 'pageview');
 <h2 id="如何实现不同语言使用不同字体"><a href="#如何实现不同语言使用不同字体" class="headerlink" title="如何实现不同语言使用不同字体"></a>如何实现不同语言使用不同字体</h2><p>通过上面方法可以实现了 App 使用第三方字体，可这时候如果产品要求在不同语言下使用不同的字体；</p>
 <p>那么如何实现呢？很简单只需要复制一份 styles.xml 文件在对应的语言 values 文件下，更换所对应的字体即可。</p>
 <ol>
-<li>右键单击资源 res 文件夹，选择 New &gt; Android resource directory；</li>
-<li>在资源类型列表中选择 values，左边边选择 Locale，然后选择你对应的语言，然后点击 OK；</li>
+<li><p>右键单击资源 res 文件夹，选择 New &gt; Android resource directory；</p>
+</li>
+<li><p>在资源类型列表中选择 values，左边边选择 Locale，然后选择你对应的语言，然后点击 OK；</p>
+</li>
 </ol>
 <p><img src="/images/2019/07/04.png" alt="image"></p>
 <ol start="3">
