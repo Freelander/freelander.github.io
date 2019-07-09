@@ -5,6 +5,7 @@
 ### 目录
 
 * Android
+  * [Android 如何快速全局更换字体](https://gojun.me/2019/07/06/android-change-font/)
   * [是时候让你项目用上 ViewBindings 了](https://gojun.me/2019/06/13/android-viewbindings/)
   * [Android 中东阿拉伯语适配，看这一篇够了](https://gojun.me/2017/06/06/android-rtl/)
   * [如何设置 BottomSheetDialog 高度](https://gojun.me/2017/02/18/bottom-sheet-dialog-height/)
