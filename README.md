@@ -5,6 +5,7 @@
 ### 目录
 
 * Android
+  * [终极 Apk 瘦身优化](https://gojun.me/2019/09/10/android-reduce-apk-size/)
   * [Android 如何快速全局更换字体](https://gojun.me/2019/07/06/android-change-font/)
   * [是时候让你项目用上 ViewBindings 了](https://gojun.me/2019/06/13/android-viewbindings/)
   * [Android 中东阿拉伯语适配，看这一篇够了](https://gojun.me/2017/06/06/android-rtl/)
