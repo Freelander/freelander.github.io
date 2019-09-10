@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>终极 Apk 瘦身优化 | GoJun</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,">
+  
+
+  <meta name="description" content="前言Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。 因此 Apk 瘦身是优化的重要一部分，开发有必要定期对 Apk 进行瘦身优化。 分析使用 Android Studio Analyze APK 进行分析，首先构建出一个 release 包，然后拖到 AS 开始分析。  从上图分析结果">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终极 Apk 瘦身优化">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/android-reduce-apk-size/index.html">
+<meta property="og:site_name" content="GoJun">
+<meta property="og:description" content="前言Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。 因此 Apk 瘦身是优化的重要一部分，开发有必要定期对 Apk 进行瘦身优化。 分析使用 Android Studio Analyze APK 进行分析，首先构建出一个 release 包，然后拖到 AS 开始分析。  从上图分析结果">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/01.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/02.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/03.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/04.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/05.png">
+<meta property="og:updated_time" content="2019-09-10T15:36:54.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="终极 Apk 瘦身优化">
+<meta name="twitter:description" content="前言Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。 因此 Apk 瘦身是优化的重要一部分，开发有必要定期对 Apk 进行瘦身优化。 分析使用 Android Studio Analyze APK 进行分析，首先构建出一个 release 包，然后拖到 AS 开始分析。  从上图分析结果">
+<meta name="twitter:image" content="http://yoursite.com/images/2019/09/01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-142037913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开始瘦身"><span class="toc-text">开始瘦身</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Apk-瘦身之-So-文件"><span class="toc-text">Apk 瘦身之 So 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apk-瘦身之资源"><span class="toc-text">Apk 瘦身之资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移除无用的资源文件"><span class="toc-text">移除无用的资源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩图片资源"><span class="toc-text">压缩图片资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-WebP-图片"><span class="toc-text">使用 WebP 图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配多套分辨率图片"><span class="toc-text">适配多套分辨率图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apk-瘦身之代码混淆"><span class="toc-text">Apk 瘦身之代码混淆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apk-瘦身之开启-shrinkResources"><span class="toc-text">Apk 瘦身之开启 shrinkResources</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apk-瘦身之配置-resConfigs"><span class="toc-text">Apk 瘦身之配置 resConfigs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-reduce-apk-size" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">终极 Apk 瘦身优化</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>GoJun</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。</p>
+<p>因此 Apk 瘦身是优化的重要一部分，开发有必要定期对 Apk 进行瘦身优化。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>使用 Android Studio Analyze APK 进行分析，首先构建出一个 release 包，然后拖到 AS 开始分析。</p>
+<p><img src="/images/2019/09/01.png" alt="image"></p>
+<p>从上图分析结果，可以明显看出 Apk 的大小主要是 So 文件以及资源文件占据。</p>
+<h1 id="开始瘦身"><a href="#开始瘦身" class="headerlink" title="开始瘦身"></a>开始瘦身</h1><h2 id="Apk-瘦身之-So-文件"><a href="#Apk-瘦身之-So-文件" class="headerlink" title="Apk 瘦身之 So 文件"></a>Apk 瘦身之 So 文件</h2><p>还没有了解 So 文件的同学，可以看看这篇文章 <a href="http://allenfeng.com/2016/11/06/what-you-should-know-about-android-abi-and-so/" target="_blank" rel="noopener">地址</a>。</p>
+<p>再看看这篇文章 <a href="https://www.cnblogs.com/didikee/p/6683415.html" target="_blank" rel="noopener">地址</a>，采集了市场主流多款 App 进行分析。</p>
+<table>
+<thead>
+<tr>
+<th>指令集</th>
+<th>厂商</th>
+<th>位数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arm64-v8a</td>
+<td>ARM</td>
+<td>64</td>
+<td>第 8 代，64 位 ARM 处理器，很少设备，如：三星 Galaxy S6、华为 Mate 8</td>
+</tr>
+<tr>
+<td>armeabi-v7a</td>
+<td>ARM</td>
+<td>32</td>
+<td>第 7 代及以上的 ARM 处理器。2011 年以后，大部分的生产的 Android 设备都使用它（目前主流）</td>
+</tr>
+<tr>
+<td>armeabi</td>
+<td>ARM</td>
+<td>32</td>
+<td>第 5、6 代的 ARM 处理器，早期的手机使用的比较多</td>
+</tr>
+<tr>
+<td>x86</td>
+<td>Intel</td>
+<td>32</td>
+<td>平板、模拟器（x86设备也支持armeabi-v7a和armeabi）</td>
+</tr>
+<tr>
+<td>x86_64</td>
+<td>Intel</td>
+<td>64</td>
+<td>64位的平板</td>
+</tr>
+</tbody></table>
+<p>通过上面查找到的资料，综合评估了下，决定项目只保留 armeabi-v7a 格式的 So 文件。</p>
+<p>修改主工程 build.gradle 下的 abiFilters：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    // Some other configuration here...</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters &apos;armeabi-v7a&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Apk-瘦身之资源"><a href="#Apk-瘦身之资源" class="headerlink" title="Apk 瘦身之资源"></a>Apk 瘦身之资源</h2><h3 id="移除无用的资源文件"><a href="#移除无用的资源文件" class="headerlink" title="移除无用的资源文件"></a><strong>移除无用的资源文件</strong></h3><p>随着版本迭代，会产生很多一些无用资源，<code>虽然在 build.gradle 中设置 shrinkResources 为 true 后，每次打包的时候就会自动排除无用的资源。但好像如果一些没用的代码对某个资源引用，貌似不会被移除</code>。</p>
+<p>Android Studio 提供了一键清除无用资源文件功能</p>
+<blockquote>
+<p>在项目 app 文件下右键，Refactor –&gt; Remove Unused Resources..</p>
+</blockquote>
+<p><img src="/images/2019/09/02.png" alt="image"></p>
+<p>我尝试勾选 <code>Delete unused @id declarations too</code> 发现布局有使用的 id 被检查到没有使用，因此我建议不要勾选这个选项。</p>
+<p>为了安全建议大家执行操作前先 Preivew 下。</p>
+<p>单独对某个文件夹下的资源进行检查方法：</p>
+<blockquote>
+<p>将光标定位在检查的文件夹 –&gt; Analyze –&gt; Run Inspection by name –&gt; unused resource</p>
+</blockquote>
+<p><img src="/images/2019/09/03.png" alt="image"></p>
+<p><code>在检查的时候，发现没有检查出未使用的图片资源，但是有些图片确实是没有使用，尝试了好几次，最后发现原来是我自定义的 lint 配置，禁止检查 UnusedResources 资源了，因此在使用此功能时先注释掉原来自定义的 lint 规则。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">        lintConfig file(&quot;gen/bgquality/lint/lint.xml&quot;)</span><br><span class="line">        disable &apos;UnusedResources&apos;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>使用 Lint 工具检查</code></p>
+<p>详细使用介绍可看这篇文章 <a href="https://juejin.im/entry/586f7ec1ac502e006c0c2070#android-studio-%E4%B8%AD%E4%BD%BF%E7%94%A8-lint" target="_blank" rel="noopener">地址</a></p>
+<h3 id="压缩图片资源"><a href="#压缩图片资源" class="headerlink" title="压缩图片资源"></a><strong>压缩图片资源</strong></h3><p>有些设计师从 PS 导出图后就直接发给开发了，因此需要我们自己压缩一次。推荐使用一个简单实用压缩工具 <a href="https://tinypng.com/" target="_blank" rel="noopener">Tinypng</a>。</p>
+<p>另外有一个比较专业压缩工具 <a href="https://squoosh.app/" target="_blank" rel="noopener">Squoosh</a>，该工具是 Google 推出的一款免费开源图片压缩工具，有很多可定制化功能，例如图片尺寸调整、压缩比例调整、图片格式调整等等，如果你对压缩图片有比较多要求的时候，可选择这个工具。</p>
+<h3 id="使用-WebP-图片"><a href="#使用-WebP-图片" class="headerlink" title="使用 WebP 图片"></a><strong>使用 WebP 图片</strong></h3><p>可以到知乎看下这篇文章 <a href="https://www.zhihu.com/question/27201061" target="_blank" rel="noopener">WebP 相对于 PNG、JPG 有什么优势？</a></p>
+<p><code>需要注意：</code></p>
+<blockquote>
+<p>Android 从 4.0 才开始 WebP 的原生支持，意味着要兼容 4.0 以下机型需要添加适配库；当然现在市面上适配 4.0 以下的应用已经很少了。<br>Android 4.2.1+ 才支持显示含透明度的 WebP，因此最低版本小于 4.2.1 的 App 也不是想用就能用的。</p>
+</blockquote>
+<p>建议大家在 Google Analytics 平台查看自己应用在 4.2.1 以下版本用户量多少，评估是否可以升上去。</p>
+<p><strong>如何转换</strong></p>
+<blockquote>
+<p>在 AS 里面提供了支持一键转换 WebP 格式功能，需要转换的图片右键 –&gt; Convert to Webp…</p>
+</blockquote>
+<p><img src="/images/2019/09/04.png" alt="image"></p>
+<p>当然你也可以外部工具对图片进行 WebP 格式转换，推荐使用 <a href="https://squoosh.app/" target="_blank" rel="noopener">Squoosh</a>。</p>
+<h3 id="适配多套分辨率图片"><a href="#适配多套分辨率图片" class="headerlink" title="适配多套分辨率图片"></a><strong>适配多套分辨率图片</strong></h3><p>根据应用用户量使用的屏幕分辨率数据来，来决定你最终使用哪几套图片，从数据上来看目前设备分辨率大多数都是 1080x2094 和 1080x1920，因此这里我只用了 <code>xxhdpi</code> 和 <code>xxxhdpi</code> 两套资源。</p>
+<p>下面是各套资源对应设备的分辨率以及像素信息表格：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>分辨率(px)</th>
+<th>屏幕像素密度(dpi)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ldpi</td>
+<td>200x320</td>
+<td>120</td>
+</tr>
+<tr>
+<td>mdpi</td>
+<td>320x480</td>
+<td>160</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>480x800</td>
+<td>240</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>720x1280</td>
+<td>320</td>
+</tr>
+<tr>
+<td>xxhdpi</td>
+<td>960x1600</td>
+<td>480</td>
+</tr>
+<tr>
+<td>xxxhdpi</td>
+<td>1440x2560</td>
+<td>640</td>
+</tr>
+</tbody></table>
+<p>数据来自：<a href="http://iconhandbook.co.uk/reference/chart/android/" target="_blank" rel="noopener">http://iconhandbook.co.uk/reference/chart/android/</a></p>
+<h2 id="Apk-瘦身之代码混淆"><a href="#Apk-瘦身之代码混淆" class="headerlink" title="Apk 瘦身之代码混淆"></a>Apk 瘦身之代码混淆</h2><p>开启代码混淆能将代码中的类、字段、方法的名字改为简短、无意义的名字；移除未使用的类、字段、方法、属性等，因此可以减少 Dex 文件的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // 开启混淆</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            proguardFiles getDefaultProguardFile(‘proguard-android.txt&apos;),</span><br><span class="line">                    &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Apk-瘦身之开启-shrinkResources"><a href="#Apk-瘦身之开启-shrinkResources" class="headerlink" title="Apk 瘦身之开启 shrinkResources"></a>Apk 瘦身之开启 shrinkResources</h2><p>开启 shrinkResources 可以移除无用资源，依赖于 minifyEnabled，必须和 minifyEnabled 一起用，就是打开 shrinkResources 也必须打开 minifyEnabled。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // 开启混淆</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            // 移除无用资源</span><br><span class="line">            shrinkResources true</span><br><span class="line">            </span><br><span class="line">            proguardFiles getDefaultProguardFile(‘proguard-android.txt&apos;),</span><br><span class="line">                    &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里开启我发现有些未使用的资源无法移除的，可能是一些没用的代码对一些资源进行引用，导致没有移除，建议大家还是使用 <code>Remove Unused Resources</code> 来检查。</p>
+<h2 id="Apk-瘦身之配置-resConfigs"><a href="#Apk-瘦身之配置-resConfigs" class="headerlink" title="Apk 瘦身之配置 resConfigs"></a>Apk 瘦身之配置 resConfigs</h2><p>配置应用使用哪些资源，例如你的应用只支持英语和阿拉伯语，那么可以这样配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        ...</span><br><span class="line">        // 语言资源，只支持英语和阿拉伯语</span><br><span class="line">        resConfigs &quot;en&quot;,&quot;ar&quot;</span><br><span class="line">        // 图片资源，只支持xhdpi和xxhdpi屏幕的资源</span><br><span class="line">        resConfigs &quot;xxhdpi&quot;,&quot;xxxhdpi&quot; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>看下瘦身后的效果，比之前减少了 2.5MB。</p>
+<p><img src="/images/2019/09/05.png" alt="image"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>更多瘦身优化的方法：</p>
+<p><a href="https://juejin.im/post/59113583ac502e450280e5f3#heading-25" target="_blank" rel="noopener">https://juejin.im/post/59113583ac502e450280e5f3#heading-25</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/31/xcode-hot-key/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '82ef894572a7fb681648',
+  clientSecret: '38fcfcf9b9e5d9dcb6b6751468aa5560236b852c',
+  repo: 'blog-comment',
+  owner: 'Freelander',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['Freelander'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
