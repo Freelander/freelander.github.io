@@ -7,7 +7,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>jenkins-frp | GoJun</title>
+  <title>如何利用 frp 实现 Mac 的内网穿透 | GoJun</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,20 +15,20 @@
     <meta name="keywords" content="Jenkins,">
   
 
-  <meta name="description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 通过命令下载 frp 包1wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.t">
+  <meta name="description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 下载并移动文件； 12345678wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd">
 <meta name="keywords" content="Jenkins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jenkins-frp">
+<meta property="og:title" content="如何利用 frp 实现 Mac 的内网穿透">
 <meta property="og:url" content="http://yoursite.com/2019/09/23/jenkins-frp/index.html">
 <meta property="og:site_name" content="GoJun">
-<meta property="og:description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 通过命令下载 frp 包1wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.t">
+<meta property="og:description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 下载并移动文件； 12345678wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://note.youdao.com/yws/res/4536/4D51CE03C3D748FC87F241981D623D6D">
-<meta property="og:updated_time" content="2019-09-23T13:37:23.603Z">
+<meta property="og:image" content="http://yoursite.com/images/2019/09/06.png">
+<meta property="og:updated_time" content="2019-09-23T14:07:51.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jenkins-frp">
-<meta name="twitter:description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 通过命令下载 frp 包1wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.t">
-<meta name="twitter:image" content="http://note.youdao.com/yws/res/4536/4D51CE03C3D748FC87F241981D623D6D">
+<meta name="twitter:title" content="如何利用 frp 实现 Mac 的内网穿透">
+<meta name="twitter:description" content="这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 下载并移动文件； 12345678wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd">
+<meta name="twitter:image" content="http://yoursite.com/images/2019/09/06.png">
 
   
 
@@ -126,7 +126,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端"><span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-frpc-plist-实现开机自启"><span class="toc-text">配置 frpc.plist 实现开机自启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端"><span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用supervisor设置开机自启-安装-supervisor"><span class="toc-text">使用supervisor设置开机自启, 安装 supervisor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端"><span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-frpc-plist-实现开机自启"><span class="toc-text">配置 frpc.plist 实现开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
   </div>
 
 
@@ -134,7 +134,7 @@ ga('send', 'pageview');
 <div class="content content-post CENTER">
    <article id="post-jenkins-frp" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">jenkins-frp</h1>
+    <h1 class="post-title">如何利用 frp 实现 Mac 的内网穿透</h1>
 
     <div class="article-meta">
       <span>
@@ -169,36 +169,21 @@ ga('send', 'pageview');
     
       <p>这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。</p>
 <p>下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。</p>
-<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
-<li>通过命令下载 frp 包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
-
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><ol>
+<li><p>下载并移动文件；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz</span><br><span class="line"># 如果系统未安装 wget，可以先安装 wget</span><br><span class="line">yum -y install wget</span><br><span class="line"></span><br><span class="line"># 解压 frp 包</span><br><span class="line">tar -zxvf frp_0.29.0_linux_amd64.tar.gz</span><br><span class="line"># 重新命名文件夹为 frp</span><br><span class="line">mv frp_0.29.0_linux_amd64 frp</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>如果系统未安装 wget，可以先安装 wget</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>解压 frp 包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf frp_0.29.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新命名文件夹为 frp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv frp_0.29.0_linux_amd64 frp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>赋予权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd frp</span><br><span class="line">chmod +x frps</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改服务器配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
+<li><p>给运行文件赋予权限，并修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd frp</span><br><span class="line">chmod +x frps</span><br><span class="line"># 编辑服务器配置文件</span><br><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>以下为 frps.ini 配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">auto_token=12345678</span><br><span class="line">vhost_http_port = 8080</span><br><span class="line">vhost_https_port = 443</span><br><span class="line"></span><br><span class="line">dashboard_port = 7500</span><br><span class="line"># dashboard 用户名密码，默认都为 admin</span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = admin</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用supervisor设置开机自启, 安装 supervisor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search supervisor</span><br><span class="line">apt-get install supervisor</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<p>安装 Supervisor 报错</p>
+<h3 id="使用supervisor设置开机自启-安装-supervisor"><a href="#使用supervisor设置开机自启-安装-supervisor" class="headerlink" title="使用supervisor设置开机自启, 安装 supervisor"></a>使用supervisor设置开机自启, 安装 supervisor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search supervisor</span><br><span class="line">apt-get install supervisor</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装 Supervisor 报错</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">E: Unable to locate package supervisor</span><br></pre></td></tr></table></figure>
 
 <p>查询资料后，发现是是apt需要更新</p>
@@ -213,8 +198,8 @@ ga('send', 'pageview');
 </ol>
 <p>配置成功是可以看到</p>
 <p>如果访问不成功，阿里云服务器后台检查防火墙配置，需要添加刚才两个端口到规则里面</p>
-<p><img src="http://note.youdao.com/yws/res/4536/4D51CE03C3D748FC87F241981D623D6D" alt="image"></p>
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>客户端和服务端的版本号要一致，另外 Mac 下载的是 darwin_amd64 这个格式，<a href="https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_darwin_amd64.tar.gz" target="_blank" rel="noopener">下载地址</a>。</p>
+<p><img src="/images/2019/09/06.png" alt="image"></p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>客户端和服务端的版本号要一致，另外 Mac 下载的是 darwin_amd64 这个格式，<a href="https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_darwin_amd64.tar.gz" target="_blank" rel="noopener">下载地址</a>。</p>
 <ol>
 <li><p>下载文件回来后通过命令解压并移动文件；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 解压并移动文件夹</span><br><span class="line">tar zxvf frp_0.29.0_darwin_amd64.tar.gz</span><br><span class="line"># 在 /usr/local/bin 目录下创建一个 frpc 文件夹</span><br><span class="line">mkdir /usr/local/bin/frpc</span><br><span class="line"># 将刚才解压的文件内容移动</span><br><span class="line">mv frp_0.27.0_darwin_amd64/* /usr/local/bin/frpc</span><br><span class="line"># 删除压缩包</span><br><span class="line">rm -rf frp_0.29.0_darwin_amd64</span><br></pre></td></tr></table></figure>
@@ -239,8 +224,8 @@ ga('send', 'pageview');
 
 </li>
 </ol>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>验证是否穿透成功，在浏览器输入上文配置的域名，比如 test.com:8080 ，如果能访问即配置成功。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>验证是否穿透成功，在浏览器输入上文配置的域名，比如 test.com:8080 ，如果能访问即配置成功。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://blog.csdn.net/zengd0/article/details/79522253" target="_blank" rel="noopener">搭建frp实现内网穿透</a></li>
 <li><a href="https://streamelody.github.io/2019/05/mac-frp-tutorial/" target="_blank" rel="noopener">Mac 下使用 FRP 实现内网穿透</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/42574259" target="_blank" rel="noopener">阿里DNS：DNS迁移到阿里云，这一篇就够了</a></li>
