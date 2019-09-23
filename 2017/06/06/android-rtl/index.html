@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/images/2017/06/01-2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/2017/06/01-3.jpg">
 <meta property="og:image" content="http://yoursite.com/images/2017/06/01-1.png">
-<meta property="og:updated_time" content="2019-09-21T10:17:17.735Z">
+<meta property="og:updated_time" content="2019-09-21T10:19:12.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中东阿拉伯语适配，看这一篇够了">
 <meta name="twitter:description" content="RTL 语言由来RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比：    LTR RTL        那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？ 答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时">
@@ -272,7 +272,7 @@ ga('send', 'pageview');
 </blockquote>
 <h3 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h3><p>在 Android7.0 以上系统，阿语环境下，第一次打开存在 WebView 页面，会导致页面其他控件镜像失败。</p>
 <p>重现的步骤：先将 App 切换成 阿语 –&gt; 完全退出 App –&gt; 打开 App –&gt; 点击一个 web 活动页 –&gt; 页面 toolbar 返回按钮会看到镜像失败</p>
-<p>解决方法：在存在 WebView 的 Activity 切换语言之前加多行代码 new WebView(this).destroy()。</p>
+<p>解决方法：<code>在存在 WebView 的 Activity 切换语言之前加多行代码 new WebView(this).destroy()。</code></p>
 <p>参考链接：<a href="https://stackoverflow.com/questions/40398528/android-webview-language-changes-abruptly-on-android-7-0-and-above" target="_blank" rel="noopener">android-webview-language-changes-abruptly-on-android-7-0-and-above</a></p>
 <h3 id="适配总结"><a href="#适配总结" class="headerlink" title="适配总结"></a>适配总结</h3><ol>
 <li>横向布局 LinearLayout ，可以使用 FrameLayout，控件需要靠左或靠右可以使用 layout_gravity 设置对应属性</li>
