@@ -23,17 +23,17 @@
 <meta property="og:site_name" content="GoJun">
 <meta property="og:description" content="介绍Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，从而也达到了大幅度减少 APK 大小。另外利用此格式还可以实现 动态组件化 的技术，此文不做该技术的过多介绍，感兴">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://note.youdao.com/yws/res/5108/59008D9EE1E2479F95EC66B8A4C30061">
-<meta property="og:image" content="http://note.youdao.com/yws/res/5052/9FD76A9B932B4C29A8953CAD1D9F9D7F">
-<meta property="og:image" content="http://note.youdao.com/yws/res/5049/391F5939C57F44ADA1A9D113E664F3A9">
-<meta property="og:image" content="http://note.youdao.com/yws/res/5125/9C44B64DB8F541559506E3C63660A8F2">
-<meta property="og:image" content="http://note.youdao.com/yws/res/5005/7039FED9D9E94B489A4EA6C7DEB9EF45">
-<meta property="og:image" content="http://note.youdao.com/yws/res/4959/7569B672A298408C9B8F9A406493BE14">
-<meta property="og:updated_time" content="2019-10-20T08:40:13.494Z">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/01.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/02.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/03.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/06.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/04.png">
+<meta property="og:image" content="http://yoursite.com/images/2019/10/05.png">
+<meta property="og:updated_time" content="2019-10-20T08:48:36.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何利用 Android App Bundle 进行 APK 瘦身 28%">
 <meta name="twitter:description" content="介绍Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，从而也达到了大幅度减少 APK 大小。另外利用此格式还可以实现 动态组件化 的技术，此文不做该技术的过多介绍，感兴">
-<meta name="twitter:image" content="http://note.youdao.com/yws/res/5108/59008D9EE1E2479F95EC66B8A4C30061">
+<meta name="twitter:image" content="http://yoursite.com/images/2019/10/01.png">
 
   
 
@@ -177,14 +177,14 @@ ga('send', 'pageview');
 <p><strong>注意：</strong></p>
 <p>一旦你的应用使用了 Google 应用签名，用户下载的 APK 签名将会是 Google 生成的签名，而不是你自己为应用的签名。因此需要检查你应用使用到的第三方平台 SDK，如果有需要配置签名信息的，记得将 Google 生成的签名信息配置到其对应的地方。</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>生成的 Android App Bundle 包，是不可以直接安装的，App Bundle 会根据设备屏幕密度、CPU 架构、Language 多个维度进行拆分，组装成对各种组合的 Apk；然后 Play Store 会根据用户设备配置，提供对应的组合 APK。通过下图可以促进你理解：</p>
-<p><img src="http://note.youdao.com/yws/res/5108/59008D9EE1E2479F95EC66B8A4C30061" alt="image"></p>
+<p><img src="/images/2019/10/01.png" alt="image"></p>
 <p>例如，用户的设备配置如下：arm，xhdpi，en_US，则最终用户下载的 APK 将是（base + arm + xhdpi + en）.apk的组合。</p>
 <p>如果用户在设备设置中更改/添加了新语言，则 Play Store 会检测到此情况，并尝试为在设备下载新的其他语言分类 APK。如果互联网不可用，则稍后将下载。</p>
 <h2 id="如何构建-Android-App-Bundle"><a href="#如何构建-Android-App-Bundle" class="headerlink" title="如何构建 Android App Bundle"></a>如何构建 Android App Bundle</h2><h3 id="Android-Studio-3-2-版本及以上"><a href="#Android-Studio-3-2-版本及以上" class="headerlink" title="Android Studio 3.2 版本及以上"></a>Android Studio 3.2 版本及以上</h3><blockquote>
 <p>Android Studio –&gt; Build –&gt; Generate Signed Bundle/APK</p>
 </blockquote>
-<p><img src="http://note.youdao.com/yws/res/5052/9FD76A9B932B4C29A8953CAD1D9F9D7F" alt="image"></p>
-<p><img src="http://note.youdao.com/yws/res/5049/391F5939C57F44ADA1A9D113E664F3A9" alt="image"></p>
+<p><img src="/images/2019/10/02.png" alt="image"></p>
+<p><img src="/images/2019/10/03.png" alt="image"></p>
 <h3 id="通过命令行构建"><a href="#通过命令行构建" class="headerlink" title="通过命令行构建"></a>通过命令行构建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew bundleRelease</span><br></pre></td></tr></table></figure>
 
 <h2 id="如何测试生成出来的-Android-App-Bundle"><a href="#如何测试生成出来的-Android-App-Bundle" class="headerlink" title="如何测试生成出来的 Android App Bundle"></a>如何测试生成出来的 Android App Bundle</h2><h3 id="本地使用-bundletool-命令行工具"><a href="#本地使用-bundletool-命令行工具" class="headerlink" title="本地使用 bundletool 命令行工具"></a>本地使用 <a href="https://github.com/google/bundletool" target="_blank" rel="noopener">bundletool</a> 命令行工具</h3><p>bundletool 是一种底层工具，可供 Gradle、Android Studio 和 Google Play 用于编译 Android App Bundle 或将 App Bundle 转换为部署到设备的各种 APK。您也可以将 bundletool 作为一种命令行工具，用于重新创建、检查和验证应用 APK 的 Google Play 服务器端版本。</p>
@@ -211,10 +211,10 @@ ga('send', 'pageview');
 <blockquote>
 <p>版本管理 –&gt; 软件工件库 –&gt; 软件工件库草稿找到刚才上传的版本 –&gt; 探索 –&gt; 下载设备专属 APK</p>
 </blockquote>
-<p><img src="http://note.youdao.com/yws/res/5125/9C44B64DB8F541559506E3C63660A8F2" alt="image"></p>
-<p><img src="http://note.youdao.com/yws/res/5005/7039FED9D9E94B489A4EA6C7DEB9EF45" alt="image"></p>
+<p><img src="/images/2019/10/06.png" alt="image"></p>
+<p><img src="/images/2019/10/04.png" alt="image"></p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>最后来看下使用 App Bundle 生成的 APK，与上个版本相比的数据。</p>
-<p><img src="http://note.youdao.com/yws/res/4959/7569B672A298408C9B8F9A406493BE14" alt="image"></p>
+<p><img src="/images/2019/10/05.png" alt="image"></p>
 <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
 <li><a href="https://developer.android.com/guide/app-bundle/" target="_blank" rel="noopener">官方文档介绍</a></li>
 <li><a href="https://developer.android.com/topic/performance/reduce-apk-size" target="_blank" rel="noopener">缩减应用大小</a></li>
