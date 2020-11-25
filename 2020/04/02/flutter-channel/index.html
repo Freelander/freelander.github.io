@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Android 与 Flutter 之间通信 | GoJun</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Flutter,">
+  
+
+  <meta name="description" content="概述Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示：  原生 与 Flutter 之间的通信主要有有四种实现方式：  在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 原生 向 Flutter 端传递自己想要的数据； 通过 MethodChannel 来实现，MethodChannel 支持数据双">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 与 Flutter 之间通信">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/flutter-channel/index.html">
+<meta property="og:site_name" content="GoJun">
+<meta property="og:description" content="概述Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示：  原生 与 Flutter 之间的通信主要有有四种实现方式：  在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 原生 向 Flutter 端传递自己想要的数据； 通过 MethodChannel 来实现，MethodChannel 支持数据双">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2020/04/flutter_channel_01.png">
+<meta property="og:image" content="http://yoursite.com/images/2020/04/flutter_channel_02.gif">
+<meta property="og:updated_time" content="2020-11-25T15:26:37.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 与 Flutter 之间通信">
+<meta name="twitter:description" content="概述Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示：  原生 与 Flutter 之间的通信主要有有四种实现方式：  在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 原生 向 Flutter 端传递自己想要的数据； 通过 MethodChannel 来实现，MethodChannel 支持数据双">
+<meta name="twitter:image" content="http://yoursite.com/images/2020/04/flutter_channel_01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-142037913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-向原生通信"><span class="toc-text">Flutter 向原生通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Flutter-端"><span class="toc-text">Flutter 端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-端"><span class="toc-text">Android 端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-向-Flutter-通信"><span class="toc-text">Android 向 Flutter 通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-端-1"><span class="toc-text">Android 端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flutter-端-1"><span class="toc-text">Flutter 端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo-展示"><span class="toc-text">Demo 展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-flutter-channel" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Android 与 Flutter 之间通信</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.04.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>GoJun</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Flutter/">Flutter</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示：</p>
+<p><img src="/images/2020/04/flutter_channel_01.png" alt="image"></p>
+<p>原生 与 Flutter 之间的通信主要有有四种实现方式：</p>
+<ol>
+<li>在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 <code>原生</code> 向 <code>Flutter</code> 端传递自己想要的数据；</li>
+<li>通过 MethodChannel 来实现，MethodChannel 支持数据双向传递，有返回值。</li>
+<li><del>通过 EventChannel 来实现，EventChannel 仅支持数据单向传递，无返回值。</del></li>
+<li><del>通过 BasicMessageChannel 来实现，BasicMessageChannel 支持数据双向传递，有返回值。</del></li>
+</ol>
+<h3 id="Flutter-向原生通信"><a href="#Flutter-向原生通信" class="headerlink" title="Flutter 向原生通信"></a>Flutter 向原生通信</h3><h4 id="Flutter-端"><a href="#Flutter-端" class="headerlink" title="Flutter 端"></a>Flutter 端</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MethodChannelPage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _MethodChannelPageState createState() =&gt; _MethodChannelPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MethodChannelPageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MethodChannelPage</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// 创建通信渠道，通道名称必须唯一，且与原生那边统一</span></span><br><span class="line">  MethodChannel methodsChannel = MethodChannel(<span class="string">"com.chicdeals/methodsChannel"</span>);</span><br><span class="line">  <span class="built_in">String</span> _langText = <span class="string">'切换语言'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold (</span><br><span class="line">      backgroundColor: Color(<span class="number">0xFFFFFFFF</span>),</span><br><span class="line">      body: Align(</span><br><span class="line">        alignment: Alignment.center,</span><br><span class="line">        child: Container(</span><br><span class="line">          height: <span class="number">44</span>,</span><br><span class="line">          padding: EdgeInsets.only(left: <span class="number">10</span>, right: <span class="number">10</span>),</span><br><span class="line">          alignment: Alignment.center,</span><br><span class="line">          child: RaisedButton(</span><br><span class="line">            child: Text(</span><br><span class="line">              _langText,</span><br><span class="line">            ),</span><br><span class="line">            textColor: Colors.white,</span><br><span class="line">            color: Color(<span class="number">0xFF49C9A7</span>),</span><br><span class="line">            onPressed: _sendMethodToNative,</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; _sendMethodToNative() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">String</span> sendMsg = <span class="string">'Flutter切换语言'</span>;</span><br><span class="line">    <span class="comment">// 向原生发送消息，标识符为 'flutter_change_language'</span></span><br><span class="line">    <span class="comment">// 原生那边接收到消息，并相应结果回来</span></span><br><span class="line">    <span class="built_in">String</span> result = <span class="keyword">await</span> methodsChannel.invokeMethod(<span class="string">'flutter_change_language'</span>, sendMsg);</span><br><span class="line">    <span class="comment">// 刷新页面按钮文案</span></span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _langText = result;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Android-端"><a href="#Android-端" class="headerlink" title="Android 端"></a>Android 端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlutterDemoActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG_FLUTTER_FRAGMENT = <span class="string">"flutter_fragment"</span>;</span><br><span class="line">    <span class="keyword">private</span> MaterialButton mBtnChangeLanguage;</span><br><span class="line">    <span class="keyword">private</span> FlutterFragment mFlutterFragment;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MethodChannel mMethodChannel;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activiy_flutter_demo);</span><br><span class="line">        mBtnChangeLanguage = findViewById(R.id.btn_change_language);</span><br><span class="line"></span><br><span class="line">        FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"></span><br><span class="line">        mFlutterFragment = (FlutterFragment) fragmentManager.findFragmentByTag(TAG_FLUTTER_FRAGMENT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create and attach a FlutterFragment if one does not exist.</span></span><br><span class="line">        <span class="keyword">if</span> (mFlutterFragment == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mFlutterFragment = FlutterFragment.withNewEngine()</span><br><span class="line">                    .initialRoute(<span class="string">"Flutter Demo"</span>)</span><br><span class="line">                    .build();</span><br><span class="line"></span><br><span class="line">            fragmentManager</span><br><span class="line">                    .beginTransaction()</span><br><span class="line">                    .add(R.id.container, mFlutterFragment, TAG_FLUTTER_FRAGMENT)</span><br><span class="line">                    .commit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPostCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">// 通道名称需要与 Flutter 模块那边统一，并且唯一</span></span><br><span class="line">        mMethodChannel = <span class="keyword">new</span> MethodChannel(getBinaryMessenger(), <span class="string">"com.chicdeals/methodsChannel"</span>);</span><br><span class="line">        </span><br><span class="line">        mMethodChannel.setMethodCallHandler(<span class="keyword">new</span> MethodChannel.MethodCallHandler() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMethodCall</span><span class="params">(@NonNull MethodCall call, @NonNull MethodChannel.Result result)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (call.method.equals(<span class="string">"flutter_change_language"</span>)) &#123;</span><br><span class="line">                    String callMsg = call.arguments.toString();</span><br><span class="line">                    <span class="comment">// 回调 Flutter 模块那边</span></span><br><span class="line">                    result.success(callMsg);</span><br><span class="line">                    mBtnChangeLanguage.setText(callMsg);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> FlutterEngine <span class="title">getFlutterEngine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mFlutterFragment.getFlutterEngine();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> BinaryMessenger <span class="title">getBinaryMessenger</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (getFlutterEngine() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> getFlutterEngine().getDartExecutor().getBinaryMessenger();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-向-Flutter-通信"><a href="#Android-向-Flutter-通信" class="headerlink" title="Android 向 Flutter 通信"></a>Android 向 Flutter 通信</h3><h4 id="Android-端-1"><a href="#Android-端-1" class="headerlink" title="Android 端"></a>Android 端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class FlutterDemoActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private static final String TAG_FLUTTER_FRAGMENT = &quot;flutter_fragment&quot;;</span><br><span class="line">    private MaterialButton mBtnChangeLanguage;</span><br><span class="line">    private FlutterFragment mFlutterFragment;</span><br><span class="line"></span><br><span class="line">    private MethodChannel mMethodChannel;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activiy_flutter_demo);</span><br><span class="line">        mBtnChangeLanguage = findViewById(R.id.btn_change_language);</span><br><span class="line"></span><br><span class="line">        FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"></span><br><span class="line">        mFlutterFragment = (FlutterFragment) fragmentManager.findFragmentByTag(TAG_FLUTTER_FRAGMENT);</span><br><span class="line"></span><br><span class="line">        // Create and attach a FlutterFragment if one does not exist.</span><br><span class="line">        if (mFlutterFragment == null) &#123;</span><br><span class="line">            mFlutterFragment = FlutterFragment.withNewEngine()</span><br><span class="line">                    .initialRoute(&quot;Flutter Demo&quot;)</span><br><span class="line">                    .build();</span><br><span class="line"></span><br><span class="line">            fragmentManager</span><br><span class="line">                    .beginTransaction()</span><br><span class="line">                    .add(R.id.container, mFlutterFragment, TAG_FLUTTER_FRAGMENT)</span><br><span class="line">                    .commit();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onPostCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onPostCreate(savedInstanceState);</span><br><span class="line">        // 通道名称需要与 Flutter 模块那边统一，并且唯一</span><br><span class="line">        mMethodChannel = new MethodChannel(getBinaryMessenger(), &quot;com.chicdeals/methodsChannel&quot;);</span><br><span class="line"></span><br><span class="line">        mBtnChangeLanguage.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                String sendMsg = &quot;原生切换语言&quot;;</span><br><span class="line">                // 向 Flutter 模块发送消息，标识符为 &apos;native_change_language&apos;，并带上消息</span><br><span class="line">                mMethodChannel.invokeMethod(&quot;native_change_language&quot;, sendMsg);</span><br><span class="line">                mBtnChangeLanguage.setText(sendMsg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected FlutterEngine getFlutterEngine() &#123;</span><br><span class="line">        return mFlutterFragment.getFlutterEngine();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private BinaryMessenger getBinaryMessenger() &#123;</span><br><span class="line">        if (getFlutterEngine() == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return getFlutterEngine().getDartExecutor().getBinaryMessenger();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Flutter-端-1"><a href="#Flutter-端-1" class="headerlink" title="Flutter 端"></a>Flutter 端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">class MethodChannelPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _MethodChannelPageState createState() =&gt; _MethodChannelPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _MethodChannelPageState extends State&lt;MethodChannelPage&gt; &#123;</span><br><span class="line">  // 创建通信渠道，通道名称必须唯一，且与原生那边统一</span><br><span class="line">  MethodChannel methodsChannel = MethodChannel(&quot;com.chicdeals/methodsChannel&quot;);</span><br><span class="line">  String _langText = &apos;切换语言&apos;;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold (</span><br><span class="line">      backgroundColor: Color(0xFFFFFFFF),</span><br><span class="line">      body: Align(</span><br><span class="line">        alignment: Alignment.center,</span><br><span class="line">        child: Container(</span><br><span class="line">          height: 44,</span><br><span class="line">          padding: EdgeInsets.only(left: 10, right: 10),</span><br><span class="line">          alignment: Alignment.center,</span><br><span class="line">          child: RaisedButton(</span><br><span class="line">            child: Text(</span><br><span class="line">              _langText,</span><br><span class="line">            ),</span><br><span class="line">            textColor: Colors.white,</span><br><span class="line">            color: Color(0xFF49C9A7),</span><br><span class="line">            onPressed: _sendMethodToNative,</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    // 监听原生传递消息回调</span><br><span class="line">    methodsChannel.setMethodCallHandler(_nativeCallHandler);</span><br><span class="line">    super.initState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;dynamic&gt; _nativeCallHandler(MethodCall call) async &#123;</span><br><span class="line">    if(call.method == &apos;native_change_language&apos;) &#123;</span><br><span class="line">      // 取出从原生带过来的信息</span><br><span class="line">      String callMsg = call.arguments.toString();</span><br><span class="line">      setState(() &#123;</span><br><span class="line">        _langText = callMsg;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Demo-展示"><a href="#Demo-展示" class="headerlink" title="Demo 展示"></a>Demo 展示</h3><p><img src="/images/2020/04/flutter_channel_02.gif" alt="image"></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="https://flutter.cn/docs/development/platform-integration/platform-channels#step-3-add-an-android-platform-specific-implementation" target="_blank" rel="noopener">撰写双端平台代码（插件编写实现）</a></li>
+<li><a href="https://juejin.im/post/6844903873358856200" target="_blank" rel="noopener">一篇看懂 Android 与 Flutter 之间的通信</a></li>
+<li><a href="https://segmentfault.com/a/1190000021012102" target="_blank" rel="noopener">Flutter混合开发(三)：Android与Flutter之间通信详细指南</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/03/05/flutter-native/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '82ef894572a7fb681648',
+  clientSecret: '38fcfcf9b9e5d9dcb6b6751468aa5560236b852c',
+  repo: 'blog-comment',
+  owner: 'Freelander',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['Freelander'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
