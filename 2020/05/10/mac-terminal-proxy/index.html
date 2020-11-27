@@ -7,26 +7,28 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>使用 Python3 对在 Play 商店应用的评论爬取调研 | GoJun</title>
+  <title>Mac 如何让终端使用代理 | GoJun</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="爬虫,Python,">
+    <meta name="keywords" content="翻墙,VPN,工具,终端,代理,">
   
 
-  <meta name="description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
-<meta name="keywords" content="爬虫,Python">
+  <meta name="description" content="前提iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令   得到： 1export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081   编辑 .zshr">
+<meta name="keywords" content="翻墙,VPN,工具,终端,代理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Python3 对在 Play 商店应用的评论爬取调研">
-<meta property="og:url" content="http://yoursite.com/2018/03/02/play-reviews-research/index.html">
+<meta property="og:title" content="Mac 如何让终端使用代理">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/mac-terminal-proxy/index.html">
 <meta property="og:site_name" content="GoJun">
-<meta property="og:description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
+<meta property="og:description" content="前提iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令   得到： 1export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081   编辑 .zshr">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T16:11:12.044Z">
+<meta property="og:image" content="http://yoursite.com/images/2020/05/mac-terminal-proxy-01.png">
+<meta property="og:updated_time" content="2020-11-27T15:32:46.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Python3 对在 Play 商店应用的评论爬取调研">
-<meta name="twitter:description" content="背景/需求背景/需求方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两个数据表：  评论明细表（评论时间，评论内容，设备信息等） 评论汇总统计(每天有多少1星，多少2星等)  调研方式一使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不">
+<meta name="twitter:title" content="Mac 如何让终端使用代理">
+<meta name="twitter:description" content="前提iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令   得到： 1export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081   编辑 .zshr">
+<meta name="twitter:image" content="http://yoursite.com/images/2020/05/mac-terminal-proxy-01.png">
 
   
 
@@ -124,20 +126,20 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景-需求"><span class="toc-text">背景/需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景-需求-1"><span class="toc-text">背景/需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调研"><span class="toc-text">调研</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一"><span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二"><span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式三"><span class="toc-text">方式三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式四"><span class="toc-text">方式四</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-play-reviews-research" class="article article-type-post" itemprop="blogPost">
+   <article id="post-mac-terminal-proxy" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">使用 Python3 对在 Play 商店应用的评论爬取调研</h1>
+    <h1 class="post-title">Mac 如何让终端使用代理</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2018.03.02</span>
+        <span>2020.05.10</span>
       </span>
 
       
@@ -150,7 +152,7 @@ ga('send', 'pageview');
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/Python/">Python</a>
+    <a class="article-category-link" href="/categories/VPN/">VPN</a>
   </span>
 
 
@@ -170,29 +172,43 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h2 id="背景-需求"><a href="#背景-需求" class="headerlink" title="背景/需求"></a>背景/需求</h2><h2 id="背景-需求-1"><a href="#背景-需求-1" class="headerlink" title="背景/需求"></a>背景/需求</h2><p>方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。</p>
-<p>两个数据表：</p>
-<ol>
-<li>评论明细表（评论时间，评论内容，设备信息等）</li>
-<li>评论汇总统计(每天有多少1星，多少2星等)</li>
+      <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>在 surge2 复制终端代理命令</li>
 </ol>
-<h2 id="调研"><a href="#调研" class="headerlink" title="调研"></a>调研</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>使用官方 Api 接口进行抓取，经查看文档，文档提到接口请求得到的数据不是实时的，获取到的数据不是最新，延迟了两天数据，没法拿到最新一天的评论因此放弃该方式。</p>
-<p>相关链接：<br><a href="https://developers.google.com/android-publisher/api-ref/reviews/list" target="_blank" rel="noopener">https://developers.google.com/android-publisher/api-ref/reviews/list</a><br><a href="https://stackoverflow.com/questions/11348025/api-to-get-android-google-play-reviewsgetting-device-name-and-app-version" target="_blank" rel="noopener">https://stackoverflow.com/questions/11348025/api-to-get-android-google-play-reviewsgetting-device-name-and-app-version</a></p>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>网上查找下有没有 demo，在 GitHub 上面找到一个例子。</p>
-<p>相关链接：<a href="https://github.com/amrrs/Google-Play-Store-Review-Extractor" target="_blank" rel="noopener">https://github.com/amrrs/Google-Play-Store-Review-Extractor</a></p>
-<p>查看源码不符合需求。</p>
-<h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><p>试图从google应用商店入手，发现商店上面的评论并不是实时的，而且貌似是会根据访问的 ip 是什么来返回评论数据，并且提供的筛选功能不能满足我们的需求。</p>
-<h3 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h3><p>从应用后台入手，只有后台的评论数据才是实时的，并具备满足我们要求的筛选，以及统计数据。可以使用 Python 中的无头浏览器进行爬取。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>使用<code>方式四</code>完成需求</p>
-<p>大概步骤：</p>
-<ol>
-<li>设置代理</li>
-<li>模拟登陆 Google 发布应用后台</li>
-<li>进入评价模块</li>
-<li>开始抓取评论数据</li>
-<li>解析评论数据</li>
-<li>数据进库</li>
+<p><img src="/images/2020/05/mac-terminal-proxy-01.png" alt="image"></p>
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>编辑 .zshrc 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在文件最后添加以下信息</p>
+</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># proxy list</span><br><span class="line">alias proxy=&apos;export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081&apos;</span><br><span class="line">alias unproxy=&apos;unset all_proxy&apos;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>保存退出，应用文件修改内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>开启使用代理模式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>确定终端是否走代理</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>关闭使用代理模式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unproxy</span><br></pre></td></tr></table></figure>
+
 
     
   </div>
@@ -230,10 +246,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018/01/13/xiaomi-install-failed/">
+    <a class="show pull-left" href="/2020/04/26/flutter-maven/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/03/13/python-learn/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
