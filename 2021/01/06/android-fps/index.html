@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>面试官问我：如何对 Android  App 进行 fps 分析 | GoJun</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Android,">
+  
+
+  <meta name="description" content="背景界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。  结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS 分析。  前提进行分析前，手机先开启 GPU呈现模式分析。  打开手机“设置”-“更多设置”-“开发者选项”-“GPU 呈现模式分析”，选中“在adb shell dum">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官问我：如何对 Android  App 进行 fps 分析">
+<meta property="og:url" content="http://yoursite.com/2021/01/06/android-fps/index.html">
+<meta property="og:site_name" content="GoJun">
+<meta property="og:description" content="背景界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。  结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS 分析。  前提进行分析前，手机先开启 GPU呈现模式分析。  打开手机“设置”-“更多设置”-“开发者选项”-“GPU 呈现模式分析”，选中“在adb shell dum">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_01.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_02.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_03.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_04.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_05.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_06.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_07.png">
+<meta property="og:image" content="http://yoursite.com/images/2021/01/android_fps_08.png">
+<meta property="og:updated_time" content="2021-01-06T14:07:49.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试官问我：如何对 Android  App 进行 fps 分析">
+<meta name="twitter:description" content="背景界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。  结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS 分析。  前提进行分析前，手机先开启 GPU呈现模式分析。  打开手机“设置”-“更多设置”-“开发者选项”-“GPU 呈现模式分析”，选中“在adb shell dum">
+<meta name="twitter:image" content="http://yoursite.com/images/2021/01/android_fps_01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-142037913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开测试的界面"><span class="toc-text">打开测试的界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#遇到问题"><span class="toc-text">遇到问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入-Excel"><span class="toc-text">导入 Excel</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步导入文本"><span class="toc-text">第一步导入文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步完成导入"><span class="toc-text">第二步完成导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三步复制耗帧数据"><span class="toc-text">第三步复制耗帧数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#折线图分析"><span class="toc-text">折线图分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关链接"><span class="toc-text">相关链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-android-fps" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">面试官问我：如何对 Android  App 进行 fps 分析</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.01.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>GoJun</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。</p>
+<blockquote>
+<p>结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS 分析。</p>
+</blockquote>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>进行分析前，手机先开启 <code>GPU呈现模式分析</code>。</p>
+<blockquote>
+<p>打开手机“设置”-“更多设置”-“开发者选项”-“GPU 呈现模式分析”，选中“在adb shell dumpsys gfinfo”中</p>
+</blockquote>
+<p>设置路径基本都一样，都是在开发者选项里，部分手机是叫做 “HWUI 呈现模式分析”，下图是小米手机截图。</p>
+<p><img src="/images/2021/01/android_fps_01.png" alt="image"></p>
+<h3 id="打开测试的界面"><a href="#打开测试的界面" class="headerlink" title="打开测试的界面"></a>打开测试的界面</h3><p>先打开你要进行分析的界面，然后再终端输入以下命令。</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>利用 <a href="https://developer.android.com/studio/command-line/dumpsys?hl=zh-cn#ui" target="_blank" rel="noopener">dumpsys</a> 获取当前指定 App 发生的动画帧相关的性能信息，并以 txt 文件保存下来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys gfxinfo package-name &gt; loading.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h4><p>执行命令出现错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adb E  1250 22834 usb_osx.cpp:327] Could not open interface: e00002c5</span><br><span class="line">adb E  1250 22834 usb_osx.cpp:289] Could not find device interface</span><br><span class="line">error: could not install *smartsocket* listener: Address already in use</span><br><span class="line">ADB server didn&apos;t ACK</span><br><span class="line">* failed to start daemon *</span><br><span class="line">error: cannot connect to daemon</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解决：打开 Mac 活动监视器在 内存 栏，找到 adb 进程，对它进行强制退出</p>
+</blockquote>
+<h3 id="导入-Excel"><a href="#导入-Excel" class="headerlink" title="导入 Excel"></a>导入 Excel</h3><h4 id="第一步导入文本"><a href="#第一步导入文本" class="headerlink" title="第一步导入文本"></a>第一步导入文本</h4><p><img src="/images/2021/01/android_fps_02.png" alt="image"></p>
+<h4 id="第二步完成导入"><a href="#第二步完成导入" class="headerlink" title="第二步完成导入"></a>第二步完成导入</h4><p>这一步直接点击 <strong>完成</strong> 即可，然后点击 <strong>确定</strong> 。</p>
+<p><img src="/images/2021/01/android_fps_03.png" alt="image"></p>
+<p><img src="/images/2021/01/android_fps_04.png" alt="image"></p>
+<h4 id="第三步复制耗帧数据"><a href="#第三步复制耗帧数据" class="headerlink" title="第三步复制耗帧数据"></a>第三步复制耗帧数据</h4><p>找到对应需要分析的界面类的数据，比如我这边的：</p>
+<p><img src="/images/2021/01/android_fps_05.png" alt="image"></p>
+<p>将这块数据复制到新建一份 <strong>工作表</strong>。</p>
+<p><img src="/images/2021/01/android_fps_06.png" alt="image"></p>
+<h3 id="折线图分析"><a href="#折线图分析" class="headerlink" title="折线图分析"></a>折线图分析</h3><p>在新建的工作表最后新增一栏命名为 <strong>每秒耗帧（毫秒）</strong></p>
+<p>进行自动求和操作，选中新增栏的标题下一格，然后点击 Excel 表中的 <strong>开始 》 自动求和</strong>，这时会出现计算公式，直接按下回车键即计算出当前行的值总和，接着往下拉会自动进行每行的求和操作。</p>
+<p>对  <strong>每秒耗帧（毫秒）</strong> 栏进行图表分析：</p>
+<p><img src="/images/2021/01/android_fps_07.png" alt="image"></p>
+<p>接着就会自动生成一份图表：</p>
+<p><img src="/images/2021/01/android_fps_08.png" alt="image"></p>
+<blockquote>
+<p>分析图表的趋势，如果每帧耗时在 <strong>16ms</strong> 以上，那么即需要优化。</p>
+</blockquote>
+<h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
+<li><a href="https://developer.android.com/topic/performance/vitals/render.html" target="_blank" rel="noopener">渲染速度缓慢</a></li>
+<li><a href="https://developer.android.com/topic/performance/rendering/inspect-gpu-rendering#profile_rendering" target="_blank" rel="noopener">分析 GPU 渲染速度</a></li>
+<li><a href="https://juejin.im/post/6844904161746616334" target="_blank" rel="noopener">面试官问我：Android APP中如何测试FPS？看我如何分析京东，拼多多App的FPS</a></li>
+<li><a href="https://lottiefiles.com/" target="_blank" rel="noopener">Lottie 动画预览</a></li>
+<li><a href="https://developer.android.com/studio/command-line/dumpsys?hl=zh-cn" target="_blank" rel="noopener">dumpsys</a></li>
+<li><a href="https://developer.android.com/training/testing/performance?hl=zh-cn" target="_blank" rel="noopener">测试界面性能</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持 G军仔</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/05/10/mac-terminal-proxy/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '82ef894572a7fb681648',
+  clientSecret: '38fcfcf9b9e5d9dcb6b6751468aa5560236b852c',
+  repo: 'blog-comment',
+  owner: 'Freelander',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['Freelander'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
