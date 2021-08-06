@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Android 中东阿拉伯语适配，看这一篇够了 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="RTL 语言由来 RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比： LTR RTL 那么对于这种从右到左的习惯，在 Android 布局中有没" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/android-rtl/'>Android 中东阿拉伯语适配，看这一篇够了</a></h2>
+                        <span class="date">2017.06.06</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="rtl-语言由来">RTL 语言由来</h3>
+<p>RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。</p>
+<p>看一下对比：</p>
+<table>
+<thead>
+<tr>
+<th>LTR</th>
+<th>RTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/06/01-2.jpg">
+<img src="/images/2017/06/01-2.jpg" alt=""  />
+</a>
+</div>
+
+</td>
+<td>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/06/01-3.jpg">
+<img src="/images/2017/06/01-3.jpg" alt=""  />
+</a>
+</div>
+
+</td>
+</tr>
+</tbody>
+</table>
+<p>那么对于这种从右到左的习惯，在 Android 布局中有没有支持呢？</p>
+<p>答案是有的：从 Android 4.2 即 SDK 17 开始，提供了全面的本地布局支持，允许镜像布局，可以同时支持 RTL 和 LTR。</p>
+<p>接下来我将介绍如何一步一步适配阿拉伯语。</p>
+<h3 id="属性">属性</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>desc</th>
+<th>chinese</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:layoutDirection</td>
+<td>attribute for setting the direction of a component&rsquo;s layout</td>
+<td>设置组件的布局排列方向</td>
+</tr>
+<tr>
+<td>android:textDirection</td>
+<td>attribute for setting the direction of a component&rsquo;s text</td>
+<td>设置组件的文字排列方向</td>
+</tr>
+<tr>
+<td>android:textAlignment</td>
+<td>attribute for setting the alignment of a component&rsquo;s text</td>
+<td>设置文字的对齐方式</td>
+</tr>
+<tr>
+<td>getLayoutDirectionFromLocale()</td>
+<td>method for getting the Locale-specified direction</td>
+<td>获取指定地区的惯用布局方式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="前提条件">前提条件</h3>
+<p>在 AndroidManifest.xml 文件中 application 节点添加支持从右到左布局方式代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> &lt;application
+        ...
+        android:supportsRtl=&#34;true&#34; &gt;
+        ...
+&lt;/application&gt;
+</code></pre></div><h3 id="切换语言">切换语言</h3>
+<p>相关链接：<a href="https://stackoverflow.com/questions/2900023/change-language-programmatically-in-android">change-language-programmatically-in-android</a><br>
+对应国家语言代码: <a href="https://stackoverflow.com/questions/7973023/what-is-the-list-of-supported-languages-locales-on-android">what-is-the-list-of-supported-languages-locales-on-android</a><br>
+下面切换语言方式 updateConfiguration 方法在 Api 25 已经过时, 新的切换方式实例 <a href="https://github.com/DroidKaigi/conference-app-2017/pull/315/files">地址</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">String languageToLoad  = &#34;ar&#34;; // your language
+Resources res = getResources(); 
+DisplayMetrics dm = res.getDisplayMetrics();
+Locale locale = new Locale(languageToLoad); 
+Locale.setDefault(locale);
+Configuration config = new Configuration();
+config.locale = locale;
+res.updateConfiguration(conf, dm); 
+</code></pre></div><h3 id="as-一键适配">AS 一键适配</h3>
+<p>AS 支持一键适配 RTL，主要是在原来 Layout 中设置 Left 和 Right 属性的补充添加 Start 和 End 属性（你们在写布局的时候是不是很少用到 paddingStart、marginStart？接下来你们写布局的时候可不能再偷懒了，该加的还是得加上)</p>
+<p>Start 属性在 LTR 中对应 Left，在 RTL 中对应 Right，在API 17开始支持，为了兼容低版本，需要同时有 Left 和 Start。从市场来看，Android 4.2 系统以下的手机用户已经不多了，我的建议是可以不兼容，具体还得你们看自家产品在 4.2 系统以下用户数。</p>
+<blockquote>
+<p>Refactor &gt; Add RTL Support Where Possible&hellip;</p>
+</blockquote>
+<img src="/images/2017/06/01-1.png" width="516px" height="379px">
+<h3 id="利用第三方插件">利用第三方插件</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/znyang/gradle-android-rtl">gradle-android-rtl</a></td>
+<td>自动修复布局文件中未添加RTL支持的标签</td>
+</tr>
+</tbody>
+</table>
+<p>与 AS 插件的比较：</p>
+<ul>
+<li>性能更好。在处理大批量文件修改时，用AS工具会出现卡顿</li>
+<li>支持padding标签的补齐</li>
+</ul>
+<h3 id="使用全局样式">使用全局样式</h3>
+<h4 id="edittext">EditText</h4>
+<p>发现 EditText 控件基本都需要设置下面两个属性<br>
+相关链接：<a href="https://stackoverflow.com/questions/10903647/set-a-consistent-style-to-all-edittext-for-e-g">set-a-consistent-style-to-all-edittext-for-e-g</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">android:textAlignment=&#34;viewStart&#34;
+android:gravity=&#34;start&#34;
+</code></pre></div><p>那我们就可以在 style.xml 样式中全部 EditText 都设置</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;style name=&#34;AppTheme&#34; parent=&#34;Theme.AppCompat.Light.NoActionBar&#34;&gt;
+       ...
+       &lt;item name=&#34;editTextStyle&#34;&gt;@style/EditTextStyle.Alignment&lt;/item&gt;
+       ...
+&lt;/style&gt;
+
+&lt;style name=&#34;EditTextStyle.Alignment&#34; parent=&#34;@android:style/Widget.EditText&#34;&gt;
+        &lt;item name=&#34;android:textAlignment&#34;&gt;viewStart&lt;/item&gt;
+        &lt;item name=&#34;android:gravity&#34;&gt;start&lt;/item&gt;
+        &lt;item name=&#34;android:textDirection&#34;&gt;locale&lt;/item&gt;
+&lt;/style&gt;
+</code></pre></div><h4 id="textview">TextView</h4>
+<p>全局给所有 TextView 添加一个 RTL 属性<br>
+相关链接:<a href="https://stackoverflow.com/questions/3078081/setting-global-styles-for-views-in-android">setting-global-styles-for-views-in-android</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;style name=&#34;AppTheme&#34; parent=&#34;Theme.AppCompat.Light.NoActionBar&#34;&gt;
+       ...
+       &lt;item name=&#34;android:textViewStyle&#34;&gt;@style/TextViewStyle.TextDirection&lt;/item&gt;
+       ...
+&lt;/style&gt;
+
+&lt;style name=&#34;TextViewStyle.TextDirection&#34; parent=&#34;android:Widget.TextView&#34;&gt;
+        &lt;item name=&#34;android:textDirection&#34;&gt;locale&lt;/item&gt;
+&lt;/style&gt;
+</code></pre></div><h3 id="判断是否是-rtl-布局">判断是否是 RTL 布局</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == LayoutDirection.RTL
+</code></pre></div><h3 id="对集合进行倒序处理">对集合进行倒序处理</h3>
+<p>在某些场合下, 这个方法很有用</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Collections.reverse(List&lt;?&gt; list);
+</code></pre></div><h3 id="代码动态设置控件-setmargins">代码动态设置控件 setMargins</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+params.setMargins(10, 0, 10, 0);
+params.setMarginEnd(10);
+</code></pre></div><h3 id="viewpager">ViewPager</h3>
+<p>相关链接: <a href="https://stackoverflow.com/questions/37196714/tabs-swipe-direction-in-right-to-left-android-app">tabs-swipe-direction-in-right-to-left-android-app</a></p>
+<blockquote>
+<p>Android 官方控件大多支持 RTL，ViewPager 除外，GitHub 上面有人对 ViewPager 进行修改支持 RTL, <a href="https://github.com/diego-gomez-olvera/RtlViewPager">地址</a></p>
+</blockquote>
+<h3 id="webview">WebView</h3>
+<p>在 Android7.0 以上系统，阿语环境下，第一次打开存在 WebView 页面，会导致页面其他控件镜像失败。</p>
+<p>重现的步骤：先将 App 切换成 阿语 &ndash;&gt; 完全退出 App &ndash;&gt; 打开 App &ndash;&gt; 点击一个 web 活动页 &ndash;&gt; 页面 toolbar 返回按钮会看到镜像失败</p>
+<p>解决方法：<code>在存在 WebView 的 Activity 切换语言之前加多行代码 new WebView(this).destroy()。</code></p>
+<p>参考链接：<a href="https://stackoverflow.com/questions/40398528/android-webview-language-changes-abruptly-on-android-7-0-and-above">android-webview-language-changes-abruptly-on-android-7-0-and-above</a></p>
+<h3 id="适配总结">适配总结</h3>
+<ol>
+<li>横向布局 LinearLayout ，可以使用 FrameLayout，控件需要靠左或靠右可以使用 layout_gravity 设置对应属性</li>
+<li>切换阿拉伯语时，网格布局 item 之间的距离会出现增大问题，处理方法是：网格分割线 ItemDecoration 需要加入语言来判断，调换原来设置左右的边距即可</li>
+<li>禁止掉之前的侧滑返回，以免出现冲突</li>
+<li>一些方向图标，重新做一个相对方向的放到 mipmap-ldrtl-xxxhdpi 包下</li>
+<li>动画翻转, 放在 anim-ldrtl 将对应的动画进行反向处理</li>
+<li>布局里如果设置了 paddingLeft、drawableLeft 等等这些属性更改为一个支持 RTL 的属性 paddingStart、drawableStart；但是有些地方可以不加的，例如：购物车上的数量徽章，加了之后感觉怪怪的，所以还是不加了</li>
+<li>利用在 AS 右边的预览布局工具中的语言切换工具，切换成阿拉伯语，能实时看到布局的效果图</li>
+<li>EditText 添加 android:layoutDirection=&ldquo;locale&rdquo; ，如果外面有 TextInputLayout 的需给它设置 android:textDirection=&ldquo;locale&rdquo; ，如果输入类型时密码时还需添加一个属性 android:textAlignment=&ldquo;viewStart&rdquo;</li>
+<li>TextView 需要加上 android:textAlignment=&ldquo;viewStart 或 viewEnd&rdquo; 以及 android:textDirection=&ldquo;locale&rdquo;</li>
+<li>RecyclerView 网络布局的可以考虑使用 StaggeredGridLayoutManager ，如果数量太多的网格布局，不太建议使用，可能会出现滑动混乱</li>
+<li>阿拉伯语目录下的 String.xml 文件, 出现占位符 d% 需要注意改为 %d, 但又并不是所有都改成这样, 目前我发现当代码中使用了 Toast 和 SpannableString 属性的就需要更改为 %d</li>
+</ol>
+<h3 id="建议计划">建议计划</h3>
+<ol>
+<li>从基础类开始入手，判断是否是阿拉伯语，如果是需要将界面设置为从右到左的显示方式</li>
+<li>分模块进行适配</li>
+<li>复杂的模块，可以放到 layout-ldrtl 包下，单独做一个布局来适配阿拉伯语，例如详情页</li>
+</ol>
+<h3 id="参考资料">参考资料</h3>
+<ol>
+<li><a href="https://android-developers.googleblog.com/2013/03/native-rtl-support-in-android-42.html">https://android-developers.googleblog.com/2013/03/native-rtl-support-in-android-42.html</a></li>
+<li><a href="https://medium.com/@zhangqichuan/rtl-support-in-android-898e11f31561">https://medium.com/@zhangqichuan/rtl-support-in-android-898e11f31561</a></li>
+<li><a href="https://mobikul.com/just-few-steps-to-make-your-app-rtl-supportable/">https://mobikul.com/just-few-steps-to-make-your-app-rtl-supportable/</a></li>
+<li><a href="https://blog.robustastudio.com/featured/android-rtl-support/">https://blog.robustastudio.com/featured/android-rtl-support/</a></li>
+<li><a href="http://blog.csdn.net/figo0423/article/details/50241363">http://blog.csdn.net/figo0423/article/details/50241363</a></li>
+<li><a href="http://blog.csdn.net/wxx614817/article/details/50586388">http://blog.csdn.net/wxx614817/article/details/50586388</a></li>
+<li><a href="http://jiajixin.cn/2016/10/08/android_adapt_rtl/">http://jiajixin.cn/2016/10/08/android_adapt_rtl/</a></li>
+<li><a href="http://www.apkbus.com/blog-327085-57866.html">http://www.apkbus.com/blog-327085-57866.html</a></li>
+<li><a href="http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html">http://droidyue.com/blog/2014/07/07/support-rtl-in-android/index.html</a></li>
+<li><a href="http://chuansong.me/n/920084451521">http://chuansong.me/n/920084451521</a></li>
+</ol>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/android/">Android</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Mac 使用 Crontab 定时工具 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式) sudo crontab -e (进入编辑器，添加或修改定时任务) sudo crontab" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/mac-crontab/'>Mac 使用 Crontab 定时工具</a></h2>
+                        <span class="date">2018.03.24</span>
+                    </div>
+                    <div class="post_content markdown"><h2 id="相关命令">相关命令</h2>
+<ol>
+<li><code>sudo /usr/sbin/cron start</code> (启动)</li>
+<li><code>sudo /usr/sbin/cron restart</code> (重启)</li>
+<li><code>sudo /usr/sbin/cron stop</code> (停止)</li>
+<li><code>sudo launchctl list | grep cron</code> (查看是否启动)</li>
+<li><code>man crontab</code> (查看crontab命令的用法)</li>
+<li><code>man 5 crontab</code> (查看crontab定时任务的格式)</li>
+<li><code>sudo crontab -e</code> (进入编辑器，添加或修改定时任务)</li>
+<li><code>sudo crontab -l</code> (查看已经添加的定时任务)</li>
+</ol>
+<h2 id="添加定时任务">添加定时任务</h2>
+<p><code>55 23 * * * python3 /Users/hugo/Development/GooglePlayReview/app_reviews.py</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo crontab -e
+# 此时会进入 vi 编辑器！注意到，每项工作都是一行。
+# 基本格式：* * * * * command 
+0 12 * * * mail dmtsai -s &#34;at 12:00&#34; &lt; /home/dmtsai/.bashrc
+#分 时 日 月 周 |&lt;==============指令串========================&gt;|
+$ sudo crontab -l
+# 查看已经添加的定时任务
+</code></pre></div><p>前面五个参数(星号)代表的意义：</p>
+<table>
+<thead>
+<tr>
+<th>意义</th>
+<th>分钟</th>
+<th>小时</th>
+<th>日</th>
+<th>月</th>
+<th>星期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数字范文</td>
+<td>0~59</td>
+<td>0~23</td>
+<td>1~31</td>
+<td>1~12</td>
+<td>0~7（0:周日)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="crontab-时区与系统不一致">Crontab 时区与系统不一致</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+
+</code></pre></div><h2 id="参考链接">参考链接</h2>
+<p><a href="https://honglu.me/2014/09/20/OSX%E7%B3%BB%E7%BB%9F%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">OSX系统添加定时任务</a>
+<a href="https://www.jianshu.com/p/4addd9b455f2">Mac中的定时任务利器：launchctl</a>
+<a href="https://blog.csdn.net/biyongyao/article/details/77791238">Mac 开启 crontab 定时任务调试</a></p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/tools/">Tools</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

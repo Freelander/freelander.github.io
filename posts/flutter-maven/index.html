@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Flutter 自动打包并将 aar 文件上传到 Maven ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="思路 先执行 flutter pub get 获取项目最新依赖插件。 对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。 对打包出来的 aar 文件，简单粗暴使用 mvn deploy 指令进行上传到 maven。 上传完之后，提示如何引入到项目。 完整构建脚" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/flutter-maven/'>Flutter 自动打包并将 aar 文件上传到 Maven</a></h2>
+                        <span class="date">2020.04.26</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="思路">思路</h3>
+<ol>
+<li>先执行 <code>flutter pub get</code> 获取项目最新依赖插件。</li>
+<li>对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。</li>
+<li>对打包出来的 aar 文件，简单粗暴使用 <code>mvn deploy</code> 指令进行上传到 maven。</li>
+<li>上传完之后，提示如何引入到项目。</li>
+</ol>
+<h3 id="完整构建脚本">完整构建脚本</h3>
+<p>创建一个 <code>android_build.sh</code> 文件</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
+<span class="c1">###############################################################</span>
+<span class="c1"># 脚本是 shell 文件，只适用于 mac 系统</span>
+<span class="c1"># 执行脚本时，版本号为必填参数</span>
+<span class="c1"># 在项目路径下执行命令：./android_build.sh 版本号</span>
+<span class="c1"># 若出现提示 `zsh: command not found: android_build.sh`</span>
+<span class="c1"># 解决方法：</span>
+<span class="c1"># 1. vim ~/.zshrc</span>
+<span class="c1"># 2. 找到 “# User configuration” 在其位置下面加 `source ~/.bash_profile`</span>
+<span class="c1"># 3. 保存退出</span>
+<span class="c1"># 4. source ~/.zshrc</span>
+<span class="c1">###############################################################</span>
+
+<span class="c1"># 在执行出错时结束程序</span>
+<span class="nb">set</span> -e
+
+<span class="c1"># 读取版本号</span>
+<span class="nv">version</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="c1">###### 1. 检查参数</span>
+<span class="k">if</span> <span class="o">[</span> ! -n  <span class="s2">&#34;</span><span class="nv">$version</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 版本号参数不能为空!&#34;</span>
+
+<span class="c1"># 结束脚本运行</span>
+<span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="c1">###### 2. 获取/更新包</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 执行 flutter pub get!&#34;</span>
+
+flutter pub get
+
+<span class="c1">###### 3. 构建依赖项目的AAR</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 执行构建 </span><span class="si">${</span><span class="nv">version</span><span class="si">}</span><span class="s2"> release 版本 aar !&#34;</span>
+
+flutter build aar --no-debug --no-profile --build-number <span class="si">${</span><span class="nv">version</span><span class="si">}</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 构建成功&#34;</span>
+
+<span class="c1">###### 4. 将文件上传 maven</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 执行上传 Maven&#34;</span>
+
+<span class="c1"># 打包出来的 aar 文件存放路径</span>
+<span class="nv">file_path</span><span class="o">=</span><span class="s2">&#34;build/host/outputs/repo/com/chicdeals/flutter/flutter_release/</span><span class="nv">$version</span><span class="s2">/flutter_release-</span><span class="nv">$version</span><span class="s2">&#34;</span>
+
+mvn deploy:deploy-file <span class="se">\
+</span><span class="se"></span>-s<span class="o">=</span><span class="s2">&#34;mvn-settings.xml&#34;</span> <span class="se">\
+</span><span class="se"></span>-DpomFile<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$file_path</span><span class="s2">.pom&#34;</span> <span class="se">\
+</span><span class="se"></span>-DgeneratePom<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span><span class="se"></span>-Dfile<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$file_path</span><span class="s2">.aar&#34;</span> <span class="se">\
+</span><span class="se"></span>-Durl<span class="o">=</span><span class="s2">&#34;https://oss.bgapps.cn/repository/banggood-release&#34;</span> <span class="se">\
+</span><span class="se"></span>-DrepositoryId<span class="o">=</span><span class="s2">&#34;com.chicdeals.flutter&#34;</span> <span class="se">\
+</span><span class="se"></span>-DgroupId<span class="o">=</span><span class="s2">&#34;com.chicdeals.flutter&#34;</span> <span class="se">\
+</span><span class="se"></span>-Dpackaging<span class="o">=</span>aar
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 上传成功&#34;</span>
+
+<span class="c1">###### 5. 提示如何引入</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; 项目接入地址：&#34;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;&gt;&gt;&gt; implementation &#39;com.chicdeals.flutter:flutter_release:</span><span class="nv">$version</span><span class="s2">&#39;&#34;</span>
+
+</code></pre></div><p>与 <code>android_build.sh</code> 文件同目录下创建 maven 账号密码配置文件 <code>mvn-settings.xml</code>。</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+          
+  <span class="nt">&lt;pluginGroups&gt;&lt;/pluginGroups&gt;</span>
+
+  <span class="nt">&lt;proxies&gt;&lt;/proxies&gt;</span>
+
+  <span class="nt">&lt;servers&gt;</span>
+    <span class="c">&lt;!-- server
+</span><span class="c">     | Specifies the authentication information to use when connecting to a particular server, identified by
+</span><span class="c">     | a unique name within the system (referred to by the &#39;id&#39; attribute below).
+</span><span class="c">     |
+</span><span class="c">     | NOTE: You should either specify username/password OR privateKey/passphrase, since these pairings are
+</span><span class="c">     |       used together.
+</span><span class="c">     |
+</span><span class="c">     --&gt;</span>
+    <span class="nt">&lt;server&gt;</span>
+      <span class="nt">&lt;id&gt;</span>com.chicdeals.flutter<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;username&gt;</span>Maven账号<span class="nt">&lt;/username&gt;</span>
+      <span class="nt">&lt;password&gt;</span>Maven密码<span class="nt">&lt;/password&gt;</span>
+    <span class="nt">&lt;/server&gt;</span>
+    
+  <span class="nt">&lt;/servers&gt;</span>
+
+  <span class="nt">&lt;/profiles&gt;</span>
+
+<span class="nt">&lt;/settings&gt;</span>
+
+</code></pre></div><h3 id="解释">解释</h3>
+<p>上面脚本的注释已经做了比较详细的解释了，在这里对几个比较重点的地方再做一遍解释说明。</p>
+<ol>
+<li>执行命令是 <code>./android_build.sh 版本号</code> 版本号为必传参数。</li>
+<li>执行 mvn 命令的前提需要 Mac 系统安装 Maven，安装方法建议通过 <code>brew install maven</code> 安装。</li>
+<li>Maven 账号密码配置文件在 <code>mvn-settings.xml</code>，其中文件配置的 <code>id</code> 需要与 <code>DgroupId</code> 和 <code>DrepositoryId</code> 保持一致。</li>
+</ol>
+<h3 id="拓展">拓展</h3>
+<ol>
+<li>如何验证安装成功 Maven，执行以下命令：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ mvn -version
+</code></pre></div><p>成功时，输出的日志如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /usr/local/maven/apache-maven-3.6.3
+Java version: 1.8.0_172, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: &#34;mac os x&#34;, version: &#34;10.15.3&#34;, arch: &#34;x86_64&#34;, family: &#34;mac&#34;
+</code></pre></div><ol start="2">
+<li>想查看详细 Maven 上传日志，在命令行加多 <code>--debug</code> 即可。</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">mvn --debug deploy:deploy-file \
+-s=&#34;mvn-settings.xml&#34; \
+-DpomFile=&#34;build/host/outputs/repo/com/chicdeals/flutter/flutter_release/1.0/flutter_release-1.0.pom&#34; \
+-DgeneratePom=true \
+-Dfile=&#34;build/host/outputs/repo/com/chicdeals/flutter/flutter_release/1.0/flutter_release-1.0.aar&#34; \
+-Durl=&#34;https://oss.bgapps.cn/repository/banggood-release&#34; \
+-DrepositoryId=&#34;com.chicdeals.flutter&#34; \
+-DgroupId=&#34;com.chicdeals.flutter&#34; \
+-Dpackaging=aar
+</code></pre></div><h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://blog.csdn.net/qizewei123/article/details/102768038">Flutter 自动打包依赖aar上传Maven仓库( Shell+Gradle 脚本)</a></li>
+<li><a href="https://galaxybruce.github.io/flutter/Flutter%E6%B7%B7%E7%BC%96%E4%B8%80%E9%94%AE%E6%89%93%E5%8C%85%E5%B9%B6%E4%B8%8A%E4%BC%A0maven.html">Flutter混编一键打包并上传maven</a></li>
+<li><a href="https://kikt.top/posts/flutter/exists/upload-aar-to-maven/">Flutter 1.12后 上传aar至maven私服</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/flutter/">Flutter</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on GoJun</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Jul 2021 00:57:08 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>/categories/git/</link>
+      <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
+      
+      <guid>/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPN</title>
+      <link>/categories/vpn/</link>
+      <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
+      
+      <guid>/categories/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter</title>
+      <link>/categories/flutter/</link>
+      <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
+      
+      <guid>/categories/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iOS</title>
+      <link>/categories/ios/</link>
+      <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
+      
+      <guid>/categories/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>/categories/android/</link>
+      <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
+      
+      <guid>/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>/categories/blog/</link>
+      <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
+      
+      <guid>/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>/categories/tools/</link>
+      <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
+      
+      <guid>/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/categories/python/</link>
+      <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随笔</title>
+      <link>/categories/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sat, 13 Jan 2018 22:34:56 +0000</pubDate>
+      
+      <guid>/categories/%E9%9A%8F%E7%AC%94/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

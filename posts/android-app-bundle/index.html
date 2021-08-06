@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>如何利用 Android App Bundle 进行 APK 瘦身 28% ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="介绍 Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/android-app-bundle/'>如何利用 Android App Bundle 进行 APK 瘦身 28%</a></h2>
+                        <span class="date">2019.10.20</span>
+                    </div>
+                    <div class="post_content markdown"><h2 id="介绍">介绍</h2>
+<p>Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，从而也达到了大幅度减少 APK 大小。另外利用此格式还可以实现 <code>动态组件化</code> 的技术，此文不做该技术的过多介绍，感兴趣的可以到 <a href="https://developer.android.google.cn/studio/projects/dynamic-delivery">官方文档</a> 了解。</p>
+<h2 id="条件">条件</h2>
+<p>如果使用 Android App Bundle 发布格式，必须加入 <code>Google Play 应用签名计划</code>。关于如何加入，可以详细查看这份 <a href="https://developer.android.com/studio/publish/app-signing#enroll">官方指南</a>。</p>
+<p><strong>注意：</strong></p>
+<p>一旦你的应用使用了 Google 应用签名，用户下载的 APK 签名将会是 Google 生成的签名，而不是你自己为应用的签名。因此需要检查你应用使用到的第三方平台 SDK，如果有需要配置签名信息的，记得将 Google 生成的签名信息配置到其对应的地方。</p>
+<h2 id="原理">原理</h2>
+<p>生成的 Android App Bundle 包，是不可以直接安装的，App Bundle 会根据设备屏幕密度、CPU 架构、Language 多个维度进行拆分，组装成对各种组合的 Apk；然后 Play Store 会根据用户设备配置，提供对应的组合 APK。通过下图可以促进你理解：</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/01.png">
+<img src="/images/2019/10/01.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>例如，用户的设备配置如下：arm，xhdpi，en_US，则最终用户下载的 APK 将是（base + arm + xhdpi + en）.apk的组合。</p>
+<p>如果用户在设备设置中更改/添加了新语言，则 Play Store 会检测到此情况，并尝试为在设备下载新的其他语言分类 APK。如果互联网不可用，则稍后将下载。</p>
+<h2 id="如何构建-android-app-bundle">如何构建 Android App Bundle</h2>
+<h3 id="android-studio-32-版本及以上">Android Studio 3.2 版本及以上</h3>
+<blockquote>
+<p>Android Studio &ndash;&gt; Build &ndash;&gt; Generate Signed Bundle/APK</p>
+</blockquote>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/02.png">
+<img src="/images/2019/10/02.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/03.png">
+<img src="/images/2019/10/03.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h3 id="通过命令行构建">通过命令行构建</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">./gradlew bundleRelease
+</code></pre></div><h2 id="如何测试生成出来的-android-app-bundle">如何测试生成出来的 Android App Bundle</h2>
+<h3 id="本地使用-bundletoolhttpsgithubcomgooglebundletool-命令行工具">本地使用 <a href="https://github.com/google/bundletool">bundletool</a> 命令行工具</h3>
+<p>bundletool 是一种底层工具，可供 Gradle、Android Studio 和 Google Play 用于编译 Android App Bundle 或将 App Bundle 转换为部署到设备的各种 APK。您也可以将 bundletool 作为一种命令行工具，用于重新创建、检查和验证应用 APK 的 Google Play 服务器端版本。</p>
+<p>下载地址：<a href="https://github.com/google/bundletool/releases">GitHub 代码库</a></p>
+<h4 id="1-将-app-bundle-生成一组-apk">1. 将 App Bundle 生成一组 APK</h4>
+<p>将你从 Android Studio 构建生成的 App Bundle 为应用支持的所有设备生成一组 APK，用一个以 <code>.apks</code> 为文件扩展名的容器装起来。</p>
+<blockquote>
+<p>如果您未指定签名信息，bundletool 会尝试使用调试密钥为 APK 签名，这里我为了方便我将这些 APK 部署到设备，添加了应用的签名信息。</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar bundletool.jar build-apks 
+--bundle=/MyApp/my_app.aab
+--output=/MyApp/my_app.apks
+--ks=/MyApp/keystore.jks
+--ks-pass=file:/MyApp/keystore.pwd
+--ks-key-alias=MyKeyAlias
+--key-pass=file:/MyApp/key.pwd
+</code></pre></div><h4 id="2-将-apk-安装到连接的设备">2. 将 APK 安装到连接的设备</h4>
+<p>生成一组 APK 后，bundletool 可以将该组中适当 APK 的组合安装到连接的设备。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar bundletool.jar install-apks --apks=/MyApp/my_app.apks
+</code></pre></div><blockquote>
+<p>如果连接了多个设备，请添加 &ndash;device-id=serial-id 标记来指定目标设备。</p>
+</blockquote>
+<h4 id="测试">测试</h4>
+<p>通过上面两条命令，已经为你即将发布的应用安装到你的设备上，最后检查下 app 运行情况，没问题就可以将刚才生成的 aab 上传到商店后台进行版本发布。</p>
+<h4 id="更多">更多</h4>
+<p>想了解更多关于 bundletool 工具的使用方法，可以到 <a href="https://developer.android.com/studio/command-line/bundletool">这里</a> 了解。</p>
+<h3 id="直接将-app-bundle-上传到应用-play-商店后台">直接将 App Bundle 上传到应用 Play 商店后台</h3>
+<p>这个操作很简单，跟平常发布版本操作差不多，具体如下：</p>
+<blockquote>
+<p>版本管理 &ndash;&gt; 应用版本 &ndash;&gt; 创建版本 &ndash;&gt; 添加 Android App Bundle &ndash;&gt; 保存</p>
+</blockquote>
+<p>此时想检查刚上传的 App Bundle 生成的 APK 情况，以及下载生成的 APK 到本地进行测试，操作步骤如下：</p>
+<blockquote>
+<p>版本管理 &ndash;&gt; 软件工件库 &ndash;&gt; 软件工件库草稿找到刚才上传的版本 &ndash;&gt; 探索 &ndash;&gt; 下载设备专属 APK</p>
+</blockquote>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/06.png">
+<img src="/images/2019/10/06.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/04.png">
+<img src="/images/2019/10/04.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="实验">实验</h2>
+<h3 id="本地语言包">本地语言包</h3>
+<p>如果本身 App 是支持多语言的，在应用内切换语言，Play Store 无法检测应用语言改变，因此需要禁止 App Bundle 根据语言拆分安装包。</p>
+<p>在 App 下的 build.gradle 文件添加以下配置：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">android {
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+    }
+}
+</code></pre></div><h3 id="图片资源">图片资源</h3>
+<p>目前大部分应用图片资源只适配一些高分辨率 xxxhdpi，xxhdpi。</p>
+<p>验证 App Bundle 拆分出来的低分辨率包，是否会不存在高分辨率的图片资源？</p>
+<blockquote>
+<p>将生成 &ldquo;apks&rdquo; 的文件更改为 &ldquo;zip&rdquo; 格式 &ndash;&gt; 解压 &ndash;&gt; standalones &ndash;&gt; 选一个低分辨率的安装包 &ndash;&gt; 更改为 &ldquo;zip&rdquo; 格式 &ndash;&gt; 解压 &ndash;&gt; 查看资源文件</p>
+</blockquote>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/07.png">
+<img src="/images/2019/10/07.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>结果：低分辨率包依然存在我们项目高分辨率的图片。</p>
+<h2 id="最后">最后</h2>
+<p>最后来看下使用 App Bundle 生成的 APK，与上个版本相比的数据。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/10/05.png">
+<img src="/images/2019/10/05.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="资料">资料</h2>
+<ul>
+<li><a href="https://developer.android.com/guide/app-bundle/">官方文档介绍</a></li>
+<li><a href="https://developer.android.com/topic/performance/reduce-apk-size">缩减应用大小</a></li>
+<li><a href="https://developer.android.com/studio/command-line/bundletool">如何测试构建出来的 aab 包</a></li>
+<li><a href="https://blog.csdn.net/u012124438/article/details/83508944">Android App瘦身新姿势——Android App Bundle</a></li>
+</ul>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://gojun.me/2019/09/10/android-reduce-apk-size/">终极 Apk 瘦身优化</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/android/">Android</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

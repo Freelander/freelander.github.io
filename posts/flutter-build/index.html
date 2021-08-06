@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Flutter 环境搭建（Mac） ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="下载 Flutter SDK 获取Flutter SDK的最新稳定版本： 将 SDK 下载到指定文件夹下，建议创建一个专门开发 Flutter 项目的文件夹下。 直接到官网下载稳定版回来。 也可以通过 git 克隆对网络环境要求比较高，建议是从官网下载。 git clone https://github.com/flutter/flutter.git 配" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/flutter-build/'>Flutter 环境搭建（Mac）</a></h2>
+                        <span class="date">2020.01.20</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="下载-flutter-sdk">下载 Flutter SDK</h3>
+<ol>
+<li>获取Flutter SDK的最新稳定版本：</li>
+</ol>
+<p>将 SDK 下载到指定文件夹下，建议创建一个专门开发 Flutter 项目的文件夹下。</p>
+<p>直接到<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos">官网</a>下载稳定版回来。</p>
+<p>也可以通过 git 克隆对网络环境要求比较高，建议是从官网下载。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone https://github.com/flutter/flutter.git
+</code></pre></div><ol start="2">
+<li>配置环境变量</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> export PATH=&#34;$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin&#34;
+</code></pre></div><blockquote>
+<p>[PATH_TO_FLUTTER_GIT_DIRECTORY] 指上面你下载回来 SDK 存放的路径。</p>
+</blockquote>
+<p>将上面的代码放到 <code>.bash_profile</code> 文件中</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">vim ~/.bash_profile
+</code></pre></div><p>生效配置环境</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">source ~/.bash_profile
+</code></pre></div><ol start="3">
+<li>检查环境变量是否配置成功</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">flutter -h
+</code></pre></div><p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2020/01/flutter_build_01.png">
+<img src="/images/2020/01/flutter_build_01.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>如果出现这个信息说明环境已经配置成功了。</p>
+<ol start="4">
+<li>检查 Flutter 环境配置是否完成</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">flutter doctor
+</code></pre></div><p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2020/01/flutter_build_02.png">
+<img src="/images/2020/01/flutter_build_02.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<blockquote>
+<p>留意输出的信息，并且需要处理 <code>[x]</code> 与 <code>[!]</code> 的提示信息。</p>
+</blockquote>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2020/01/flutter_build_03.png">
+<img src="/images/2020/01/flutter_build_03.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>如果配置全没问题后，执行 <code>flutter doctor</code> 命令输出信息以上情况。</p>
+<h3 id="下载-dart-sdk">下载 Dart SDK</h3>
+<p>Mac 通过 HomeBrew 安装</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">brew tap dart-lang/dart
+brew install dart
+</code></pre></div><p>其他实用命令</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">#更新Dart版本
+brew upgrade dart
+
+#切换本地指定版本
+brew switch dart 2.1.0
+
+#查看当前Dart版本信息
+brew info dart
+</code></pre></div><h3 id="文档">文档</h3>
+<ul>
+<li><a href="https://flutter.dev/docs/get-started/install/macos">Flutter 官方安装指南</a></li>
+<li><a href="https://dart.dev/get-dart">Dart 安装指南</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/flutter/">Flutter</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

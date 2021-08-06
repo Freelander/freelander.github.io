@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>欢迎来到我的新博客 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="教程 手把手教你使用Hexo &#43; Github Pages搭建个人独立博客 使用Hexo在Github上搭建专属博客之技术总结 主题配置 遇到问题 FATAL Port 4000 has been used. Try other port instead. FATAL Something&amp;#39;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html 解决方案： sudo hexo s -p 5000 Hexo 命令 hexo generate (hexo g) 生" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/hello-blog/'>欢迎来到我的新博客</a></h2>
+                        <span class="date">2019.06.12</span>
+                    </div>
+                    <div class="post_content markdown"><h2 id="教程">教程</h2>
+<ol>
+<li><a href="https://segmentfault.com/a/1190000004947261#articleHeader1">手把手教你使用Hexo + Github Pages搭建个人独立博客</a></li>
+<li><a href="https://www.jianshu.com/p/42aa637f614a">使用Hexo在Github上搭建专属博客之技术总结</a></li>
+<li><a href="http://forsigner.com/2016/03/10/fexo-doc-zh-cn/#%E5%BC%80%E5%A7%8B">主题配置</a></li>
+</ol>
+<h2 id="遇到问题">遇到问题</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">FATAL Port 4000 has been used. Try other port instead.
+FATAL Something&#39;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html
+</code></pre></div><p>解决方案：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo hexo s -p 5000
+</code></pre></div><h2 id="hexo-命令">Hexo 命令</h2>
+<ol>
+<li><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹</li>
+<li><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览</li>
+<li><code>hexo deploy (hexo d)</code> 部署播客到远端（比如github, heroku等平台）</li>
+<li><code>hexo new &quot;postName&quot;</code> #新建文章</li>
+<li><code>hexo new page &quot;pageName&quot;</code> #新建页面</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ hexo n == hexo new
+$ hexo g == hexo generate
+$ hexo s == hexo server
+$ hexo d == hexo deploy
+</code></pre></div><h2 id="如何关联上-github">如何关联上 GitHub</h2>
+<ol>
+<li>Install hexo-deployer-git.</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ npm install hexo-deployer-git --save
+</code></pre></div><ol start="2">
+<li>Edit <code>_config.yml</code> (with example values shown below as comments):</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">deploy:
+  type: git   
+  repo: &lt;repository url&gt;  #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  branch: [branch] #published
+  message: [message]  #leave this blank
+</code></pre></div><h2 id="绑定个人域名">绑定个人域名</h2>
+<p>注册域名地址推荐：<a href="https://www.namesilo.com">namesilo</a></p>
+<p>然后在 GitHub 你的博客仓库 Setting 页面配置域名</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/06/01.png">
+<img src="/images/2019/06/01.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>保存过几分钟就可以访问。</p>
+<h3 id="hexo-主题模板">Hexo 主题模板</h3>
+<p><a href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
+<h2 id="看中的博客模版">看中的博客模版</h2>
+<ol>
+<li><a href="https://fuzhouxxdong.github.io/hexo-theme-dxx/">https://fuzhouxxdong.github.io/hexo-theme-dxx/</a></li>
+<li><a href="http://forsigner.com/">http://forsigner.com/</a></li>
+<li><a href="https://blog.devzeng.com/">https://blog.devzeng.com/</a></li>
+<li><a href="https://paugram.com/">https://paugram.com/</a></li>
+<li><a href="http://qiubaiying.top/">http://qiubaiying.top/</a></li>
+</ol>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/blog/">Blog</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

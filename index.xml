@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GoJun</title>
+    <link>/</link>
+    <description>Recent content on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Jul 2021 00:57:08 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>公司项目 Git 管理流程及规范</title>
+      <link>/posts/company-project-git/</link>
+      <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
+      
+      <guid>/posts/company-project-git/</guid>
+      <description>目前公司项目 Git 管理规范是基于 git-flow 扩展而来。 git-flow 最先来源于 Vincent Driessen 一篇名为“一种成功的Git分支模型”的博文，后来 git-flow 被誉为在 Git 之上构建的一项软件开发最佳实践。 工具 通过安装工具可以帮助我们更方便按照 git-flow 工作流程进行</description>
+    </item>
+    
+    <item>
+      <title>面试官问我：如何对 Android  App 进行 fps 分析</title>
+      <link>/posts/android-fps/</link>
+      <pubDate>Wed, 06 Jan 2021 21:58:23 +0000</pubDate>
+      
+      <guid>/posts/android-fps/</guid>
+      <description>背景 界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。 结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS</description>
+    </item>
+    
+    <item>
+      <title>Mac 如何让终端使用代理</title>
+      <link>/posts/mac-terminal-proxy/</link>
+      <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
+      
+      <guid>/posts/mac-terminal-proxy/</guid>
+      <description>前提 iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令 得到： export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081 编辑 .zshrc 文件 vim ~/.zshrc 在文件最后添加以下信息 # proxy list alias proxy=&amp;#39;export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081&amp;#39; alias unproxy=&amp;#39;unset all_proxy&amp;#39; 保存退出，应用文件修改内容 source ~/.zshrc 开启使用代理模式 proxy</description>
+    </item>
+    
+    <item>
+      <title>Flutter 自动打包并将 aar 文件上传到 Maven</title>
+      <link>/posts/flutter-maven/</link>
+      <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
+      
+      <guid>/posts/flutter-maven/</guid>
+      <description>思路 先执行 flutter pub get 获取项目最新依赖插件。 对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。 对打包出来的 aar 文件，简单粗暴使用 mvn deploy 指令进行上传到 maven。 上传完之后，提示如何引入到项目。 完整构建脚</description>
+    </item>
+    
+    <item>
+      <title>Android 与 Flutter 之间通信</title>
+      <link>/posts/flutter-channel/</link>
+      <pubDate>Thu, 02 Apr 2020 23:17:58 +0000</pubDate>
+      
+      <guid>/posts/flutter-channel/</guid>
+      <description>概述 Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示： 原生 与 Flutter 之间的通信主要有有四种实现方式： 在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 原生 向 Flutter 端传递自己想要的数据； 通过</description>
+    </item>
+    
+    <item>
+      <title>Android 原生项目如何引入 Flutter</title>
+      <link>/posts/flutter-native/</link>
+      <pubDate>Thu, 05 Mar 2020 23:26:26 +0000</pubDate>
+      
+      <guid>/posts/flutter-native/</guid>
+      <description>有两种方式创建，一种使用 Android Studio 创建集成 Flutter 模块，一种通过命令创建手动集成。 最开始使用 Android Studio 创建，但是一直卡在 Creating Flutter Project 网上查了很多解决方法均无法解决，因此我是通过手动集成的。 一、创建 Flutter 模块 打开终端选择自己指定的</description>
+    </item>
+    
+    <item>
+      <title>Flutter 如何实现国际化多语言</title>
+      <link>/posts/flutter-language/</link>
+      <pubDate>Tue, 18 Feb 2020 21:22:51 +0000</pubDate>
+      
+      <guid>/posts/flutter-language/</guid>
+      <description>关于 Flutter 国际化实现方案，网上查看了很多资料，主要有两种。 基于 intl package 的国际化实现（官方推荐） 创建支持语种的 Json 文件，存储及读取里面的语言 本文介绍的是第一种实现方案，毕竟都是官方推荐使用的。 前言 采用第一种方案，</description>
+    </item>
+    
+    <item>
+      <title>Flutter 如何使用自定义字体</title>
+      <link>/posts/flutter-font/</link>
+      <pubDate>Sat, 01 Feb 2020 20:52:25 +0000</pubDate>
+      
+      <guid>/posts/flutter-font/</guid>
+      <description>1. 导入字体包 在项目路径新创建 fonts 文件夹，里面存放自定义字体包。 注意这个文件夹的路径需要放到主目录下，如果在 asstes 文件夹下创建在 iOS 那边打出来的产物会出现无法应用到自定义字体的问题。 2. 在 pubspec.yaml 中声明字体 flutter: fonts: - family: Hind Siliguri</description>
+    </item>
+    
+    <item>
+      <title>Flutter 环境搭建（Mac）</title>
+      <link>/posts/flutter-build/</link>
+      <pubDate>Mon, 20 Jan 2020 23:43:21 +0000</pubDate>
+      
+      <guid>/posts/flutter-build/</guid>
+      <description>下载 Flutter SDK 获取Flutter SDK的最新稳定版本： 将 SDK 下载到指定文件夹下，建议创建一个专门开发 Flutter 项目的文件夹下。 直接到官网下载稳定版回来。 也可以通过 git 克隆对网络环境要求比较高，建议是从官网下载。 git clone https://github.com/flutter/flutter.git 配</description>
+    </item>
+    
+    <item>
+      <title>如何利用 Android App Bundle 进行 APK 瘦身 28%</title>
+      <link>/posts/android-app-bundle/</link>
+      <pubDate>Sun, 20 Oct 2019 16:37:26 +0000</pubDate>
+      
+      <guid>/posts/android-app-bundle/</guid>
+      <description>介绍 Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，</description>
+    </item>
+    
+    <item>
+      <title>MacOs 最全的 Jenkins Android 自动打包构建教程</title>
+      <link>/posts/jenkins/</link>
+      <pubDate>Tue, 24 Sep 2019 21:51:40 +0000</pubDate>
+      
+      <guid>/posts/jenkins/</guid>
+      <description>安装 下载安装可以到 Jenkins 官网 下载Mac版本的安装包，然后进行手动安装（坑多，不推荐） 使用 brew 下载安装Jenkins（推荐，简单傻瓜式，下载安装配置一步到位）具体做法如下： brew install jenkins 启动 安装完成在终端输入 jenkins 启动 然</description>
+    </item>
+    
+    <item>
+      <title>如何利用 frp 实现 Mac 的内网穿透</title>
+      <link>/posts/jenkins-frp/</link>
+      <pubDate>Mon, 23 Sep 2019 21:34:48 +0000</pubDate>
+      
+      <guid>/posts/jenkins-frp/</guid>
+      <description>这里服务端我用的是阿里云的轻量应用服务器，系统配置的 Ubuntu18.04；客户端是自己开发的 Mac 电脑。 下面记录的是如何利用 frp 来实现本地的 web 端口可以使用外网来访问。 服务端 下载并移动文件； wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz # 如果系统未</description>
+    </item>
+    
+    <item>
+      <title>终极 Apk 瘦身优化</title>
+      <link>/posts/android-reduce-apk-size/</link>
+      <pubDate>Tue, 10 Sep 2019 23:19:55 +0000</pubDate>
+      
+      <guid>/posts/android-reduce-apk-size/</guid>
+      <description>前言 Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。 因此 Apk 瘦身是优化的重要一部分，开发有必要定</description>
+    </item>
+    
+    <item>
+      <title>Xcode 常用的快捷键</title>
+      <link>/posts/xcode-hot-key/</link>
+      <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
+      
+      <guid>/posts/xcode-hot-key/</guid>
+      <description>常用 功能 快捷键 快速打开某个文件 command + shift + O 快速跳转到某一行 command + L 上移一行 option + command + ] 下移一行 option + command + [ .h文件与.m文件之间的快速切换 control + command + ↑ 或 ↓ 返回至上一次光标位置 control + command + ← 或 → 收起/展开方法代码块 option</description>
+    </item>
+    
+    <item>
+      <title>Android 如何快速全局更换字体</title>
+      <link>/posts/android-change-font/</link>
+      <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
+      
+      <guid>/posts/android-change-font/</guid>
+      <description>在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的</description>
+    </item>
+    
+    <item>
+      <title>是时候让你项目用上 ViewBindings 了</title>
+      <link>/posts/android-viewbindings/</link>
+      <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
+      
+      <guid>/posts/android-viewbindings/</guid>
+      <description>写在前面 相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久</description>
+    </item>
+    
+    <item>
+      <title>欢迎来到我的新博客</title>
+      <link>/posts/hello-blog/</link>
+      <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
+      
+      <guid>/posts/hello-blog/</guid>
+      <description>教程 手把手教你使用Hexo + Github Pages搭建个人独立博客 使用Hexo在Github上搭建专属博客之技术总结 主题配置 遇到问题 FATAL Port 4000 has been used. Try other port instead. FATAL Something&amp;#39;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html 解决方案： sudo hexo s -p 5000 Hexo 命令 hexo generate (hexo g) 生</description>
+    </item>
+    
+    <item>
+      <title>如何利用 Google Cloud 搭建 VPS</title>
+      <link>/posts/google-clound/</link>
+      <pubDate>Wed, 06 Jun 2018 00:25:23 +0000</pubDate>
+      
+      <guid>/posts/google-clound/</guid>
+      <description>Google Cloud 官网 https://cloud.google.com/ 活动 现在申请 Google Cloud 赠送免费使用 300美元一年的有效期，使⽤用最低配的话，可以玩一年，每个⽉有 86G 的流量，个人使⽤足够了吧&amp;hellip;&amp;hellip; 准备 一张 VISA信⽤用卡 Google 账户 由于 Google 在中国</description>
+    </item>
+    
+    <item>
+      <title>Mac 使用 Crontab 定时工具</title>
+      <link>/posts/mac-crontab/</link>
+      <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
+      
+      <guid>/posts/mac-crontab/</guid>
+      <description>相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式) sudo crontab -e (进入编辑器，添加或修改定时任务) sudo crontab</description>
+    </item>
+    
+    <item>
+      <title>使用 Python3 爬取 Play 商店后台评论笔记记录</title>
+      <link>/posts/python-learn/</link>
+      <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
+      
+      <guid>/posts/python-learn/</guid>
+      <description>Python selenium 三种等待方式 学习链接：https://huilansame.github.io/huilansame.github.io/archivers/sleep-implicitlywait-wait 项目</description>
+    </item>
+    
+    <item>
+      <title>使用 Python3 对在 Play 商店应用的评论爬取调研</title>
+      <link>/posts/play-reviews-research/</link>
+      <pubDate>Fri, 02 Mar 2018 00:06:26 +0000</pubDate>
+      
+      <guid>/posts/play-reviews-research/</guid>
+      <description>背景/需求 背景/需求 方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两</description>
+    </item>
+    
+    <item>
+      <title>小米手机 Application Installation Failed</title>
+      <link>/posts/xiaomi-install-failed/</link>
+      <pubDate>Sat, 13 Jan 2018 22:34:56 +0000</pubDate>
+      
+      <guid>/posts/xiaomi-install-failed/</guid>
+      <description>今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。 然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解</description>
+    </item>
+    
+    <item>
+      <title>带你玩转 Surge 网络调试神器</title>
+      <link>/posts/surge/</link>
+      <pubDate>Tue, 12 Dec 2017 00:25:13 +0000</pubDate>
+      
+      <guid>/posts/surge/</guid>
+      <description>简单了解 Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事</description>
+    </item>
+    
+    <item>
+      <title>Android 中东阿拉伯语适配，看这一篇够了</title>
+      <link>/posts/android-rtl/</link>
+      <pubDate>Tue, 06 Jun 2017 00:07:52 +0000</pubDate>
+      
+      <guid>/posts/android-rtl/</guid>
+      <description>RTL 语言由来 RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比： LTR RTL 那么对于这种从右到左的习惯，在 Android 布局中有没</description>
+    </item>
+    
+    <item>
+      <title>如何为小米手机安装 Charles 证书</title>
+      <link>/posts/xiaomi-charles-crt/</link>
+      <pubDate>Sat, 25 Mar 2017 22:25:16 +0000</pubDate>
+      
+      <guid>/posts/xiaomi-charles-crt/</guid>
+      <description>使用第三方浏览器下载 .pem 格式的文件 将这个文件放入小米的 DownLoad 文件夹下 将 .pem 文件修改为 .crt 格式 设置&amp;mdash;更多设置&amp;mdash;系统安全&amp;mdash;从存储设备安装&amp;ndash;选择文件，选定该文件 亲测，小</description>
+    </item>
+    
+    <item>
+      <title>如何给 Android 原生模拟器配置代理</title>
+      <link>/posts/android-setting-proxy/</link>
+      <pubDate>Thu, 02 Mar 2017 22:14:37 +0000</pubDate>
+      
+      <guid>/posts/android-setting-proxy/</guid>
+      <description>原生模拟器 Android 4.4 设置 &amp;ndash;&amp;gt; 移动网络设置 &amp;ndash;&amp;gt; 接入点名称（APN）&amp;ndash;&amp;gt; T-Mobile US &amp;ndash;&amp;gt; 设置代理 代理：10.0.2.2 端口：8888 设置完之后，开启下飞行模式，过几秒再关闭</description>
+    </item>
+    
+    <item>
+      <title>如何设置 BottomSheetDialog 高度</title>
+      <link>/posts/bottom-sheet-dialog-height/</link>
+      <pubDate>Sat, 18 Feb 2017 23:45:23 +0000</pubDate>
+      
+      <guid>/posts/bottom-sheet-dialog-height/</guid>
+      <description>BottomSheetDialog 控制初始高度是跟 behavior_peekHeight 属性有关 样式主题设置 &amp;lt;style name=&amp;#34;BottomSheetDialog&amp;#34; parent=&amp;#34;Theme.Design.Light.BottomSheetDialog&amp;#34;&amp;gt; &amp;lt;item name=&amp;#34;bottomSheetStyle&amp;#34;&amp;gt;@style/bottomSheetStyleWrapper&amp;lt;/item&amp;gt; &amp;lt;/style&amp;gt; &amp;lt;style name=&amp;#34;bottomSheetStyleWrapper&amp;#34; parent=&amp;#34;Widget.Design.BottomSheet.Modal&amp;#34;&amp;gt; &amp;lt;item name=&amp;#34;behavior_peekHeight&amp;#34;&amp;gt;500dp&amp;lt;/item&amp;gt; &amp;lt;/style&amp;gt; &amp;lt;!--代码中应用--&amp;gt; BottomSheetDialog dialog = new BottomSheetDialog(this, R.style.BottomSheetDialog); dialog.setContentView(R.layout.layout_bottom_sheet); dialog.show(); 动态代码设置 Dialog 的布局最外层使用 RelativeLayout 或者 ConstraintLayout, 其他控件设置高度无法生效 需要在子内容布局设置高</description>
+    </item>
+    
+    <item>
+      <title>常用 Git 相关命令清单</title>
+      <link>/posts/git-command/</link>
+      <pubDate>Sun, 01 Jan 2017 00:07:52 +0000</pubDate>
+      
+      <guid>/posts/git-command/</guid>
+      <description>Git git config --global user.name &amp;quot;Your Name&amp;quot; (安装完 git 后，设置用户名与邮箱) git config --global user.email &amp;quot;Your email&amp;quot; (设置邮箱) ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; (创建 SSH key) ssh-agent -s (查看 ssh 是否启用) ssh -T git@github.com (验证) git init (初始化一个本地仓库) git add . (将所有文件加入到跟踪列表) git commit -m &amp;quot;write something title&amp;quot; (</description>
+    </item>
+    
+    <item>
+      <title>史上最全 Android 面试资料集合</title>
+      <link>/posts/android-resume/</link>
+      <pubDate>Mon, 12 Dec 2016 00:26:10 +0000</pubDate>
+      
+      <guid>/posts/android-resume/</guid>
+      <description>最近看到很多人都在找工作, 而且很多人都感觉今年找工作比去年难很多, 竞争力也增加不少, 因此激发我整理这份资料, 希望能帮到正在找或者准备找工作的童鞋们. 本文已授权微信公众号 AndroidDeveloper （id: googdev） 独家发</description>
+    </item>
+    
+  </channel>
+</rss>

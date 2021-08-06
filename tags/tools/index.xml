@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on GoJun</title>
+    <link>/tags/tools/</link>
+    <description>Recent content in Tools on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 24 Mar 2018 22:29:52 +0000</lastBuildDate><atom:link href="/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac 使用 Crontab 定时工具</title>
+      <link>/posts/mac-crontab/</link>
+      <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
+      
+      <guid>/posts/mac-crontab/</guid>
+      <description>相关命令 sudo /usr/sbin/cron start (启动) sudo /usr/sbin/cron restart (重启) sudo /usr/sbin/cron stop (停止) sudo launchctl list | grep cron (查看是否启动) man crontab (查看crontab命令的用法) man 5 crontab (查看crontab定时任务的格式) sudo crontab -e (进入编辑器，添加或修改定时任务) sudo crontab</description>
+    </item>
+    
+  </channel>
+</rss>

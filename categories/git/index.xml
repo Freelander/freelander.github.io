@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on GoJun</title>
+    <link>/categories/git/</link>
+    <description>Recent content in Git on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Jul 2021 00:57:08 +0800</lastBuildDate><atom:link href="/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>公司项目 Git 管理流程及规范</title>
+      <link>/posts/company-project-git/</link>
+      <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
+      
+      <guid>/posts/company-project-git/</guid>
+      <description>目前公司项目 Git 管理规范是基于 git-flow 扩展而来。 git-flow 最先来源于 Vincent Driessen 一篇名为“一种成功的Git分支模型”的博文，后来 git-flow 被誉为在 Git 之上构建的一项软件开发最佳实践。 工具 通过安装工具可以帮助我们更方便按照 git-flow 工作流程进行</description>
+    </item>
+    
+    <item>
+      <title>常用 Git 相关命令清单</title>
+      <link>/posts/git-command/</link>
+      <pubDate>Sun, 01 Jan 2017 00:07:52 +0000</pubDate>
+      
+      <guid>/posts/git-command/</guid>
+      <description>Git git config --global user.name &amp;quot;Your Name&amp;quot; (安装完 git 后，设置用户名与邮箱) git config --global user.email &amp;quot;Your email&amp;quot; (设置邮箱) ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; (创建 SSH key) ssh-agent -s (查看 ssh 是否启用) ssh -T git@github.com (验证) git init (初始化一个本地仓库) git add . (将所有文件加入到跟踪列表) git commit -m &amp;quot;write something title&amp;quot; (</description>
+    </item>
+    
+  </channel>
+</rss>

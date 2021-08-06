@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>MacOs 最全的 Jenkins Android 自动打包构建教程 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="安装 下载安装可以到 Jenkins 官网 下载Mac版本的安装包，然后进行手动安装（坑多，不推荐） 使用 brew 下载安装Jenkins（推荐，简单傻瓜式，下载安装配置一步到位）具体做法如下： brew install jenkins 启动 安装完成在终端输入 jenkins 启动 然" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/jenkins/'>MacOs 最全的 Jenkins Android 自动打包构建教程</a></h2>
+                        <span class="date">2019.09.24</span>
+                    </div>
+                    <div class="post_content markdown"><h2 id="安装">安装</h2>
+<ol>
+<li>下载安装可以到 Jenkins <a href="https://jenkins.io/zh/">官网</a> 下载Mac版本的安装包，然后进行手动安装（坑多，不推荐）</li>
+<li>使用 brew 下载安装Jenkins（推荐，简单傻瓜式，下载安装配置一步到位）具体做法如下：
+<code>brew install jenkins</code></li>
+</ol>
+<h2 id="启动">启动</h2>
+<p>安装完成在终端输入 <code>jenkins</code> 启动</p>
+<p>然后在浏览器打开 <code>http://localhost:8080</code></p>
+<p>首次启动会看到一个界面要求你输入管理员密码，如果你是命令安装的，在终端启动的时候会输出此密码。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/07.png">
+<img src="/images/2019/09/07.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>按它页面提示的路径找到该文件，复制里面的一串字符到输入框回车即可。</p>
+<p>会出现找不到此文件的情况，原因是 secrets 文件夹未授权当前用户访问。</p>
+<p>解决方法：https://stackoverflow.com/a/38943610</p>
+<h2 id="基本配置">基本配置</h2>
+<p>第一次启动要求你创建一个管理员账号。</p>
+<h2 id="插件的安装">插件的安装</h2>
+<p>进入后，会让你选择推荐插件安装还是自定义插件安装，对于小白可以直接点击推荐安装。</p>
+<h2 id="jenkins的环境配置">Jenkins的环境配置</h2>
+<p>配置 JDK 路径</p>
+<p>Mac 查看 JDK 路径方法：
+<code>打开终端，执行    /usr/libexec/java_home -V</code></p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/08.png">
+<img src="/images/2019/09/08.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="环境变量配置android_home的配置">环境变量配置（ANDROID_HOME的配置）</h2>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/09.png">
+<img src="/images/2019/09/09.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="创建项目">创建项目</h2>
+<p>1）输入项目名称，选择自定义构建项目</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/10.png">
+<img src="/images/2019/09/10.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>2）配置 Git</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/11.png">
+<img src="/images/2019/09/11.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>3）配置对项目有写权限的账户</p>
+<blockquote>
+<p>进入 GitHub &ndash;&gt; Settings &ndash;&gt; Developer settings &ndash;&gt; Personal Access Token &ndash;&gt; Generate new token</p>
+</blockquote>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/12.png">
+<img src="/images/2019/09/12.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>复制刚才生成的 token</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/13.png">
+<img src="/images/2019/09/13.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>回到 Jenkins 配置</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/14.png">
+<img src="/images/2019/09/14.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>选择<code>Secret text</code>，<code>Secret</code> 填入前面在 GitHub 上生成的 Personal access tokens，Description 随便写一些描述信息，如下图：</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/15.png">
+<img src="/images/2019/09/15.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>3）Gradle 构建脚本</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/16.png">
+<img src="/images/2019/09/16.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>4）构建完成存档的文件</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/17.png">
+<img src="/images/2019/09/17.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="构建">构建</h2>
+<p>1）开始</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/18.png">
+<img src="/images/2019/09/18.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>2）查看控制台输出日志</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/19.png">
+<img src="/images/2019/09/19.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/20.png">
+<img src="/images/2019/09/20.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>3）主页面显示的安装包</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/21.png">
+<img src="/images/2019/09/21.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h2 id="向-github-提交代码时触发自动构建">向 GitHub 提交代码时触发自动构建</h2>
+<p>需要在 GitHub 对应项目上配置 Webhooks。</p>
+<blockquote>
+<p>GitHub 项目 &ndash;&gt; Settings &ndash;&gt; Webhooks &ndash;&gt; Add webhooks</p>
+</blockquote>
+<p>如下图：填入 <code>Payload URL</code></p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2019/09/22.png">
+<img src="/images/2019/09/22.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p><strong>解释：</strong> Webhook 是通知 Jenkins 时的请求地址，用来填写到 GitHub 上，这样 GitHub 就能通过该地址通知到 Jenkins；
+假设 Jenkins 所在服务器的地址是：192.168.0.1，端口为8080，项目是 github-webhook，那么 Webhook 地址就是 http://192.168.0.1:8080/github-webhook。</p>
+<p><code>再次提醒，上述地址必须是外网也能访问的，否则GitHub无法访问到Jenkins。</code></p>
+<h2 id="测试">测试</h2>
+<p>至此配置已经完成，将 GitHub 上的项目克隆下来，修改某个文件提交，测试看 Jenkins 是否能自动构建。</p>
+<p><strong>Good Luck!</strong></p>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li><a href="https://gojun.me/2019/09/23/jenkins-frp/">如何利用 frp 实现 Mac 的内网穿透</a></li>
+</ul>
+<h2 id="参考链接">参考链接</h2>
+<ol>
+<li><a href="https://juejin.im/post/5b6a542b5188251a9e171bf2">这应该是最全的 Jenkins Android 自动打包构建教程</a></li>
+<li><a href="https://blog.csdn.net/ATangSir/article/details/71699403">MAC 上搭建Jenkins实现 Android 自动打包</a></li>
+<li><a href="https://blog.csdn.net/boling_cavalry/article/details/78943061">实战：向 GitHub 提交代码时触发 Jenkins 自动构建</a></li>
+<li><a href="https://blog.csdn.net/zengd0/article/details/79522253">搭建 frp 实现内网穿透</a></li>
+<li><a href="https://alphagao.com/2018/05/05/config-native-package-node-for-jenkins-server/">利用 frp 为 jenkins 配置内网打包节点</a></li>
+</ol>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/jenkins/">Jenkins</a>
+                                    
+                                    <a href="/tags/macos/">MacOs</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

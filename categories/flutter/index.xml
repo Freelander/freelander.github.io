@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flutter on GoJun</title>
+    <link>/categories/flutter/</link>
+    <description>Recent content in Flutter on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Apr 2020 22:42:04 +0000</lastBuildDate><atom:link href="/categories/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter 自动打包并将 aar 文件上传到 Maven</title>
+      <link>/posts/flutter-maven/</link>
+      <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
+      
+      <guid>/posts/flutter-maven/</guid>
+      <description>思路 先执行 flutter pub get 获取项目最新依赖插件。 对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。 对打包出来的 aar 文件，简单粗暴使用 mvn deploy 指令进行上传到 maven。 上传完之后，提示如何引入到项目。 完整构建脚</description>
+    </item>
+    
+    <item>
+      <title>Android 与 Flutter 之间通信</title>
+      <link>/posts/flutter-channel/</link>
+      <pubDate>Thu, 02 Apr 2020 23:17:58 +0000</pubDate>
+      
+      <guid>/posts/flutter-channel/</guid>
+      <description>概述 Flutter 与原生之间的通信机制都是通过 Platform Channel 进行传递，如下图所示： 原生 与 Flutter 之间的通信主要有有四种实现方式： 在初始化 Flutter 页面时会传递一个字符串 Route，因此我们就可以通过 Route 从 原生 向 Flutter 端传递自己想要的数据； 通过</description>
+    </item>
+    
+    <item>
+      <title>Android 原生项目如何引入 Flutter</title>
+      <link>/posts/flutter-native/</link>
+      <pubDate>Thu, 05 Mar 2020 23:26:26 +0000</pubDate>
+      
+      <guid>/posts/flutter-native/</guid>
+      <description>有两种方式创建，一种使用 Android Studio 创建集成 Flutter 模块，一种通过命令创建手动集成。 最开始使用 Android Studio 创建，但是一直卡在 Creating Flutter Project 网上查了很多解决方法均无法解决，因此我是通过手动集成的。 一、创建 Flutter 模块 打开终端选择自己指定的</description>
+    </item>
+    
+    <item>
+      <title>Flutter 如何实现国际化多语言</title>
+      <link>/posts/flutter-language/</link>
+      <pubDate>Tue, 18 Feb 2020 21:22:51 +0000</pubDate>
+      
+      <guid>/posts/flutter-language/</guid>
+      <description>关于 Flutter 国际化实现方案，网上查看了很多资料，主要有两种。 基于 intl package 的国际化实现（官方推荐） 创建支持语种的 Json 文件，存储及读取里面的语言 本文介绍的是第一种实现方案，毕竟都是官方推荐使用的。 前言 采用第一种方案，</description>
+    </item>
+    
+    <item>
+      <title>Flutter 如何使用自定义字体</title>
+      <link>/posts/flutter-font/</link>
+      <pubDate>Sat, 01 Feb 2020 20:52:25 +0000</pubDate>
+      
+      <guid>/posts/flutter-font/</guid>
+      <description>1. 导入字体包 在项目路径新创建 fonts 文件夹，里面存放自定义字体包。 注意这个文件夹的路径需要放到主目录下，如果在 asstes 文件夹下创建在 iOS 那边打出来的产物会出现无法应用到自定义字体的问题。 2. 在 pubspec.yaml 中声明字体 flutter: fonts: - family: Hind Siliguri</description>
+    </item>
+    
+    <item>
+      <title>Flutter 环境搭建（Mac）</title>
+      <link>/posts/flutter-build/</link>
+      <pubDate>Mon, 20 Jan 2020 23:43:21 +0000</pubDate>
+      
+      <guid>/posts/flutter-build/</guid>
+      <description>下载 Flutter SDK 获取Flutter SDK的最新稳定版本： 将 SDK 下载到指定文件夹下，建议创建一个专门开发 Flutter 项目的文件夹下。 直接到官网下载稳定版回来。 也可以通过 git 克隆对网络环境要求比较高，建议是从官网下载。 git clone https://github.com/flutter/flutter.git 配</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>带你玩转 Surge 网络调试神器 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="简单了解 Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/surge/'>带你玩转 Surge 网络调试神器</a></h2>
+                        <span class="date">2017.12.12</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="简单了解">简单了解</h3>
+<p>Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。</p>
+<p>Surge 可做很多事情，比如阻挡广告、网络调试、流量跟踪、代理上网等等。</p>
+<h3 id="安装">安装</h3>
+<p>Mac 版下载 <a href="https://nssurge.com/">地址</a>（Windows 暂不支持），下载完成后解压文件夹得到 Surge 程序，将其拖放到应用程序中打开。</p>
+<p>启动 Surge 后勾选下拉菜单中的 <strong>Set as System Proxy</strong> 即可自动向系统网络设置添加必要的参数，因为需要修改系统网络设置，首次勾选时需要输入管理员密码进行确认，去掉 Set as System Proxy 的勾选，会清除网络设置中的代理相关设置。</p>
+<p>打开「系统偏好设置 — 网络 - Wi-Fi高级」设置 HTTP 和 HTTPS 代理： 127.0.0.1:6152 ，以及 SOCKS 代理中设置为 127.0.0.1:6153，
+并添加忽略这些主机与域的代理设置（Bypass Proxy）：127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/12/02-1.png">
+<img src="/images/2017/12/02-1.png" alt=""  />
+</a>
+</div>
+
+</p>
+<h3 id="配置">配置</h3>
+<p>Surge 默认配置文件的路径在 /Users/Freelander/Documents/Surge 下 Default.conf，文件夹还提供简单中文配置例子，里面有很多注释教你如何配置。</p>
+<p>配置文件基础最终我选择了在一份 <a href="https://raw.githubusercontent.com/lhie1/Surge/master/Surge.conf">开源配置文件</a> 基础上进行修改。已上传到 <a href="https://github.com/Freelander/Blog/blob/master/201708/code/MySurge.conf">GitHub</a>。</p>
+<p>将其内容复制到上面所说的路径 Default.conf 文件中，然后保存点击下拉菜单中的 Reload Profile from File，此时配置文件中的配置就生效了。</p>
+<p>首先来看如何配置 ss 代理</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[Proxy]
+ 🇺🇸US-l = custom,${ss-server host},${ss-server port},${ss encrypt type},${ss-password},tls=true
+ 🇺🇸US-m = custom,${ss-server host},${ss-server port},${ss encrypt type},${ss-password},tls=true
+ 🇯🇵JP  = custom,${ss-server host},${ss-server port},${ss encrypt type},${ss-password},tls=true
+ 🇸🇬SG  = custom,${ss-server host},${ss-server port},${ss encrypt type},${ss-password},tls=true
+ 🇩🇪DE  = custom,${ss-server host},${ss-server port},${ss encrypt type},${ss-password},tls=true
+   
+[Proxy Group]
+Proxy = select,🇺🇸US-l,🇺🇸US-m,🇯🇵 JP,🇸🇬SG,🇩🇪DE
+</code></pre></div><p>[Proxy]是具体的代理配置，它下面就是 5 个 ss 服务器节点, 这里只是 5 个国家例子，根据你拥有的 ss 账号数来决定，拥有几个账号就留下其中几个对应国旗配置就好。表面上看就是 5 个键值对(键可以自定义)，键中加上国旗可以很直观的区分不同国家的 ss 节点，值中的变量分别表示：
+ss-server host: ss 主机，ip 或域名
+ss-server port: ss 主机端口
+ss encrypt type: 加密方式
+ss-password: ss 密码
+custom 不能改，是一个约定类型(ss 协议)。</p>
+<p>保存上面配置，点击下拉菜单中的 Reload Profile from File，配置生效，就会出现下图</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/12/02-2.png">
+<img src="/images/2017/12/02-2.png" alt=""  />
+</a>
+</div>
+
+</p>
+<p>接着打开浏览器输入 <a href="https://www.youtube.com/">https://www.youtube.com/</a> 回车
+你会发现外面的世界如此精彩</p>
+<h3 id="共享上网">共享上网</h3>
+<p>在局域网内，其他设备无须再安装任何软件，即可与我一起到外面世界遨游。其他设备只需要简单的在 wifi 设置中添加一个 HTTP 代理即可</p>
+<p>图片来源 <a href="https://medium.com/@scomper/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B6%E4%BB%96%E8%AE%BE%E5%A4%87%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91-dd29e18853da">地址</a></p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/12/02-3.png">
+<img src="/images/2017/12/02-3.png" alt=""  />
+</a>
+</div>
+
+</p>
+<h3 id="同时使用-surge--charles-分析网络">同时使用 Surge + Charles 分析网络</h3>
+<p>打开 Charles 的 External Proxy Settings 设置 Charles 的外部代理为 Surge 的端口，即与上面系统网络设置的代理一致</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2017/12/02-4.png">
+<img src="/images/2017/12/02-4.png" alt=""  />
+</a>
+</div>
+
+</p>
+<h3 id="语法">语法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">// 基于域名判断并屏蔽（REJECT）请求  
+DOMAIN,pingma.qq.com,REJECT  
+// 基于域名后缀判断屏蔽（REJECT）请求  
+DOMAIN-SUFFIX,flurry.com,REJECT  
+// 基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走
+Packet-Tunnel-Provider DOMAIN-KEYWORD,google,Proxy,force-remote-dns  
+// 基于域名后缀判断请求走直连（DIRECT）  
+DOMAIN-SUFFIX,126.net,DIRECT  
+// Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。  
+IP-CIDR,91.108.56.0/22,Proxy,no-resolve  
+// 判断是否是局域网，如果是，走直连  
+IP-CIDR,192.168.0.0/16,DIRECT  
+// 判断服务器所在地，如果是国内，走直连  
+GEOIP,CN,DIRECT  
+// 其他的全部走代理  
+FINAL,Proxy  
+// 其他的全部不走代理  
+FINAL,DIRECT  
+</code></pre></div><h3 id="注意坑">注意坑</h3>
+<p>写完 [Rule] 后面需要加</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[Rule] 
+
+....
+
+GEOIP,CN,DIRECT
+FINAL,Proxy
+</code></pre></div><h3 id="参考链接">参考链接</h3>
+<ul>
+<li><a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb">Surge 原理与实现</a></li>
+<li><a href="https://medium.com/@scomper/surge-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-a1533c10e80b">Surge 新手使用指南</a></li>
+<li><a href="https://manual.nssurge.com/overview/configuration.html">Surge 官方配置教程</a></li>
+<li><a href="http://cloudstone.xin/2016/10/31/Mac-Surge-2-%E5%88%9D%E4%BD%93%E9%AA%8C/">Surge for Mac 2 初体验与教程</a></li>
+<li><a href="https://github.com/lhie1/Surge">Surge config</a></li>
+<li><a href="https://medium.com/@scomper/surge-for-mac-%E7%AE%80%E6%98%8E%E6%8C%87%E5%8D%97-f6f357b8f09c">Surge for Mac 简明指南</a></li>
+<li><a href="https://medium.com/@scomper/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B6%E4%BB%96%E8%AE%BE%E5%A4%87%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91-dd29e18853da">局域网其他设备共享上网</a></li>
+<li><a href="https://github.com/wujunchuan/wujunchuan.github.io/issues/1">解决Surge for Mac+Charles同时分析网络请求的办法 </a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/%E7%BF%BB%E5%A2%99/">翻墙</a>
+                                    
+                                    <a href="/tags/surge/">Surge</a>
+                                    
+                                    <a href="/tags/vpn/">VPN</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>公司项目 Git 管理流程及规范 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="目前公司项目 Git 管理规范是基于 git-flow 扩展而来。 git-flow 最先来源于 Vincent Driessen 一篇名为“一种成功的Git分支模型”的博文，后来 git-flow 被誉为在 Git 之上构建的一项软件开发最佳实践。 工具 通过安装工具可以帮助我们更方便按照 git-flow 工作流程进行" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="/">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/company-project-git/'>公司项目 Git 管理流程及规范</a></h2>
+                        <span class="date">2021.07.05</span>
+                    </div>
+                    <div class="post_content markdown"><p>目前公司项目 Git 管理规范是基于 git-flow 扩展而来。</p>
+<p>git-flow 最先来源于 Vincent Driessen 一篇名为<a href="https://nvie.com/posts/a-successful-git-branching-model/">“一种成功的Git分支模型”</a>的博文，后来 git-flow 被誉为在 Git 之上构建的一项软件开发最佳实践。</p>
+<h2 id="工具">工具</h2>
+<p>通过安装工具可以帮助我们更方便按照 git-flow 工作流程进行项目管理。</p>
+<h3 id="mac">Mac</h3>
+<blockquote>
+<p>brew install git-flow</p>
+</blockquote>
+<p><strong>其他终端安装方法，可以到 <a href="https://github.com/nvie/gitflow/wiki/Installation">这里</a> 查看。</strong></p>
+<h2 id="常用命令">常用命令</h2>
+<ul>
+<li><strong>初始化使用：</strong> <code>git flow init</code></li>
+<li><strong>创建 Feature 分支：</strong> <code>git flow feature start branch_name</code></li>
+<li><strong>创建 Release 分支：</strong> <code>git flow release start branch_name</code></li>
+<li><strong>结束 Release 分支：</strong> <code>git flow release finish branch_name</code></li>
+<li><strong>将结束 Release 分支时产生的 tag 推到远程：</strong> <code>git push --tags</code></li>
+</ul>
+<h2 id="公司项目-git-管理流程">公司项目 Git 管理流程</h2>
+<p>下面的流程图，展示了目前项目基于 git-flow 并结合公司业务拓展定义的 git 管理流程规范。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2021/07/company-project-git-01.png">
+<img src="/images/2021/07/company-project-git-01.png" alt="Local Image"  />
+</a>
+</div>
+
+</p>
+<h2 id="分支命名规范">分支命名规范</h2>
+<h3 id="需求开发分支命名规范">需求开发分支命名规范</h3>
+<blockquote>
+<p>版本号_开发人名称首字母_需求简述</p>
+</blockquote>
+<p>例如：feature/6.15.0_hgj_优化AfterPay介绍页面</p>
+<p>若使用 git-flow 工具命令创建</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow feature start 6.15.0_hgj_优化AfterPay介绍页面
+</code></pre></div><h3 id="发版分支命名规范">发版分支命名规范</h3>
+<blockquote>
+<p>发版的版本号</p>
+</blockquote>
+<p>例如：release/6.15.0</p>
+<p>若使用 git-flow 工具命令创建</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow release start 6.15.0
+</code></pre></div><h3 id="效果展示">效果展示</h3>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="gallery" href="/images/2021/07/company-project-git-02.png">
+<img src="/images/2021/07/company-project-git-02.png" alt="Local Image"  />
+</a>
+</div>
+
+</p>
+<h2 id="git-commit-规范">Git Commit 规范</h2>
+<p>为了更加方便查找 git commit 的日志，因此有必要在 commit 的时候进行备注说明类型。</p>
+<p>参考阮老师的文章：<a href="https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html">地址</a></p>
+<p>与团队成员约定在 commit 填写 message 的时候，在前面加多一个 type，具体的类型如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feat</td>
+<td>新功能（feature）</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>修补 bug</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>文档（documentation）</td>
+</tr>
+<tr>
+<td>style</td>
+<td>格式（不影响代码运行的变动）</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>重构（即不是新增功能，也不是修改bug的代码变动）</td>
+</tr>
+<tr>
+<td>test</td>
+<td>增加测试</td>
+</tr>
+<tr>
+<td>chore</td>
+<td>构建过程或辅助工具的变动</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>例子：feat: 划线价逻辑调整</p>
+</blockquote>
+<p><strong>注意冒号是使用英文的，且后面加多个空格。</strong></p>
+<h2 id="资料">资料</h2>
+<ul>
+<li><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html">git-flow 备忘清单</a></li>
+<li><a href="https://www.zybuluo.com/Roy270490837/note/835720">git-flow 流程规范</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="/tags/git/">Git</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+<link href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+<script src="/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>
