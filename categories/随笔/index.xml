@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>随笔 on GoJun</title>
-    <link>http://localhost:5000/categories/%E9%9A%8F%E7%AC%94/</link>
+    <link>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</link>
     <description>Recent content in 随笔 on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jan 2018 22:34:56 +0000</lastBuildDate><atom:link href="http://localhost:5000/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2018 22:34:56 +0000</lastBuildDate><atom:link href="http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>小米手机 Application Installation Failed</title>
-      <link>http://localhost:5000/posts/xiaomi-install-failed/</link>
+      <link>http://gaojun.me/posts/xiaomi-install-failed/</link>
       <pubDate>Sat, 13 Jan 2018 22:34:56 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/xiaomi-install-failed/</guid>
+      <guid>http://gaojun.me/posts/xiaomi-install-failed/</guid>
       <description>今天在开发中遇到了一个比较奇葩的问题，手机连接上电脑并且已经在 Android Studio 运行窗口看到设备，但是 App 就是一直安装不到 小米6 手机上, 也不能通过 adb 命令安装。 然后疯狂查找了一波资料，顺便在这里做了下解决过程的记录。 解</description>
     </item>
     
     <item>
       <title>如何为小米手机安装 Charles 证书</title>
-      <link>http://localhost:5000/posts/xiaomi-charles-crt/</link>
+      <link>http://gaojun.me/posts/xiaomi-charles-crt/</link>
       <pubDate>Sat, 25 Mar 2017 22:25:16 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/xiaomi-charles-crt/</guid>
+      <guid>http://gaojun.me/posts/xiaomi-charles-crt/</guid>
       <description>使用第三方浏览器下载 .pem 格式的文件 将这个文件放入小米的 DownLoad 文件夹下 将 .pem 文件修改为 .crt 格式 设置&amp;mdash;更多设置&amp;mdash;系统安全&amp;mdash;从存储设备安装&amp;ndash;选择文件，选定该文件 亲测，小</description>
     </item>
     
     <item>
       <title>如何给 Android 原生模拟器配置代理</title>
-      <link>http://localhost:5000/posts/android-setting-proxy/</link>
+      <link>http://gaojun.me/posts/android-setting-proxy/</link>
       <pubDate>Thu, 02 Mar 2017 22:14:37 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/android-setting-proxy/</guid>
+      <guid>http://gaojun.me/posts/android-setting-proxy/</guid>
       <description>原生模拟器 Android 4.4 设置 &amp;ndash;&amp;gt; 移动网络设置 &amp;ndash;&amp;gt; 接入点名称（APN）&amp;ndash;&amp;gt; T-Mobile US &amp;ndash;&amp;gt; 设置代理 代理：10.0.2.2 端口：8888 设置完之后，开启下飞行模式，过几秒再关闭</description>
     </item>
     

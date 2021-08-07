@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google Cloud on GoJun</title>
-    <link>http://localhost:5000/tags/google-cloud/</link>
+    <link>http://gaojun.me/tags/google-cloud/</link>
     <description>Recent content in Google Cloud on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 06 Jun 2018 00:25:23 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/google-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jun 2018 00:25:23 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/google-cloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何利用 Google Cloud 搭建 VPS</title>
-      <link>http://localhost:5000/posts/google-clound/</link>
+      <link>http://gaojun.me/posts/google-clound/</link>
       <pubDate>Wed, 06 Jun 2018 00:25:23 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/google-clound/</guid>
+      <guid>http://gaojun.me/posts/google-clound/</guid>
       <description>Google Cloud 官网 https://cloud.google.com/ 活动 现在申请 Google Cloud 赠送免费使用 300美元一年的有效期，使⽤用最低配的话，可以玩一年，每个⽉有 86G 的流量，个人使⽤足够了吧&amp;hellip;&amp;hellip; 准备 一张 VISA信⽤用卡 Google 账户 由于 Google 在中国</description>
     </item>
     

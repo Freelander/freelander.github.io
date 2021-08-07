@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>终端 on GoJun</title>
-    <link>http://localhost:5000/tags/%E7%BB%88%E7%AB%AF/</link>
+    <link>http://gaojun.me/tags/%E7%BB%88%E7%AB%AF/</link>
     <description>Recent content in 终端 on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 May 2020 23:23:29 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 May 2020 23:23:29 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac 如何让终端使用代理</title>
-      <link>http://localhost:5000/posts/mac-terminal-proxy/</link>
+      <link>http://gaojun.me/posts/mac-terminal-proxy/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/mac-terminal-proxy/</guid>
+      <guid>http://gaojun.me/posts/mac-terminal-proxy/</guid>
       <description>前提 iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令 得到： export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081 编辑 .zshrc 文件 vim ~/.zshrc 在文件最后添加以下信息 # proxy list alias proxy=&amp;#39;export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081&amp;#39; alias unproxy=&amp;#39;unset all_proxy&amp;#39; 保存退出，应用文件修改内容 source ~/.zshrc 开启使用代理模式 proxy</description>
     </item>
     

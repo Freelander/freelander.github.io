@@ -2,202 +2,202 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:5000/tags/android/</loc>
+    <loc>http://gaojun.me/tags/android/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/android/</loc>
+    <loc>http://gaojun.me/categories/android/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/</loc>
+    <loc>http://gaojun.me/categories/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/</loc>
+    <loc>http://gaojun.me/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/</loc>
+    <loc>http://gaojun.me/posts/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/</loc>
+    <loc>http://gaojun.me/tags/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-observer-mode/</loc>
+    <loc>http://gaojun.me/posts/android-observer-mode/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://gaojun.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2021-08-07T10:59:04+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/git/</loc>
+    <loc>http://gaojun.me/tags/git/</loc>
     <lastmod>2021-07-05T00:57:08+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/git/</loc>
+    <loc>http://gaojun.me/categories/git/</loc>
     <lastmod>2021-07-05T00:57:08+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/company-project-git/</loc>
+    <loc>http://gaojun.me/posts/company-project-git/</loc>
     <lastmod>2021-07-05T00:57:08+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-fps/</loc>
+    <loc>http://gaojun.me/posts/android-fps/</loc>
     <lastmod>2021-01-06T21:58:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/mac-terminal-proxy/</loc>
+    <loc>http://gaojun.me/posts/mac-terminal-proxy/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/vpn/</loc>
+    <loc>http://gaojun.me/tags/vpn/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/vpn/</loc>
+    <loc>http://gaojun.me/categories/vpn/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E4%BB%A3%E7%90%86/</loc>
+    <loc>http://gaojun.me/tags/%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://gaojun.me/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E7%BB%88%E7%AB%AF/</loc>
+    <loc>http://gaojun.me/tags/%E7%BB%88%E7%AB%AF/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E7%BF%BB%E5%A2%99/</loc>
+    <loc>http://gaojun.me/tags/%E7%BF%BB%E5%A2%99/</loc>
     <lastmod>2020-05-10T23:23:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/flutter/</loc>
+    <loc>http://gaojun.me/tags/flutter/</loc>
     <lastmod>2020-04-26T22:42:04+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/flutter/</loc>
+    <loc>http://gaojun.me/categories/flutter/</loc>
     <lastmod>2020-04-26T22:42:04+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-maven/</loc>
+    <loc>http://gaojun.me/posts/flutter-maven/</loc>
     <lastmod>2020-04-26T22:42:04+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-channel/</loc>
+    <loc>http://gaojun.me/posts/flutter-channel/</loc>
     <lastmod>2020-04-02T23:17:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-native/</loc>
+    <loc>http://gaojun.me/posts/flutter-native/</loc>
     <lastmod>2020-03-05T23:26:26+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-language/</loc>
+    <loc>http://gaojun.me/posts/flutter-language/</loc>
     <lastmod>2020-02-18T21:22:51+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-font/</loc>
+    <loc>http://gaojun.me/posts/flutter-font/</loc>
     <lastmod>2020-02-01T20:52:25+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/flutter-build/</loc>
+    <loc>http://gaojun.me/posts/flutter-build/</loc>
     <lastmod>2020-01-20T23:43:21+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-app-bundle/</loc>
+    <loc>http://gaojun.me/posts/android-app-bundle/</loc>
     <lastmod>2019-10-20T16:37:26+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/jenkins/</loc>
+    <loc>http://gaojun.me/tags/jenkins/</loc>
     <lastmod>2019-09-24T21:51:40+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/macos/</loc>
+    <loc>http://gaojun.me/tags/macos/</loc>
     <lastmod>2019-09-24T21:51:40+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/jenkins/</loc>
+    <loc>http://gaojun.me/posts/jenkins/</loc>
     <lastmod>2019-09-24T21:51:40+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/jenkins-frp/</loc>
+    <loc>http://gaojun.me/posts/jenkins-frp/</loc>
     <lastmod>2019-09-23T21:34:48+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-reduce-apk-size/</loc>
+    <loc>http://gaojun.me/posts/android-reduce-apk-size/</loc>
     <lastmod>2019-09-10T23:19:55+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/ios/</loc>
+    <loc>http://gaojun.me/tags/ios/</loc>
     <lastmod>2019-07-31T23:54:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/ios/</loc>
+    <loc>http://gaojun.me/categories/ios/</loc>
     <lastmod>2019-07-31T23:54:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/xcode/</loc>
+    <loc>http://gaojun.me/tags/xcode/</loc>
     <lastmod>2019-07-31T23:54:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/xcode-hot-key/</loc>
+    <loc>http://gaojun.me/posts/xcode-hot-key/</loc>
     <lastmod>2019-07-31T23:54:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-change-font/</loc>
+    <loc>http://gaojun.me/posts/android-change-font/</loc>
     <lastmod>2019-07-06T22:58:05+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/font/</loc>
+    <loc>http://gaojun.me/tags/font/</loc>
     <lastmod>2019-07-06T22:58:05+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/databinding/</loc>
+    <loc>http://gaojun.me/tags/databinding/</loc>
     <lastmod>2019-06-13T23:37:07+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/viewbindings/</loc>
+    <loc>http://gaojun.me/tags/viewbindings/</loc>
     <lastmod>2019-06-13T23:37:07+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-viewbindings/</loc>
+    <loc>http://gaojun.me/posts/android-viewbindings/</loc>
     <lastmod>2019-06-13T23:37:07+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/blog/</loc>
+    <loc>http://gaojun.me/tags/blog/</loc>
     <lastmod>2019-06-12T00:07:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/blog/</loc>
+    <loc>http://gaojun.me/categories/blog/</loc>
     <lastmod>2019-06-12T00:07:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/hello-blog/</loc>
+    <loc>http://gaojun.me/posts/hello-blog/</loc>
     <lastmod>2019-06-12T00:07:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/google-cloud/</loc>
+    <loc>http://gaojun.me/tags/google-cloud/</loc>
     <lastmod>2018-06-06T00:25:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/google-clound/</loc>
+    <loc>http://gaojun.me/posts/google-clound/</loc>
     <lastmod>2018-06-06T00:25:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/mac-crontab/</loc>
+    <loc>http://gaojun.me/posts/mac-crontab/</loc>
     <lastmod>2018-03-24T22:29:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/tools/</loc>
+    <loc>http://gaojun.me/tags/tools/</loc>
     <lastmod>2018-03-24T22:29:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/tools/</loc>
+    <loc>http://gaojun.me/categories/tools/</loc>
     <lastmod>2018-03-24T22:29:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/python/</loc>
+    <loc>http://gaojun.me/tags/python/</loc>
     <lastmod>2018-03-13T23:27:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/python/</loc>
+    <loc>http://gaojun.me/categories/python/</loc>
     <lastmod>2018-03-13T23:27:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/python-learn/</loc>
+    <loc>http://gaojun.me/posts/python-learn/</loc>
     <lastmod>2018-03-13T23:27:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E7%88%AC%E8%99%AB/</loc>
+    <loc>http://gaojun.me/tags/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2018-03-13T23:27:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/play-reviews-research/</loc>
+    <loc>http://gaojun.me/posts/play-reviews-research/</loc>
     <lastmod>2018-03-02T00:06:26+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/xiaomi-install-failed/</loc>
+    <loc>http://gaojun.me/posts/xiaomi-install-failed/</loc>
     <lastmod>2018-01-13T22:34:56+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2018-01-13T22:34:56+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/surge/</loc>
+    <loc>http://gaojun.me/tags/surge/</loc>
     <lastmod>2017-12-12T00:25:13+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/surge/</loc>
+    <loc>http://gaojun.me/posts/surge/</loc>
     <lastmod>2017-12-12T00:25:13+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-rtl/</loc>
+    <loc>http://gaojun.me/posts/android-rtl/</loc>
     <lastmod>2017-06-06T00:07:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/xiaomi-charles-crt/</loc>
+    <loc>http://gaojun.me/posts/xiaomi-charles-crt/</loc>
     <lastmod>2017-03-25T22:25:16+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-setting-proxy/</loc>
+    <loc>http://gaojun.me/posts/android-setting-proxy/</loc>
     <lastmod>2017-03-02T22:14:37+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/bottom-sheet-dialog-height/</loc>
+    <loc>http://gaojun.me/posts/bottom-sheet-dialog-height/</loc>
     <lastmod>2017-02-18T23:45:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/git-command/</loc>
+    <loc>http://gaojun.me/posts/git-command/</loc>
     <lastmod>2017-01-01T00:07:52+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/posts/android-resume/</loc>
+    <loc>http://gaojun.me/posts/android-resume/</loc>
     <lastmod>2016-12-12T00:26:10+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:5000/tags/%E9%9D%A2%E8%AF%95/</loc>
+    <loc>http://gaojun.me/tags/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2016-12-12T00:26:10+00:00</lastmod>
   </url>
 </urlset>

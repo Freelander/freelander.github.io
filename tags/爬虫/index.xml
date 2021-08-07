@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>爬虫 on GoJun</title>
-    <link>http://localhost:5000/tags/%E7%88%AC%E8%99%AB/</link>
+    <link>http://gaojun.me/tags/%E7%88%AC%E8%99%AB/</link>
     <description>Recent content in 爬虫 on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 13 Mar 2018 23:27:22 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Mar 2018 23:27:22 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Python3 爬取 Play 商店后台评论笔记记录</title>
-      <link>http://localhost:5000/posts/python-learn/</link>
+      <link>http://gaojun.me/posts/python-learn/</link>
       <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/python-learn/</guid>
+      <guid>http://gaojun.me/posts/python-learn/</guid>
       <description>Python selenium 三种等待方式 学习链接：https://huilansame.github.io/huilansame.github.io/archivers/sleep-implicitlywait-wait 项目</description>
     </item>
     
     <item>
       <title>使用 Python3 对在 Play 商店应用的评论爬取调研</title>
-      <link>http://localhost:5000/posts/play-reviews-research/</link>
+      <link>http://gaojun.me/posts/play-reviews-research/</link>
       <pubDate>Fri, 02 Mar 2018 00:06:26 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/play-reviews-research/</guid>
+      <guid>http://gaojun.me/posts/play-reviews-research/</guid>
       <description>背景/需求 背景/需求 方便团队方便查看每天收到来自 Play 商店用户的评论，及时从用户的反馈中发现问题，故写个脚本每天定时爬取评论数据，并且进行统计，爬取到的数据存进数据，后面提供接口给前端开发页面进行展示。 两</description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Font on GoJun</title>
-    <link>http://localhost:5000/tags/font/</link>
+    <link>http://gaojun.me/tags/font/</link>
     <description>Recent content in Font on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jul 2019 22:58:05 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/font/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jul 2019 22:58:05 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/font/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android 如何快速全局更换字体</title>
-      <link>http://localhost:5000/posts/android-change-font/</link>
+      <link>http://gaojun.me/posts/android-change-font/</link>
       <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/android-change-font/</guid>
+      <guid>http://gaojun.me/posts/android-change-font/</guid>
       <description>在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的</description>
     </item>
     

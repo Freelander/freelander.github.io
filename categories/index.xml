@@ -2,89 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on GoJun</title>
-    <link>http://localhost:5000/categories/</link>
+    <link>http://gaojun.me/categories/</link>
     <description>Recent content in Categories on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://localhost:5000/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://gaojun.me/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
-      <link>http://localhost:5000/categories/android/</link>
+      <link>http://gaojun.me/categories/android/</link>
       <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
       
-      <guid>http://localhost:5000/categories/android/</guid>
+      <guid>http://gaojun.me/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://localhost:5000/categories/git/</link>
+      <link>http://gaojun.me/categories/git/</link>
       <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
       
-      <guid>http://localhost:5000/categories/git/</guid>
+      <guid>http://gaojun.me/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPN</title>
-      <link>http://localhost:5000/categories/vpn/</link>
+      <link>http://gaojun.me/categories/vpn/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/vpn/</guid>
+      <guid>http://gaojun.me/categories/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flutter</title>
-      <link>http://localhost:5000/categories/flutter/</link>
+      <link>http://gaojun.me/categories/flutter/</link>
       <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/flutter/</guid>
+      <guid>http://gaojun.me/categories/flutter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iOS</title>
-      <link>http://localhost:5000/categories/ios/</link>
+      <link>http://gaojun.me/categories/ios/</link>
       <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/ios/</guid>
+      <guid>http://gaojun.me/categories/ios/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>http://localhost:5000/categories/blog/</link>
+      <link>http://gaojun.me/categories/blog/</link>
       <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/blog/</guid>
+      <guid>http://gaojun.me/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>http://localhost:5000/categories/tools/</link>
+      <link>http://gaojun.me/categories/tools/</link>
       <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/tools/</guid>
+      <guid>http://gaojun.me/categories/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://localhost:5000/categories/python/</link>
+      <link>http://gaojun.me/categories/python/</link>
       <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/python/</guid>
+      <guid>http://gaojun.me/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>随笔</title>
-      <link>http://localhost:5000/categories/%E9%9A%8F%E7%AC%94/</link>
+      <link>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</link>
       <pubDate>Sat, 13 Jan 2018 22:34:56 +0000</pubDate>
       
-      <guid>http://localhost:5000/categories/%E9%9A%8F%E7%AC%94/</guid>
+      <guid>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</guid>
       <description></description>
     </item>
     

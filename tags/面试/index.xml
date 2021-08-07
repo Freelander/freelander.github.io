@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>面试 on GoJun</title>
-    <link>http://localhost:5000/tags/%E9%9D%A2%E8%AF%95/</link>
+    <link>http://gaojun.me/tags/%E9%9D%A2%E8%AF%95/</link>
     <description>Recent content in 面试 on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Dec 2016 00:26:10 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Dec 2016 00:26:10 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>史上最全 Android 面试资料集合</title>
-      <link>http://localhost:5000/posts/android-resume/</link>
+      <link>http://gaojun.me/posts/android-resume/</link>
       <pubDate>Mon, 12 Dec 2016 00:26:10 +0000</pubDate>
       
-      <guid>http://localhost:5000/posts/android-resume/</guid>
+      <guid>http://gaojun.me/posts/android-resume/</guid>
       <description>最近看到很多人都在找工作, 而且很多人都感觉今年找工作比去年难很多, 竞争力也增加不少, 因此激发我整理这份资料, 希望能帮到正在找或者准备找工作的童鞋们. 本文已授权微信公众号 AndroidDeveloper （id: googdev） 独家发</description>
     </item>
     
