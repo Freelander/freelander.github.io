@@ -2,80 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on GoJun</title>
-    <link>/tags/android/</link>
+    <link>http://localhost:5000/tags/android/</link>
     <description>Recent content in Android on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 06 Jan 2021 21:58:23 +0000</lastBuildDate><atom:link href="/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://localhost:5000/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>带你通俗易懂了解 Android 观察者模式</title>
+      <link>http://localhost:5000/posts/android-observer-mode/</link>
+      <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
+      
+      <guid>http://localhost:5000/posts/android-observer-mode/</guid>
+      <description>介绍 设计模式有三大类分别是创建型模式、结构型模式和行为型模式， 而观察者模式是属于行为型模式中的一种。 观察者模式又称为 “发布/订阅模式”，是一个使用频率非常高的模式之一，主要的作用是解耦，将被观察者和观</description>
+    </item>
+    
     <item>
       <title>面试官问我：如何对 Android  App 进行 fps 分析</title>
-      <link>/posts/android-fps/</link>
+      <link>http://localhost:5000/posts/android-fps/</link>
       <pubDate>Wed, 06 Jan 2021 21:58:23 +0000</pubDate>
       
-      <guid>/posts/android-fps/</guid>
+      <guid>http://localhost:5000/posts/android-fps/</guid>
       <description>背景 界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。 结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS</description>
     </item>
     
     <item>
       <title>如何利用 Android App Bundle 进行 APK 瘦身 28%</title>
-      <link>/posts/android-app-bundle/</link>
+      <link>http://localhost:5000/posts/android-app-bundle/</link>
       <pubDate>Sun, 20 Oct 2019 16:37:26 +0000</pubDate>
       
-      <guid>/posts/android-app-bundle/</guid>
+      <guid>http://localhost:5000/posts/android-app-bundle/</guid>
       <description>介绍 Android App Bundle 是 Google 在 2018 年 IO 大会上推出一种新发布格式，通过此格式发布的应用，Google Play 商店会根据用户设备屏幕密度，CPU 架构 下发其对应的 APK，这就意味着用户下载的 APK 不会存在与自己设备不匹配的格式资源，</description>
     </item>
     
     <item>
       <title>终极 Apk 瘦身优化</title>
-      <link>/posts/android-reduce-apk-size/</link>
+      <link>http://localhost:5000/posts/android-reduce-apk-size/</link>
       <pubDate>Tue, 10 Sep 2019 23:19:55 +0000</pubDate>
       
-      <guid>/posts/android-reduce-apk-size/</guid>
+      <guid>http://localhost:5000/posts/android-reduce-apk-size/</guid>
       <description>前言 Apk 随着我们开发迭代逐渐的增大，越来越臃肿肥大，在下载安装过程中，它们耗费的流量会越多，安装等待时间也会越长，这就意味着下载转化率越低，进而影响到广告效果。 因此 Apk 瘦身是优化的重要一部分，开发有必要定</description>
     </item>
     
     <item>
       <title>Android 如何快速全局更换字体</title>
-      <link>/posts/android-change-font/</link>
+      <link>http://localhost:5000/posts/android-change-font/</link>
       <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
       
-      <guid>/posts/android-change-font/</guid>
+      <guid>http://localhost:5000/posts/android-change-font/</guid>
       <description>在 Android 8.0（API 26）和 Support 包 26 以上版本提供了一种可将自定义字体声明为 XML 布局中的资源更快更方便的方式，并且该种方式兼容 Android 4.1 版本以上，官方文档介绍 地址。 网上搜索了很多资料，在未有此特性时处理是相当麻烦的</description>
     </item>
     
     <item>
       <title>是时候让你项目用上 ViewBindings 了</title>
-      <link>/posts/android-viewbindings/</link>
+      <link>http://localhost:5000/posts/android-viewbindings/</link>
       <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
       
-      <guid>/posts/android-viewbindings/</guid>
+      <guid>http://localhost:5000/posts/android-viewbindings/</guid>
       <description>写在前面 相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久</description>
     </item>
     
     <item>
       <title>Android 中东阿拉伯语适配，看这一篇够了</title>
-      <link>/posts/android-rtl/</link>
+      <link>http://localhost:5000/posts/android-rtl/</link>
       <pubDate>Tue, 06 Jun 2017 00:07:52 +0000</pubDate>
       
-      <guid>/posts/android-rtl/</guid>
+      <guid>http://localhost:5000/posts/android-rtl/</guid>
       <description>RTL 语言由来 RTL 是 Right-to-left(从右向左) 的缩写。其意为人们书写阅读习惯是从右向左，朝左继续的，常见的 RTL 语言有阿拉伯语，希伯来语等。 看一下对比： LTR RTL 那么对于这种从右到左的习惯，在 Android 布局中有没</description>
     </item>
     
     <item>
       <title>如何设置 BottomSheetDialog 高度</title>
-      <link>/posts/bottom-sheet-dialog-height/</link>
+      <link>http://localhost:5000/posts/bottom-sheet-dialog-height/</link>
       <pubDate>Sat, 18 Feb 2017 23:45:23 +0000</pubDate>
       
-      <guid>/posts/bottom-sheet-dialog-height/</guid>
+      <guid>http://localhost:5000/posts/bottom-sheet-dialog-height/</guid>
       <description>BottomSheetDialog 控制初始高度是跟 behavior_peekHeight 属性有关 样式主题设置 &amp;lt;style name=&amp;#34;BottomSheetDialog&amp;#34; parent=&amp;#34;Theme.Design.Light.BottomSheetDialog&amp;#34;&amp;gt; &amp;lt;item name=&amp;#34;bottomSheetStyle&amp;#34;&amp;gt;@style/bottomSheetStyleWrapper&amp;lt;/item&amp;gt; &amp;lt;/style&amp;gt; &amp;lt;style name=&amp;#34;bottomSheetStyleWrapper&amp;#34; parent=&amp;#34;Widget.Design.BottomSheet.Modal&amp;#34;&amp;gt; &amp;lt;item name=&amp;#34;behavior_peekHeight&amp;#34;&amp;gt;500dp&amp;lt;/item&amp;gt; &amp;lt;/style&amp;gt; &amp;lt;!--代码中应用--&amp;gt; BottomSheetDialog dialog = new BottomSheetDialog(this, R.style.BottomSheetDialog); dialog.setContentView(R.layout.layout_bottom_sheet); dialog.show(); 动态代码设置 Dialog 的布局最外层使用 RelativeLayout 或者 ConstraintLayout, 其他控件设置高度无法生效 需要在子内容布局设置高</description>
     </item>
     
     <item>
       <title>史上最全 Android 面试资料集合</title>
-      <link>/posts/android-resume/</link>
+      <link>http://localhost:5000/posts/android-resume/</link>
       <pubDate>Mon, 12 Dec 2016 00:26:10 +0000</pubDate>
       
-      <guid>/posts/android-resume/</guid>
+      <guid>http://localhost:5000/posts/android-resume/</guid>
       <description>最近看到很多人都在找工作, 而且很多人都感觉今年找工作比去年难很多, 竞争力也增加不少, 因此激发我整理这份资料, 希望能帮到正在找或者准备找工作的童鞋们. 本文已授权微信公众号 AndroidDeveloper （id: googdev） 独家发</description>
     </item>
     

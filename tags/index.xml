@@ -2,206 +2,215 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on GoJun</title>
-    <link>/tags/</link>
+    <link>http://localhost:5000/tags/</link>
     <description>Recent content in Tags on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Jul 2021 00:57:08 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://localhost:5000/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git</title>
-      <link>/tags/git/</link>
-      <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
+      <title>Android</title>
+      <link>http://localhost:5000/tags/android/</link>
+      <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
       
-      <guid>/tags/git/</guid>
+      <guid>http://localhost:5000/tags/android/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Android</title>
-      <link>/tags/android/</link>
-      <pubDate>Wed, 06 Jan 2021 21:58:23 +0000</pubDate>
+      <title>设计模式</title>
+      <link>http://localhost:5000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
       
-      <guid>/tags/android/</guid>
+      <guid>http://localhost:5000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://localhost:5000/tags/git/</link>
+      <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
+      
+      <guid>http://localhost:5000/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPN</title>
-      <link>/tags/vpn/</link>
+      <link>http://localhost:5000/tags/vpn/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>/tags/vpn/</guid>
+      <guid>http://localhost:5000/tags/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>代理</title>
-      <link>/tags/%E4%BB%A3%E7%90%86/</link>
+      <link>http://localhost:5000/tags/%E4%BB%A3%E7%90%86/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>/tags/%E4%BB%A3%E7%90%86/</guid>
+      <guid>http://localhost:5000/tags/%E4%BB%A3%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>/tags/%E5%B7%A5%E5%85%B7/</link>
+      <link>http://localhost:5000/tags/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>/tags/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://localhost:5000/tags/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>终端</title>
-      <link>/tags/%E7%BB%88%E7%AB%AF/</link>
+      <link>http://localhost:5000/tags/%E7%BB%88%E7%AB%AF/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>/tags/%E7%BB%88%E7%AB%AF/</guid>
+      <guid>http://localhost:5000/tags/%E7%BB%88%E7%AB%AF/</guid>
       <description></description>
     </item>
     
     <item>
       <title>翻墙</title>
-      <link>/tags/%E7%BF%BB%E5%A2%99/</link>
+      <link>http://localhost:5000/tags/%E7%BF%BB%E5%A2%99/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>/tags/%E7%BF%BB%E5%A2%99/</guid>
+      <guid>http://localhost:5000/tags/%E7%BF%BB%E5%A2%99/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flutter</title>
-      <link>/tags/flutter/</link>
+      <link>http://localhost:5000/tags/flutter/</link>
       <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
       
-      <guid>/tags/flutter/</guid>
+      <guid>http://localhost:5000/tags/flutter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jenkins</title>
-      <link>/tags/jenkins/</link>
+      <link>http://localhost:5000/tags/jenkins/</link>
       <pubDate>Tue, 24 Sep 2019 21:51:40 +0000</pubDate>
       
-      <guid>/tags/jenkins/</guid>
+      <guid>http://localhost:5000/tags/jenkins/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MacOs</title>
-      <link>/tags/macos/</link>
+      <link>http://localhost:5000/tags/macos/</link>
       <pubDate>Tue, 24 Sep 2019 21:51:40 +0000</pubDate>
       
-      <guid>/tags/macos/</guid>
+      <guid>http://localhost:5000/tags/macos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iOS</title>
-      <link>/tags/ios/</link>
+      <link>http://localhost:5000/tags/ios/</link>
       <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
       
-      <guid>/tags/ios/</guid>
+      <guid>http://localhost:5000/tags/ios/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xcode</title>
-      <link>/tags/xcode/</link>
+      <link>http://localhost:5000/tags/xcode/</link>
       <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
       
-      <guid>/tags/xcode/</guid>
+      <guid>http://localhost:5000/tags/xcode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Font</title>
-      <link>/tags/font/</link>
+      <link>http://localhost:5000/tags/font/</link>
       <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
       
-      <guid>/tags/font/</guid>
+      <guid>http://localhost:5000/tags/font/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DataBinding</title>
-      <link>/tags/databinding/</link>
+      <link>http://localhost:5000/tags/databinding/</link>
       <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
       
-      <guid>/tags/databinding/</guid>
+      <guid>http://localhost:5000/tags/databinding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ViewBindings</title>
-      <link>/tags/viewbindings/</link>
+      <link>http://localhost:5000/tags/viewbindings/</link>
       <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
       
-      <guid>/tags/viewbindings/</guid>
+      <guid>http://localhost:5000/tags/viewbindings/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>/tags/blog/</link>
+      <link>http://localhost:5000/tags/blog/</link>
       <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
       
-      <guid>/tags/blog/</guid>
+      <guid>http://localhost:5000/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google Cloud</title>
-      <link>/tags/google-cloud/</link>
+      <link>http://localhost:5000/tags/google-cloud/</link>
       <pubDate>Wed, 06 Jun 2018 00:25:23 +0000</pubDate>
       
-      <guid>/tags/google-cloud/</guid>
+      <guid>http://localhost:5000/tags/google-cloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>/tags/tools/</link>
+      <link>http://localhost:5000/tags/tools/</link>
       <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
       
-      <guid>/tags/tools/</guid>
+      <guid>http://localhost:5000/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/tags/python/</link>
+      <link>http://localhost:5000/tags/python/</link>
       <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>http://localhost:5000/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>爬虫</title>
-      <link>/tags/%E7%88%AC%E8%99%AB/</link>
+      <link>http://localhost:5000/tags/%E7%88%AC%E8%99%AB/</link>
       <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
       
-      <guid>/tags/%E7%88%AC%E8%99%AB/</guid>
+      <guid>http://localhost:5000/tags/%E7%88%AC%E8%99%AB/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Surge</title>
-      <link>/tags/surge/</link>
+      <link>http://localhost:5000/tags/surge/</link>
       <pubDate>Tue, 12 Dec 2017 00:25:13 +0000</pubDate>
       
-      <guid>/tags/surge/</guid>
+      <guid>http://localhost:5000/tags/surge/</guid>
       <description></description>
     </item>
     
     <item>
       <title>面试</title>
-      <link>/tags/%E9%9D%A2%E8%AF%95/</link>
+      <link>http://localhost:5000/tags/%E9%9D%A2%E8%AF%95/</link>
       <pubDate>Mon, 12 Dec 2016 00:26:10 +0000</pubDate>
       
-      <guid>/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <guid>http://localhost:5000/tags/%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
     </item>
     

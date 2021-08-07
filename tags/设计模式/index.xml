@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on GoJun</title>
+    <link>http://localhost:5000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://localhost:5000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>带你通俗易懂了解 Android 观察者模式</title>
+      <link>http://localhost:5000/posts/android-observer-mode/</link>
+      <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
+      
+      <guid>http://localhost:5000/posts/android-observer-mode/</guid>
+      <description>介绍 设计模式有三大类分别是创建型模式、结构型模式和行为型模式， 而观察者模式是属于行为型模式中的一种。 观察者模式又称为 “发布/订阅模式”，是一个使用频率非常高的模式之一，主要的作用是解耦，将被观察者和观</description>
+    </item>
+    
+  </channel>
+</rss>

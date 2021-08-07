@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ViewBindings on GoJun</title>
-    <link>/tags/viewbindings/</link>
+    <link>http://localhost:5000/tags/viewbindings/</link>
     <description>Recent content in ViewBindings on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 13 Jun 2019 23:37:07 +0000</lastBuildDate><atom:link href="/tags/viewbindings/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jun 2019 23:37:07 +0000</lastBuildDate><atom:link href="http://localhost:5000/tags/viewbindings/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>是时候让你项目用上 ViewBindings 了</title>
-      <link>/posts/android-viewbindings/</link>
+      <link>http://localhost:5000/posts/android-viewbindings/</link>
       <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
       
-      <guid>/posts/android-viewbindings/</guid>
+      <guid>http://localhost:5000/posts/android-viewbindings/</guid>
       <description>写在前面 相信大多数人在写 findViewById 都是烦恼的，不少人会使用 ButterKnife 来简化，利用插件会自动生成绑定 View 代码，可是一旦界面控件多时候，就会出现几十行甚至上百行的 BindView 代码。此时有没有更好的框架来帮我们呢？ 答案是有的，在前不久</description>
     </item>
     
