@@ -2,89 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on GoJun</title>
-    <link>http://gaojun.me/categories/</link>
+    <link>https://gojun.me/categories/</link>
     <description>Recent content in Categories on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="http://gaojun.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="https://gojun.me/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
-      <link>http://gaojun.me/categories/android/</link>
+      <link>https://gojun.me/categories/android/</link>
       <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
       
-      <guid>http://gaojun.me/categories/android/</guid>
+      <guid>https://gojun.me/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://gaojun.me/categories/git/</link>
+      <link>https://gojun.me/categories/git/</link>
       <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
       
-      <guid>http://gaojun.me/categories/git/</guid>
+      <guid>https://gojun.me/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPN</title>
-      <link>http://gaojun.me/categories/vpn/</link>
+      <link>https://gojun.me/categories/vpn/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/vpn/</guid>
+      <guid>https://gojun.me/categories/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flutter</title>
-      <link>http://gaojun.me/categories/flutter/</link>
+      <link>https://gojun.me/categories/flutter/</link>
       <pubDate>Sun, 26 Apr 2020 22:42:04 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/flutter/</guid>
+      <guid>https://gojun.me/categories/flutter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iOS</title>
-      <link>http://gaojun.me/categories/ios/</link>
+      <link>https://gojun.me/categories/ios/</link>
       <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/ios/</guid>
+      <guid>https://gojun.me/categories/ios/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>http://gaojun.me/categories/blog/</link>
+      <link>https://gojun.me/categories/blog/</link>
       <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/blog/</guid>
+      <guid>https://gojun.me/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>http://gaojun.me/categories/tools/</link>
+      <link>https://gojun.me/categories/tools/</link>
       <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/tools/</guid>
+      <guid>https://gojun.me/categories/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://gaojun.me/categories/python/</link>
+      <link>https://gojun.me/categories/python/</link>
       <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/python/</guid>
+      <guid>https://gojun.me/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>随笔</title>
-      <link>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</link>
+      <link>https://gojun.me/categories/%E9%9A%8F%E7%AC%94/</link>
       <pubDate>Sat, 13 Jan 2018 22:34:56 +0000</pubDate>
       
-      <guid>http://gaojun.me/categories/%E9%9A%8F%E7%AC%94/</guid>
+      <guid>https://gojun.me/categories/%E9%9A%8F%E7%AC%94/</guid>
       <description></description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on GoJun</title>
-    <link>http://gaojun.me/categories/blog/</link>
+    <link>https://gojun.me/categories/blog/</link>
     <description>Recent content in Blog on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 12 Jun 2019 00:07:52 +0000</lastBuildDate><atom:link href="http://gaojun.me/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jun 2019 00:07:52 +0000</lastBuildDate><atom:link href="https://gojun.me/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎来到我的新博客</title>
-      <link>http://gaojun.me/posts/hello-blog/</link>
+      <link>https://gojun.me/posts/hello-blog/</link>
       <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
       
-      <guid>http://gaojun.me/posts/hello-blog/</guid>
+      <guid>https://gojun.me/posts/hello-blog/</guid>
       <description>教程 手把手教你使用Hexo + Github Pages搭建个人独立博客 使用Hexo在Github上搭建专属博客之技术总结 主题配置 遇到问题 FATAL Port 4000 has been used. Try other port instead. FATAL Something&amp;#39;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html 解决方案： sudo hexo s -p 5000 Hexo 命令 hexo generate (hexo g) 生</description>
     </item>
     

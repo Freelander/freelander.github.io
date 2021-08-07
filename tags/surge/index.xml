@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Surge on GoJun</title>
-    <link>http://gaojun.me/tags/surge/</link>
+    <link>https://gojun.me/tags/surge/</link>
     <description>Recent content in Surge on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Dec 2017 00:25:13 +0000</lastBuildDate><atom:link href="http://gaojun.me/tags/surge/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Dec 2017 00:25:13 +0000</lastBuildDate><atom:link href="https://gojun.me/tags/surge/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>带你玩转 Surge 网络调试神器</title>
-      <link>http://gaojun.me/posts/surge/</link>
+      <link>https://gojun.me/posts/surge/</link>
       <pubDate>Tue, 12 Dec 2017 00:25:13 +0000</pubDate>
       
-      <guid>http://gaojun.me/posts/surge/</guid>
+      <guid>https://gojun.me/posts/surge/</guid>
       <description>简单了解 Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事</description>
     </item>
     

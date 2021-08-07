@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN on GoJun</title>
-    <link>http://gaojun.me/categories/vpn/</link>
+    <link>https://gojun.me/categories/vpn/</link>
     <description>Recent content in VPN on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 May 2020 23:23:29 +0000</lastBuildDate><atom:link href="http://gaojun.me/categories/vpn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 May 2020 23:23:29 +0000</lastBuildDate><atom:link href="https://gojun.me/categories/vpn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac 如何让终端使用代理</title>
-      <link>http://gaojun.me/posts/mac-terminal-proxy/</link>
+      <link>https://gojun.me/posts/mac-terminal-proxy/</link>
       <pubDate>Sun, 10 May 2020 23:23:29 +0000</pubDate>
       
-      <guid>http://gaojun.me/posts/mac-terminal-proxy/</guid>
+      <guid>https://gojun.me/posts/mac-terminal-proxy/</guid>
       <description>前提 iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令 得到： export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081 编辑 .zshrc 文件 vim ~/.zshrc 在文件最后添加以下信息 # proxy list alias proxy=&amp;#39;export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081&amp;#39; alias unproxy=&amp;#39;unset all_proxy&amp;#39; 保存退出，应用文件修改内容 source ~/.zshrc 开启使用代理模式 proxy</description>
     </item>
     
     <item>
       <title>如何利用 Google Cloud 搭建 VPS</title>
-      <link>http://gaojun.me/posts/google-clound/</link>
+      <link>https://gojun.me/posts/google-clound/</link>
       <pubDate>Wed, 06 Jun 2018 00:25:23 +0000</pubDate>
       
-      <guid>http://gaojun.me/posts/google-clound/</guid>
+      <guid>https://gojun.me/posts/google-clound/</guid>
       <description>Google Cloud 官网 https://cloud.google.com/ 活动 现在申请 Google Cloud 赠送免费使用 300美元一年的有效期，使⽤用最低配的话，可以玩一年，每个⽉有 86G 的流量，个人使⽤足够了吧&amp;hellip;&amp;hellip; 准备 一张 VISA信⽤用卡 Google 账户 由于 Google 在中国</description>
     </item>
     
     <item>
       <title>带你玩转 Surge 网络调试神器</title>
-      <link>http://gaojun.me/posts/surge/</link>
+      <link>https://gojun.me/posts/surge/</link>
       <pubDate>Tue, 12 Dec 2017 00:25:13 +0000</pubDate>
       
-      <guid>http://gaojun.me/posts/surge/</guid>
+      <guid>https://gojun.me/posts/surge/</guid>
       <description>简单了解 Surge 是基于 iOS 9 新增的“网络扩展”（Network Extension）API[3] 开发的一款网络调试工具。作为首个借用此软件可使用 Shadowsocks 的 iOS 9 应用，中国大陆网友将其广泛运用于突破网络审查。 Surge 可做很多事</description>
     </item>
     
