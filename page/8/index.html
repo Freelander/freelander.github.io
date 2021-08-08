@@ -89,6 +89,37 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
+        <h2><a href='/posts/bottom-sheet-dialog-height/'>如何设置 BottomSheetDialog 高度</a></h2>
+    </div>
+    
+    <div class="list">
+        <div class="post_content markdown">
+            <p>BottomSheetDialog 控制初始高度是跟 behavior_peekHeight 属性有关 样式主题设置 &lt;style name=&#34;BottomSheetDialog&#34; parent=&#34;Theme.Design.Light.BottomSheetDialog&#34;&gt; &lt;item name=&#34;bottomSheetStyle&#34;&gt;@style/bottomSheetStyleWrapper&lt;/item&gt; &lt;/style&gt; &lt;style name=&#34;bottomSheetStyleWrapper&#34; parent=&#34;Widget.Design.BottomSheet.Modal&#34;&gt; &lt;item name=&#34;behavior_peekHeight&#34;&gt;500dp&lt;/item&gt; &lt;/style&gt; &lt;!--代码中应用--&gt; BottomSheetDialog dialog = new BottomSheetDialog(this, R.style.BottomSheetDialog); dialog.setContentView(R.layout.layout_bottom_sheet); dialog.show(); 动态代码设置 Dialog 的布局最外层使用 RelativeLayout 或者 ConstraintLayout, 其他控件设置高度无法生效 需要在子内容布局设置高......</p>
+        </div>
+    </div>
+    
+    <div class="post_footer">
+        <div class="meta">
+            <div class="info">
+                <span class="field">
+                    <i class="ri-map-pin-time-line"></i>
+                    <span class="date">2017.02.18</span>
+                </span>
+                
+                <span class="field tags">
+                    <i class="ri-stack-line"></i>
+                    
+                    <a href="https://gojun.me/tags/android/">Android</a>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="post animated fadeInDown">
+    <div class="post_title">
         <h2><a href='/posts/git-command/'>常用 Git 相关命令清单</a></h2>
     </div>
     

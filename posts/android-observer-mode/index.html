@@ -8,7 +8,7 @@
 	
 	
 	
-	<title>带你通俗易懂了解 Android 观察者模式 ｜ GoJun</title>
+	<title>通俗易懂了解 Android 设计模式 - 观察者模式 ｜ GoJun</title>
 	
     
     
@@ -85,7 +85,7 @@
             <div class="post_page">
                 <div class="post animate__animated animate__fadeInDown">
                     <div class="post_title post_detail_title">
-                        <h2><a href='/posts/android-observer-mode/'>带你通俗易懂了解 Android 观察者模式</a></h2>
+                        <h2><a href='/posts/android-observer-mode/'>通俗易懂了解 Android 设计模式 - 观察者模式</a></h2>
                         <span class="date">2021.08.07</span>
                     </div>
                     <div class="post_content markdown"><h3 id="介绍">介绍</h3>
@@ -103,7 +103,7 @@
 <p>
 
 <div class="fancybox">
-<a data-fancybox="gallery" href="/images/2021/08/android-observer-mode-02.png">
+<a data-fancybox="demo" href="/images/2021/08/android-observer-mode-02.png">
 <img src="/images/2021/08/android-observer-mode-02.png" alt="img"  />
 </a>
 </div>
@@ -142,18 +142,18 @@
 <span class="o">}</span>
 
 </code></pre></div><h4 id="被观察者">被观察者</h4>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">/**
- * Description: 公司作为被观察者
- */
-public class Company extends Observable {
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Description: 公司作为被观察者
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Company</span> <span class="kd">extends</span> <span class="n">Observable</span> <span class="o">{</span>
 
-    public void postNoticeMsg(String msg) {
-        // 标识状态或者内容发生改变
-        setChanged();
-        // 通知所有员工
-        notifyObservers(msg);
-    }
-}
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">postNoticeMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 标识状态或者内容发生改变
+</span><span class="c1"></span>        <span class="n">setChanged</span><span class="o">();</span>
+        <span class="c1">// 通知所有员工
+</span><span class="c1"></span>        <span class="n">notifyObservers</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div><h3 id="测试代码">测试代码</h3>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
 </span><span class="cm"> * Description:测试
@@ -185,14 +185,14 @@ public class Company extends Observable {
 <p>
 
 <div class="fancybox">
-<a data-fancybox="gallery" href="/images/2021/08/android-observer-mode-01.png">
+<a data-fancybox="demo" href="/images/2021/08/android-observer-mode-01.png">
 <img src="/images/2021/08/android-observer-mode-01.png" alt="img"  />
 </a>
 </div>
 
 </p>
 <p>从结果来看，所有被注册到公司的员工，公司只要发送通知，底下所有员工都能收到消息，这就是观察者模式的一对多依赖关系，它们之间没有任何耦合。</p>
-<h3 id="小结">小结</h3>
+<h3 id="总结">总结</h3>
 <p>从上面例子带大家简单了解下观察者模式，Observer 和 Observable 均是 Java JDK 中的内置类型，可见观察者模式是非常重要的。</p>
 <p>其实观察模式在 Android 里被广泛应用，简单列举下应用的地方：</p>
 <ul>
@@ -212,6 +212,11 @@ public class Company extends Observable {
 <li>在使用观察者模式时，需要考虑开发和运行效率问题，程序中包括一个被观察者、多个观察者、开发和调试等内容会比较复杂，而且在 Java 中消息的通知默认是顺序执行的，
 一个观察者卡顿，会影响到整体的执行效率，在这种情况下，一般考虑采用异步的方式；</li>
 <li>滥用会造成冗余的数据通知。</li>
+</ul>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li><a href="https://programmer.help/blogs/android-design-patterns-observer-patterns.html">Android Design Patterns - Observer Patterns</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/143479553">Android 设计模式学习（二）观察者模式应用实例</a></li>
 </ul>
 </div>
                     <div class="post_footer">

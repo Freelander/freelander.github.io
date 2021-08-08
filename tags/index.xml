@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>Blog</title>
+      <link>https://gojun.me/tags/blog/</link>
+      <pubDate>Sun, 18 Jul 2021 14:13:41 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Git</title>
       <link>https://gojun.me/tags/git/</link>
       <pubDate>Mon, 05 Jul 2021 00:57:08 +0800</pubDate>
@@ -148,15 +157,6 @@
       <pubDate>Thu, 13 Jun 2019 23:37:07 +0000</pubDate>
       
       <guid>https://gojun.me/tags/viewbindings/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
-      <link>https://gojun.me/tags/blog/</link>
-      <pubDate>Wed, 12 Jun 2019 00:07:52 +0000</pubDate>
-      
-      <guid>https://gojun.me/tags/blog/</guid>
       <description></description>
     </item>
     

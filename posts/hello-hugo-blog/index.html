@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>这可能是我最喜欢的博客主题了 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="之前博客用到的是 Hexo 框架搭建，感兴趣的同学可以到我 欢迎来到我的新博客 这篇文章看看。 在一次偶然的机会我在逛 GitHub 的时候，发现了一款我一看到就喜欢上的博客主题，无论字体字号、代码风格、排版、浏览大图等等我都很喜" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="https://gojun.me/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.mecss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://gojun.me">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://gojun.me/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/hello-hugo-blog/'>这可能是我最喜欢的博客主题了</a></h2>
+                        <span class="date">2021.07.18</span>
+                    </div>
+                    <div class="post_content markdown"><p>之前博客用到的是 Hexo 框架搭建，感兴趣的同学可以到我 <a href="https://gojun.me/posts/hello-blog/">欢迎来到我的新博客</a> 这篇文章看看。</p>
+<p>在一次偶然的机会我在逛 GitHub 的时候，发现了一款我一看到就喜欢上的博客主题，无论字体字号、代码风格、排版、浏览大图等等我都很喜欢，
+果断将自己目前的博客主题换成它这个，话不多说奉上我喜欢上的博客主题 GitHub 地址：<a href="https://github.com/varkai/hugo-theme-zozo">hugo-theme-zozo</a>。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/07/hello-hugo-blog-01.png">
+<img src="/images/2021/07/hello-hugo-blog-01.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<p>由于该主题是使用 Hugo 框架搭建的，因此我也要从原来 Hexo 框架切换过来，初步评估了下切换过来并不麻烦，于是就开始用 Hugo 框架来搭建博客之路了。</p>
+<h3 id="安装-hugo">安装 Hugo</h3>
+<p>Hugo 是由 Go 语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。</p>
+<p>项目地址：<a href="https://github.com/gohugoio/hugo">https://github.com/gohugoio/hugo</a></p>
+<p>Mac 安装方法：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">brew install hugo
+</code></pre></div><p>更多终端安装方法，请到 Hugo 官方文档查看 <a href="https://gohugo.io/getting-started/installing/">Install Hugo</a></p>
+<h3 id="创建站点">创建站点</h3>
+<p>即在你指定路径下，创建存放博客的文件夹，执行的命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo new site My-Blog-Hugo
+</code></pre></div><p>站点目录结构</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">▸ archetypes/
+▸ content/
+▸ layouts/
+▸ static/
+▸ data/
+▸ themes/
+  config.toml
+</code></pre></div><p>其中 <code>config.toml</code> 是配置文件，<code>themes</code> 是存放博客主题目录，<code>content</code> 是存放博客文章及本地图片目录，其他目录作用还有待挖掘。</p>
+<h3 id="安装喜欢的主题">安装喜欢的主题</h3>
+<p>终于到要安装我喜欢的主题环节了，迫不及待按照 <a href="https://github.com/varkai/hugo-theme-zozo">README</a> 文件的指导安装。</p>
+<p>进入到刚创建的 <code>My-Blog-Hugo</code> 目录下，将主题克隆下来：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/varkai/hugo-theme-zozo themes/zozo
+</code></pre></div><h3 id="创建第一篇文章">创建第一篇文章</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo new posts/hello-blog.md
+</code></pre></div><p>执行命令之后，会在 <code>content</code> 目录下新创建 <code>posts</code> 目录，专门存放文章的文件。</p>
+<p>打开 <code>hello-blog.md</code> 文件</p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">---
+title: &#34;Hello Blog&#34;
+date: 2021-08-08T15:10:30+08:00
+draft: true
+---
+</code></pre></div><p>发现日期格式跟之前 hexo 框架的 <code>2019-10-20 16:37:26</code> 不太一样了，有可能不兼容后面再看看是否需要调整，
+另外发现 <code>draft</code> 参数，注意了这个参数，若是要将写好的文章进行发布，值需要改为 <code>false</code>。</p>
+<h3 id="迁移博客">迁移博客</h3>
+<p>安装完主题并按文档配置好相关信息后，就要开始从原来文件夹里的文章拷贝到 <code>posts</code> 目录下，并新增 <code>draft</code> 参数到文件配置头，值设置为 <code>false</code>。</p>
+<p>还有之前本地存放的图片资源，在 content 目录下新建 images 目录全部拷贝过来。</p>
+<h3 id="本地预览">本地预览</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo server --port=3000 -D
+</code></pre></div><p>执行完命令之后，浏览器输入 <a href="http://localhost:3000">http://localhost:3000</a> 即可预览了，预览中发现有什么修改地方，本地文件修改完后，回到浏览器会自动刷新。</p>
+<h3 id="构建生成网站内容">构建生成网站内容</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo -d public
+</code></pre></div><p>执行完命令之后，会在当前站点目录下，生成一个 <code>public</code> 文件夹，里面就是站点的文件。</p>
+<h3 id="关联-git-并提交">关联 Git 并提交</h3>
+<p>进入到 <code>public</code> 文件夹下，关联上我的博客 git 仓库，</p>
+<p>注意：这里操作由于生成文件与远程仓库可能会有冲突，建议操作步骤是</p>
+<p>本地先创建 <code>public</code> 文件夹，关联上远程仓库，拉去代码回来，将文件全部删除提交 commit 后 push 上去，然后再执行 hugo -d public 生成网站内容命令，之后再将新生成的内容提交到远程仓库。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 初始化 Git</span>
+git init
+
+<span class="c1"># 关联远程仓库</span>
+git remote add origin git@github.com:Freelander/freelander.github.io.git
+
+<span class="c1"># 拉取代码回来将文件删除又 push 上去</span>
+
+... 省略 git 操作命令
+
+<span class="c1"># 再执行 hugo 生成网站内容命令</span>
+hugo -d public
+
+<span class="c1"># 查看当前修改状态</span>
+git status 
+
+<span class="c1"># 添加所有修改过的文件。你也可以只添加某个文件。</span>
+git add .  
+
+<span class="c1"># commit 信息</span>
+git commit -m <span class="s2">&#34;New blog style&#34;</span>
+
+<span class="c1"># 提交代码</span>
+git push origin master
+</code></pre></div><h3 id="给博客增加图片浏览功能">给博客增加图片浏览功能</h3>
+<p>这里利用了 <a href="https://github.com/fancyapps/fancybox">fancybox</a> 来实现图片浏览大图，克隆的主题里已有了 fancybox 的 js 及 css 文件，就是还需要另外配置下才能支持</p>
+<ol>
+<li>在根目录下的 <code>config.toml</code> 配置文件里 <code>[param]</code> 下追加参数 <code>fancybox = true</code>；</li>
+<li>在 <code>themes/zozo/layouts/_default/_markup/</code> 路径下现金一个文件 <code>render-image.html</code>；</li>
+<li>贴上文件内容：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">{{if .Page.Site.Params.fancybox }}
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fancybox&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">data-fancybox</span><span class="o">=</span><span class="s">&#34;gallery&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Destination | safeURL }}&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ .Destination | safeURL }}&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;{{ .Text }}&#34;</span> <span class="err">{{</span> <span class="na">with</span> <span class="err">.</span><span class="na">Title</span><span class="err">}}</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;{{ . }}&#34;</span><span class="err">{{</span> <span class="na">end</span> <span class="err">}}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{{ end }}
+</code></pre></div><h3 id="最后奉上效果图">最后奉上效果图</h3>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/07/hello-hugo-blog-02.png">
+<img src="/images/2021/07/hello-hugo-blog-02.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/07/hello-hugo-blog-03.png">
+<img src="/images/2021/07/hello-hugo-blog-03.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/57361697">如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？</a></li>
+<li><a href="https://www.blog.off-record.net/20/12/hugo-mainroad-custom/">Hugo-Mainroad主題修改流程</a></li>
+<li><a href="https://www.lishuai.fun/2020/09/01/hugo-build-blog/">使用hugo搭建博客</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://gojun.me/tags/blog/">Blog</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="https://gojun.me/js/jquery-3.5.1.min.js"></script>
+<link href="https://gojun.me/css/fancybox.min.css" rel="stylesheet">
+<script src="https://gojun.me/js/fancybox.min.js"></script>
+<script src="https://gojun.me/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>
