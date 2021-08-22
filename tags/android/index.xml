@@ -6,7 +6,16 @@
     <description>Recent content in Android on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Aug 2021 10:49:27 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通俗易懂了解 Android 设计模式 - 建造者模式</title>
+      <link>https://gojun.me/posts/android-builder-mode/</link>
+      <pubDate>Sat, 21 Aug 2021 10:49:27 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/android-builder-mode/</guid>
+      <description>介绍 建造者模式属于设计模式三大类中的创建型模式，主要用来创建复杂的对象，用户可以不用关心其建造过程和细节。 简单例子：当要组装一台电脑时，我们选择好CPU、内存、硬盘等等，然后交给装机师傅，装机师傅就把</description>
+    </item>
+    
     <item>
       <title>通俗易懂了解 Android 设计模式 - 观察者模式</title>
       <link>https://gojun.me/posts/android-observer-mode/</link>

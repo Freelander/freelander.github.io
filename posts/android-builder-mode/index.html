@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>通俗易懂了解 Android 设计模式 - 建造者模式 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="介绍 建造者模式属于设计模式三大类中的创建型模式，主要用来创建复杂的对象，用户可以不用关心其建造过程和细节。 简单例子：当要组装一台电脑时，我们选择好CPU、内存、硬盘等等，然后交给装机师傅，装机师傅就把" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="https://gojun.me/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.mecss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+            <li>
+                <a href="/projects/">Projects</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://gojun.me">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://gojun.me/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/android-builder-mode/'>通俗易懂了解 Android 设计模式 - 建造者模式</a></h2>
+                        <span class="date">2021.08.21</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="介绍">介绍</h3>
+<p>建造者模式属于设计模式三大类中的创建型模式，主要用来创建复杂的对象，用户可以不用关心其建造过程和细节。</p>
+<p>简单例子：当要组装一台电脑时，我们选择好CPU、内存、硬盘等等，然后交给装机师傅，装机师傅就把电脑给组装起来，我们不需要关心是怎么拼装起来的。</p>
+<h3 id="定义">定义</h3>
+<p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li>如果一个对象有非常复杂的内部结构「这些产品通常有很多属性」，那么使用建造者模式；</li>
+<li>如果想把复杂对象的创建和使用分离开来，那么使用建造者模式「使用相同的创建步骤可以创建不同的产品」。</li>
+</ul>
+<h3 id="uml-类图">UML 类图</h3>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/08/android-builder-mode-01.png">
+<img src="/images/2021/08/android-builder-mode-01.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<h4 id="角色解释">角色解释：</h4>
+<ul>
+<li>Product（产品类）：要创建的复杂对象。在本类图中，产品类是一个具体的类，而非抽象类。实际编程中，产品类可以是由一个抽象类与它的不同实现组成，也可以是由多个抽象类与他们的实现组成。</li>
+<li>Builder（抽象建造者）：创建产品的抽象接口，一般至少有一个创建产品的抽象方法和一个返回产品的抽象方法。引入抽象类，是为了更容易扩展。</li>
+<li>ConcreteBuilder（实际的建造者）：继承 Builder 类，实现抽象类的所有抽象方法。实现具体的建造过程和细节。</li>
+<li>Director（指挥者类）：分配不同的建造者来创建产品，统一组装流程。</li>
+</ul>
+<h3 id="举个例子">举个例子</h3>
+<p>按照惯例，拿公司涉及到的场景来举例，比如公司产品开发人员，当挖掘到一个新产品时，对新产品信息进行录入并创建。</p>
+<h4 id="具体产品信息">具体产品信息</h4>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.gojun.designpatterns.builder</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * Description: 具体产品信息
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jun 2021/8/22
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="o">{</span>
+
+    <span class="c1">// 产品 id（必填）
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">mId</span><span class="o">;</span>
+    <span class="c1">// 产品名称（选填）
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">mName</span><span class="o">;</span>
+    <span class="c1">// 产品价格（选填）
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">mPrice</span><span class="o">;</span>
+    <span class="c1">// 产品图片（选填）
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">mImage</span><span class="o">;</span>
+    <span class="c1">// 产品规格（选填）
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">mOption</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mId</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPrice</span><span class="o">(</span><span class="n">String</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mPrice</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setImage</span><span class="o">(</span><span class="n">String</span> <span class="n">image</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mImage</span> <span class="o">=</span> <span class="n">image</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOption</span><span class="o">(</span><span class="n">String</span> <span class="n">option</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mOption</span> <span class="o">=</span> <span class="n">option</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;产品：&#39;&#34;</span> <span class="o">+</span> <span class="n">mId</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;\n名称：&#39;&#34;</span> <span class="o">+</span> <span class="n">mName</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;\n价格：&#39;&#34;</span> <span class="o">+</span> <span class="n">mPrice</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;\n图片：&#39;&#34;</span> <span class="o">+</span> <span class="n">mImage</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;\n规格：&#39;&#34;</span> <span class="o">+</span> <span class="n">mOption</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h4 id="抽象的建造者">抽象的建造者</h4>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.gojun.designpatterns.builder</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * Description: 抽象的建造者
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jun 2021/8/22
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="o">{</span>
+    <span class="c1">// 录入产品名称
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Builder</span> <span class="nf">inputName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+    <span class="c1">// 录入产品价格
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Builder</span> <span class="nf">inputPrice</span><span class="o">(</span><span class="n">String</span> <span class="n">price</span><span class="o">);</span>
+    <span class="c1">// 录入产品图片
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Builder</span> <span class="nf">inputImage</span><span class="o">(</span><span class="n">String</span> <span class="n">image</span><span class="o">);</span>
+    <span class="c1">// 录入产品规格
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Builder</span> <span class="nf">inputOption</span><span class="o">(</span><span class="n">String</span> <span class="n">option</span><span class="o">);</span>
+
+    <span class="c1">// 创建产品
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Product</span> <span class="nf">create</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><h3 id="具体的建造者">具体的建造者</h3>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.gojun.designpatterns.builder</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * Description: 具体的建造者
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jun 2021/8/22
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductBuilder</span> <span class="kd">extends</span> <span class="n">Builder</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Product</span> <span class="n">mProduct</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Product</span><span class="o">();</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">inputName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mProduct</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">inputPrice</span><span class="o">(</span><span class="n">String</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mProduct</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">price</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">inputImage</span><span class="o">(</span><span class="n">String</span> <span class="n">image</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mProduct</span><span class="o">.</span><span class="na">setImage</span><span class="o">(</span><span class="n">image</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">inputOption</span><span class="o">(</span><span class="n">String</span> <span class="n">option</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mProduct</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="n">option</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">create</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mProduct</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">mProduct</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h4 id="测试代码">测试代码</h4>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.gojun.designpatterns.builder</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * Description:
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jun 2021/8/22
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BuilderDemo</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 产品开发人员只管录入产品信息并触发创建指令，不管内部产品是如何创建入库
+</span><span class="c1"></span>        <span class="n">Product</span> <span class="n">product</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProductBuilder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">inputName</span><span class="o">(</span><span class="s">&#34;小米 Mix4&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">inputPrice</span><span class="o">(</span><span class="s">&#34;￥4999&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">inputImage</span><span class="o">(</span><span class="s">&#34;https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1628588587.81086421.jpg&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">inputOption</span><span class="o">(</span><span class="s">&#34;陶瓷白 12GB+512GB&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&#34;987650&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 输出产品信息
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h4 id="结果">结果</h4>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/08/android-builder-mode-02.png">
+<img src="/images/2021/08/android-builder-mode-02.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<h3 id="总结">总结</h3>
+<p>从上面例子带大家简单了解下建造者模式，对于外部人员来说不需要知道具体产品构建过程，只需要负责提供相关信息即可。</p>
+<p>在 Android 开发里建造者模式被用到的地方：</p>
+<ul>
+<li>Android 系统组件 AlertDialog、Notification、AnimatorSet.Builder 等都使用到建造者模式；</li>
+<li>著名第三方库：Retrofit、Picasso、OkHttp、Luban。</li>
+</ul>
+<h4 id="优点">优点</h4>
+<ul>
+<li>封装性良好，隐藏内部构建细节。</li>
+<li>易于解耦，将产品本身与产品创建过程进行解耦，可以使用相同的创建过程来得到不同的产品。也就说细节依赖抽象。</li>
+<li>易于扩展，具体的建造者类之间相互独立，增加新的具体建造者无需修改原有类库的代码。</li>
+<li>易于精确控制对象的创建，由于具体的建造者是独立的，因此可以对建造过程逐步细化，而不对其他的模块产生任何影响。</li>
+</ul>
+<h4 id="缺点">缺点</h4>
+<ul>
+<li>产生多余的 Build 对象以及 Dirextor 类。</li>
+<li>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似；如果产品之间的差异性很大，则不适合使用建造者模式，因此其使用范围受到一定的限制。</li>
+<li>如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。</li>
+</ul>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li><a href="https://www.jianshu.com/p/154948d5adc6">Android的设计模式-建造者模式</a></li>
+<li><a href="https://juejin.cn/post/6844903518449434638#heading-6">人人都会设计模式&mdash;建造者模式&ndash;Builder</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://gojun.me/tags/android/">Android</a>
+                                    
+                                    <a href="https://gojun.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="https://gojun.me/js/jquery-3.5.1.min.js"></script>
+<link href="https://gojun.me/css/fancybox.min.css" rel="stylesheet">
+<script src="https://gojun.me/js/fancybox.min.js"></script>
+<script src="https://gojun.me/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

@@ -6,13 +6,13 @@
     <description>Recent content in Categories on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Aug 2021 10:59:04 +0800</lastBuildDate><atom:link href="https://gojun.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Aug 2021 10:49:27 +0800</lastBuildDate><atom:link href="https://gojun.me/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Android</title>
-      <link>https://gojun.me/categories/android/</link>
-      <pubDate>Sat, 07 Aug 2021 10:59:04 +0800</pubDate>
+      <title>设计模式</title>
+      <link>https://gojun.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 21 Aug 2021 10:49:27 +0800</pubDate>
       
-      <guid>https://gojun.me/categories/android/</guid>
+      <guid>https://gojun.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     
@@ -58,6 +58,15 @@
       <pubDate>Wed, 31 Jul 2019 23:54:29 +0000</pubDate>
       
       <guid>https://gojun.me/categories/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://gojun.me/categories/android/</link>
+      <pubDate>Sat, 06 Jul 2019 22:58:05 +0000</pubDate>
+      
+      <guid>https://gojun.me/categories/android/</guid>
       <description></description>
     </item>
     
