@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Kotlin 高阶函数与特性，让代码飞起！ ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="转自：掘金 王远道 https://juejin.cn/post/6949128725900296200 Google在2017年的时候就开始推广Kotlin语言作为Android开发的首选语言，现在都1202了，发现身边不少小伙伴还是全部用Java作为开发语言，对Kotlin的理解还停" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="https://gojun.me/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.mecss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+            <li>
+                <a href="/projects/">Projects</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://gojun.me">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://gojun.me/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/kotlin-advanced-function/'>Kotlin 高阶函数与特性，让代码飞起！</a></h2>
+                        <span class="date">2021.08.24</span>
+                    </div>
+                    <div class="post_content markdown"><blockquote>
+<p>转自：掘金 王远道</p>
+<p><a href="https://juejin.cn/post/6949128725900296200">https://juejin.cn/post/6949128725900296200</a></p>
+</blockquote>
+<p>Google在2017年的时候就开始推广Kotlin语言作为Android开发的首选语言，现在都1202了，发现身边不少小伙伴还是全部用Java作为开发语言，对Kotlin的理解还停留在空指针判断上。我觉得有必要向他们安利一下<strong>我为什么选择Kotlin作为首选的开发语言</strong>。</p>
+<p>Kotlin 对 Java 的优势：</p>
+<h3 id="一编译时判空机制">一、编译时判空机制</h3>
+<p>Kotlin在编译时会对可能会导致空指针异常的地方进行了强制判断，帮助我们规避掉绝大多数的空指针异常。主要体现在我们在声明变量或者参数的时候就必须显示给定这个变量或参数是否可以为空。例如：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"> <span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+     <span class="k">fun</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">who</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">println</span><span class="p">(</span><span class="s2">&#34;Hello </span><span class="si">$who</span><span class="s2">&#34;</span><span class="p">)</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+
+<span class="k">var</span> <span class="py">user</span> <span class="p">:</span> <span class="n">User</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span> <span class="c1">//声明一个可以为空的user变量
+</span></code></pre></div><p>在声明user变量的时候，通过在User类型后面加**”?“**来表示这个user对象是可能为空的，如果我们在使用user的时候不进行判空操作，编译器将直接抛出异常。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">user</span><span class="p">.</span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">)</span> <span class="c1">//直接使用user对象无法编译通过
+</span></code></pre></div><p>错误如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">Only</span> <span class="n">safe</span> <span class="p">(</span><span class="o">?.</span><span class="p">)</span> <span class="n">or</span> <span class="n">non</span><span class="p">-</span><span class="k">null</span> <span class="n">asserted</span> <span class="p">(</span><span class="o">!!</span><span class="p">.)</span> <span class="n">calls</span> <span class="n">are</span> <span class="n">allowed</span> <span class="n">on</span> <span class="n">a</span> <span class="n">nullable</span> <span class="k">receiver</span> <span class="n">of</span> <span class="n">type</span> <span class="n">User</span><span class="p">?</span>
+</code></pre></div><p>要想使用可能为空的对象，有一下两种方案：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">user</span><span class="o">?.</span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">)</span> <span class="c1">//对象后面加”?“，表示如果user对象不为空，才会执行后面的sayHello方法
+</span><span class="c1">//或者
+</span><span class="c1"></span><span class="n">user</span><span class="o">!!</span><span class="p">.</span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">)</span> <span class="c1">//强行认定user不为空，当user为空时会抛出NullPointException
+</span></code></pre></div><p>如果我们在声明变量或参数的时候，在类型后面不加**&quot;?&quot;**，则表示这个对象不允许为空，变量的声明如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">user</span> <span class="p">:</span> <span class="n">User</span> <span class="p">=</span> <span class="n">User</span><span class="p">()</span> <span class="c1">// 由于user不能为空，我们无法给user赋值为null
+</span><span class="c1">//或者
+</span><span class="c1"></span><span class="k">lateinit</span> <span class="k">var</span> <span class="py">user</span> <span class="p">:</span> <span class="n">User</span> <span class="c1">// 先声明出user，延迟对user进行初始化操作
+</span></code></pre></div><p><strong>注意</strong>：如果使用<strong>lateinit</strong>延迟对象的初始化的话，在使用这个对象的时候要确保先对其进行初始化操作，否则会抛出异常：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">kotlin</span><span class="p">.</span><span class="n">UninitializedPropertyAccessException</span><span class="p">:</span><span class="k">lateinit</span> <span class="k">property</span> <span class="n">user</span> <span class="n">has</span> <span class="n">not</span> <span class="n">been</span> <span class="n">initialized</span>
+</code></pre></div><p>以上是变量中的空判断，作为参数的时候也是一样的道理：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">somebody1</span><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <span class="n">User</span><span class="p">?){}</span> <span class="c1">// 允许传入的参数user为空
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">somebody2</span><span class="p">(</span><span class="n">user</span> <span class="p">:</span> <span class="n">User</span><span class="p">){}</span>  <span class="c1">// 不允许传入的参数user为空
+</span></code></pre></div><p>切记，<strong>在Kotlin中User和User?是两个不相同的类型</strong>，因此在somebody2中传入User?类型的参数的话，是无法编译通过的。也正是因为这样，开发过程中存在的空指针隐患能在编译阶段被暴露出来，能帮助我们规避绝大多数的NullPointException。</p>
+<p>以上就是Kotlin在规避空指针方面的应用。</p>
+<p>小伙伴：就这？我多加几个if(user != null)的判断不也一样，为啥还要学一门新的语言？</p>
+<p>打工人：别急，Kotlin的特性远远不止如此，且听我慢慢道来。</p>
+<h3 id="二可选参数与具名参数">二、可选参数与具名参数</h3>
+<p>重载是我们开发过程经常见到，以前用Java的时候是如何进行方法的重载呢？</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="n">void</span> <span class="n">sayHello</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">){</span>
+  <span class="n">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="k">null</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="n">void</span> <span class="n">sayHello</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span><span class="n">Integer</span> <span class="n">age</span><span class="p">){</span>
+  <span class="n">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="k">null</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="n">void</span> <span class="n">sayHello</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span><span class="n">Integer</span> <span class="n">age</span><span class="p">,</span><span class="n">Integer</span> <span class="n">tall</span><span class="p">){</span>
+  <span class="n">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">tall</span><span class="p">,</span><span class="k">null</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="n">void</span> <span class="n">sayHello</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span><span class="n">Integer</span> <span class="n">age</span><span class="p">,</span><span class="n">Integer</span> <span class="n">tall</span><span class="p">,</span><span class="n">String</span> <span class="n">interest</span><span class="p">){</span>
+  <span class="c1">//balabala
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>上面是比较常见的重载，但是<strong>如果再想要重载一个只要name和tall参数的方法，怎么重载？</strong></p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa3yrx6j60a00a0jrm02.jpg">
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa3yrx6j60a00a0jrm02.jpg" alt=""  />
+</a>
+</div>
+
+</p>
+<p>Kotlin的方法重载比Java要简洁许多：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">//给age、tall、interest分别
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span><span class="n">tall</span><span class="p">:</span><span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span><span class="n">interest</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">){</span>
+ <span class="c1">//balabala
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>这一个方法变实现了上面四个方法的功能，并且还一不小心做了增强。再出现上面那个只要name和tall的尴尬问题，只需要使用具名调用的方式就可以了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">180</span><span class="p">,</span><span class="s2">&#34;大宝剑&#34;</span><span class="p">)</span> <span class="c1">//传入了所有参数
+</span><span class="c1"></span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">,</span><span class="m">18</span><span class="p">)</span> <span class="c1">// 传入了name和age
+</span><span class="c1"></span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">,</span><span class="n">age</span> <span class="p">=</span> <span class="m">18</span><span class="p">)</span> <span class="c1">//同上，显示的指定了age参数
+</span><span class="c1"></span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">,</span><span class="n">tall</span> <span class="p">=</span> <span class="m">180</span><span class="p">)</span> <span class="c1">//传入了name和tall
+</span><span class="c1"></span><span class="n">sayHello</span><span class="p">(</span><span class="s2">&#34;Mark&#34;</span><span class="p">,</span><span class="n">interest</span> <span class="p">=</span> <span class="s2">&#34;大宝剑&#34;</span><span class="p">)</span> <span class="c1">//直接大宝剑也是可以的
+</span></code></pre></div><p>是不是既满足了Java重载的多个方法的功能，又增强了不少？</p>
+<p>但有一点需要注意：<strong>如果传入的可选参数是连续的，Kotlin可以推演出参数的类型，对号入座，但如果不连续，就需要用具名参数的方式指明要传入哪个参数。</strong></p>
+<p>同样和作用于构造方法的重载。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa45ppnj60a109wwep02.jpg">
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa45ppnj60a109wwep02.jpg" alt=""  />
+</a>
+</div>
+
+</p>
+<h3 id="三函数作为参数或返回值">三、函数作为参数或返回值</h3>
+<p>虽然说JDK 1.8的时候，也支持了把函数作为参数传递的特性，但是却很少在项目中有见到过这么用的，具体是什么原因我也不太清楚，猜测是Java语言给开发者们留下的旧有印象吧。Java的实现这里就不做讨论了，重点介绍一下再Kotlin中是如何使用这一特性的。</p>
+<p>我们现在实现一个最简单的函数参数方法，再讨论使用场景。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">launch</span><span class="p">(</span><span class="n">block</span> <span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">){</span>
+ <span class="c1">//do something
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>在上面的代码中，我们定义了一个名为<strong>launch</strong>的方法，而这个方法的参数是一个无参无返回值的函数，在调用方法的时候传入具体的函数。</p>
+<p>如果这个函数参数是定义方法的最后一个参数，函数体可以写到括号表达式外部，如果括号表达式里面没有参数，则可以省略括号表达式，所以可以用如下形式调用launch方法：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">launch</span><span class="p">{</span>
+ <span class="c1">// 这是函数参数里面的具体实现
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>可能看起来有点抽象，我们可以描述一个需求，然后再实现这个需求，理解起来就更清楚一些。</p>
+<p>需求：</p>
+<p>A、B两人分别负责各自的运算逻辑对m和n两个数据进行处理，但是处理的最终结果需要在show方法里面展示出来，我们当然可以用if else的逻辑实现这个show方法，伪代码如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">show</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">){</span>
+  <span class="n">int</span> <span class="n">v</span> <span class="p">=</span> <span class="k">if</span><span class="p">(</span><span class="n">A</span><span class="p">){</span><span class="c1">//如果是A处理，返回m+n
+</span><span class="c1"></span>     <span class="n">m</span><span class="p">+</span><span class="n">n</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">){</span><span class="c1">//如果是B处理，返回m-n
+</span><span class="c1"></span>     <span class="n">m</span><span class="p">-</span><span class="n">n</span>
+  <span class="p">}</span> 
+ <span class="n">showIt</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="c1">//对结果进行最终处理
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>这样的写法虽然可以满足功能，但是如果有十几个人都要实现自己的逻辑呢？程序将进入if else的地狱。还有，如果show方法是在基础模块中定义，A和B又都是业务模块，把业务模块中的逻辑沉淀到基础模块是不合理的，在Java中遇到这种需求通常就要考虑<strong>面向对象</strong>了，基础模块中抽象出接口，A、B中对接口做实现，但这样的实现未免太复杂，我们是不是可以这么写呢：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">//基础模块 block函数需要两个Int类型参数并返回值为Int类型
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">show</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span><span class="n">n</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span><span class="n">block</span> <span class="p">:</span> <span class="p">(</span><span class="n">m</span> <span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">){</span>
+  <span class="n">showIt</span><span class="p">(</span><span class="n">block</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">//A 的模块
+</span><span class="c1"></span><span class="k">var</span> <span class="py">blockA</span> <span class="p">=</span> <span class="k">fun</span> <span class="err">(</span><span class="nf">m</span> <span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">m</span><span class="p">+</span><span class="n">n</span>
+<span class="p">}</span>
+<span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">blockA</span><span class="p">)</span> <span class="c1">//A 的模块调用基础模块的show方法
+</span><span class="c1"></span>
+<span class="c1">//B 的模块
+</span><span class="c1"></span><span class="k">var</span> <span class="py">blockB</span> <span class="p">=</span> <span class="k">fun</span> <span class="err">(</span><span class="nf">m</span> <span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">m</span><span class="p">-</span><span class="n">n</span>
+<span class="p">}</span>
+<span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">blockB</span><span class="p">)</span> <span class="c1">//B 的模块调用基础模块的show方法
+</span></code></pre></div><p>相比抽象成接口的方式，是不是简洁许多？</p>
+<p><strong>函数参数的另一个常用场景就是代替Callback</strong>，作为Java程序员，每天都在与回调地狱做斗争，从RxJava的火爆程度上便可见一斑。</p>
+<p>通常我们异步方法结果的获取都是通过Callback实现的，由于太过耳熟能详，这里就不再举例子了，只简单描述下如何通过接口参数简化回调地狱。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// 定义一个异步方法
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">asyncExecute</span><span class="p">(</span><span class="k">param</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span><span class="n">result</span><span class="p">:(</span><span class="k">data</span><span class="p">:</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span><span class="p">){</span>
+  <span class="k">var</span> <span class="py">result</span> <span class="p">=</span> <span class="c1">//balabala 异步处理操作
+</span><span class="c1"></span>  <span class="c1">//balalba切回主线程
+</span><span class="c1"></span>  <span class="n">result</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//调用异步方法,并把结果show出来
+</span><span class="c1"></span><span class="n">asyncExecute</span><span class="p">(</span><span class="k">param</span><span class="p">){</span><span class="k">data</span> <span class="o">-&gt;</span>
+  <span class="n">showData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><p>从代码观感层面来说，简直不要太友好啊！</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa4aoipj60a0097jrn02.jpg">
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa4aoipj60a0097jrn02.jpg" alt=""  />
+</a>
+</div>
+
+</p>
+<p>函数除了作为参数，同样也可以作为返回值：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">testMethod</span><span class="p">()</span> <span class="p">:</span> <span class="p">(</span><span class="n">str</span> <span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">{</span>
+ <span class="k">return</span> <span class="p">{</span> <span class="n">str</span> <span class="o">-&gt;</span>
+    <span class="n">str</span><span class="p">.</span><span class="n">length</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>上面的代码定义了一个返回值为一个函数，该函数需要一个String类型的参数并返回一个Int型数据。不过函数作为返回值的场景，我基本是没有用到过，有使用过的盆友可以介绍一下心得~</p>
+<h3 id="四拓展函数">四、拓展函数</h3>
+<p>资本家：小打，给我们的String新增一个方法helloWorker的方法，调用这个方法可以打印”打工人，打工魂，打工的都是人上人!“这句话。</p>
+<p>打工人：（&hellip;什么脑残需求..）老板英明，只需要重写String新增这个方法就可以了，这样我们就有自己的String了。</p>
+<p>资本家：重写String方法？你去财务领下工资，明天不用来了！</p>
+<p>由于String是final类型，我们没法通过重写该类为它新增方法，一般操作String都是使用静态方法来处理，但有时候我们偏偏想不起来那个该死的静态方法在哪个类里面了&hellip;</p>
+<p>没关系，有了拓展方法，再也不用担心这个问题了，请看：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">//为String新增拓展方法
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">helloWorker</span><span class="p">(){</span>
+ <span class="n">println</span><span class="p">(</span><span class="s2">&#34;打工人，打工魂，打工的都是人上人!&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="s2">&#34;Jack&#34;</span><span class="p">.</span><span class="n">helloWorker</span><span class="p">()</span>
+<span class="s2">&#34;Mark&#34;</span><span class="p">.</span><span class="n">helloWorker</span><span class="p">()</span>
+<span class="c1">//Jack在工地搬砖，Mark在做Android开发，他们都有光明的未来~
+</span></code></pre></div><p>拓展方法的可以近似面向切面的方式为某个类新增方法，而不需要通过继承来实现。即使是被final修饰的类也可以进行拓展，因为它本身就是编译工具的一个障眼法（感兴趣的可以研究一下拓展函数的原理），但这并不妨碍我们在开发中的使用。</p>
+<p>拓展函数的用途非常广泛，而且拓展方法对被拓展的类以及其子类都能生效。它的使用场景非常广泛，除了为某些类提供额外的方法外（为View提供统一的防连点，为Int提供dp2px的转换等等），还可以对业务功能庞大的类进行拓展，把业务复杂的业务逻辑梳理到拓展类里面，提高代码的可读性。</p>
+<p>不得不说，自从用了拓展方法，吃饭都有劲儿了。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa4fze3j60a009lgm502.jpg">
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtsaa4fze3j60a009lgm502.jpg" alt=""  />
+</a>
+</div>
+
+</p>
+<h3 id="五内联函数">五、内联函数</h3>
+<p>Kotlin提供了一系列的内联函数：<strong>let,with,run,apply,also</strong>，能帮我们提高代码的整洁度，比如：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">user</span><span class="o">?.</span><span class="n">username</span> <span class="p">=</span> <span class="s2">&#34;Mark&#34;</span>
+<span class="n">user</span><span class="o">?.</span><span class="n">age</span> <span class="p">=</span> <span class="m">18</span>
+<span class="n">user</span><span class="o">?.</span><span class="n">tall</span> <span class="p">=</span> <span class="m">180</span>
+<span class="c1">//使用let函数
+</span><span class="c1"></span><span class="n">user</span><span class="o">?.</span><span class="n">let</span><span class="p">{</span>
+  <span class="k">it</span><span class="p">.</span><span class="n">username</span> <span class="p">=</span> <span class="s2">&#34;Mark&#34;</span>
+  <span class="k">it</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="m">18</span>
+  <span class="k">it</span><span class="p">.</span><span class="n">tall</span> <span class="p">=</span> <span class="m">180</span>
+<span class="p">}</span>
+
+<span class="n">user</span><span class="o">?.</span><span class="n">sayHello</span><span class="p">()</span>
+<span class="n">user</span><span class="o">?.</span><span class="n">sayBye</span><span class="p">()</span>
+<span class="n">user</span><span class="o">?.</span><span class="n">sayGood</span><span class="p">()</span>
+<span class="c1">//使用with函数
+</span><span class="c1"></span><span class="n">user</span><span class="o">?.</span><span class="n">with</span><span class="p">{</span>
+  <span class="n">sayHello</span><span class="p">()</span>
+  <span class="n">sayBye</span><span class="p">()</span>
+  <span class="n">sayGood</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">//多数场景都是使用run，因为run是let和with的结合
+</span></code></pre></div><p>关于<strong>let,with,run,apply,also</strong>的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">函数体内使用的对象</th>
+<th style="text-align:left">返回值</th>
+<th style="text-align:left">适用的场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>let</strong></td>
+<td style="text-align:left"><strong>it</strong>指代当前对象</td>
+<td style="text-align:left">闭包</td>
+<td style="text-align:left">合并多处判断null的操作</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>with</strong></td>
+<td style="text-align:left"><strong>this</strong>指代当前对象，可省略</td>
+<td style="text-align:left">闭包</td>
+<td style="text-align:left">合并多个方法调用</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>run</strong></td>
+<td style="text-align:left"><strong>this</strong>指代当前对象，可省略</td>
+<td style="text-align:left">闭包</td>
+<td style="text-align:left">let和with的结合体</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>apply</strong></td>
+<td style="text-align:left"><strong>this</strong>指代当前对象，可省略</td>
+<td style="text-align:left">this</td>
+<td style="text-align:left">能用run的地方就能用apply，多用于初始化对象</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>also</strong></td>
+<td style="text-align:left"><strong>it</strong>指代当前对象</td>
+<td style="text-align:left">this</td>
+<td style="text-align:left">能用let就能用also，可用于函数链式调用</td>
+</tr>
+</tbody>
+</table>
+<p>除了上诉 Kotlin 为我们提供的内敛函数外，我们也可以自定义内联函数。内联函数比普通函数的优势在于，内联函数会把函数体复制到到调用函数的地方，避免了栈帧的入栈出栈操作。</p>
+<h3 id="六字符串处理">六、字符串处理</h3>
+<p>字符串内可以引用变量或表达式，相当实用的一个功能，许多语言也有这个特性，但不知道Java一直不跟进。</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">str</span> <span class="p">=</span> <span class="s2">&#34;My name is </span><span class="si">${user.name}</span><span class="s2">,I am </span><span class="si">${user.age}</span><span class="s2"> years old.&#34;</span>
+<span class="c1">//如果直接使用变量可以省略大括号
+</span><span class="c1"></span><span class="k">var</span> <span class="py">str2</span> <span class="p">=</span> <span class="s2">&#34;My name is </span><span class="si">$username</span><span class="s2">&#34;</span>
+</code></pre></div><p>Kotlin也支持多行字符串：</p>
+<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">str</span> <span class="p">=</span> <span class="s">&#34;&#34;&#34;
+</span><span class="s"> Hello everybody，
+</span><span class="s"> my name is </span><span class="si">${user.name}</span><span class="s">,
+</span><span class="s"> I am </span><span class="si">${user.age}</span><span class="s">
+</span><span class="s">&#34;&#34;&#34;</span><span class="p">.</span><span class="n">trimIndent</span><span class="p">()</span>
+</code></pre></div><p>多行字符串在某些特殊的场景里面还是比较好用的。</p>
+<h3 id="七结语">七、结语</h3>
+<p>以上就是 Kotlin 部分常用的特性，当 Kotlin 好用的特性远不止这些，流式操作、懒加载、无需 findViewById 就能拿到 xml 里面的对象等等。当然还有最重要的：<strong>协程</strong>。</p>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://gojun.me/tags/kotlin/">Kotlin</a>
+                                    
+                                    <a href="https://gojun.me/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="https://gojun.me/js/jquery-3.5.1.min.js"></script>
+<link href="https://gojun.me/css/fancybox.min.css" rel="stylesheet">
+<script src="https://gojun.me/js/fancybox.min.js"></script>
+<script src="https://gojun.me/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

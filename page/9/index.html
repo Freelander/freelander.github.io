@@ -93,12 +93,12 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
-        <h2><a href='/posts/company-project-git/'>公司项目 Git 管理流程及规范</a></h2>
+        <h2><a href='/posts/android-resume/'>史上最全 Android 面试资料集合</a></h2>
     </div>
     
     <div class="list">
         <div class="post_content markdown">
-            <p>目前公司项目 Git 管理规范是基于 git-flow 扩展而来。 git-flow 最先来源于 Vincent Driessen 一篇名为“一种成功的Git分支模型”的博文，后来 git-flow 被誉为在 Git 之上构建的一项软件开发最佳实践。 工具 通过安装工具可以帮助我们更方便按照 git-flow 工作流程进行......</p>
+            <p>最近看到很多人都在找工作, 而且很多人都感觉今年找工作比去年难很多, 竞争力也增加不少, 因此激发我整理这份资料, 希望能帮到正在找或者准备找工作的童鞋们. 本文已授权微信公众号 AndroidDeveloper （id: googdev） 独家发......</p>
         </div>
     </div>
     
@@ -107,114 +107,15 @@
             <div class="info">
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2021.07.05</span>
+                    <span class="date">2016.12.12</span>
                 </span>
                 
                 <span class="field tags">
                     <i class="ri-stack-line"></i>
                     
-                    <a href="https://gojun.me/tags/git/">Git</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/posts/android-fps/'>面试官问我：如何对 Android  App 进行 fps 分析</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>背景 界面呈现是指从应用生成帧并将其显示在屏幕上的动作。要确保用户能够流畅地与您的应用互动，您的应用呈现每帧的时间不应超过 16ms，以达到每秒 60 帧的呈现速度。 结论动画控制在每帧耗时 16ms 以下，因此需要进行 FPS......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2021.01.06</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
+                    <a href="https://gojun.me/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                     <a href="https://gojun.me/tags/android/">Android</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/posts/mac-terminal-proxy/'>Mac 如何让终端使用代理</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>前提 iTerm2 终端使用的是 zsh 命令，翻墙代理工具使用 Surge2。 步骤 在 surge2 复制终端代理命令 得到： export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081 编辑 .zshrc 文件 vim ~/.zshrc 在文件最后添加以下信息 # proxy list alias proxy=&#39;export https_proxy=http://127.0.0.1:1080;export http_proxy=http://127.0.0.1:1080;export all_proxy=socks5://127.0.0.1:1081&#39; alias unproxy=&#39;unset all_proxy&#39; 保存退出，应用文件修改内容 source ~/.zshrc 开启使用代理模式 proxy......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2020.05.10</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="https://gojun.me/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-                    
-                    <a href="https://gojun.me/tags/%E7%BB%88%E7%AB%AF/">终端</a>
-                    
-                    <a href="https://gojun.me/tags/%E4%BB%A3%E7%90%86/">代理</a>
-                    
-                    <a href="https://gojun.me/tags/%E7%BF%BB%E5%A2%99/">翻墙</a>
-                    
-                    <a href="https://gojun.me/tags/vpn/">VPN</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/posts/flutter-maven/'>Flutter 自动打包并将 aar 文件上传到 Maven</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>思路 先执行 flutter pub get 获取项目最新依赖插件。 对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。 对打包出来的 aar 文件，简单粗暴使用 mvn deploy 指令进行上传到 maven。 上传完之后，提示如何引入到项目。 完整构建脚......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2020.04.26</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="https://gojun.me/tags/flutter/">Flutter</a>
                     
                 </span>
                 
@@ -227,14 +128,10 @@
 <div class="pagination">
     
     
-    <a href="/" class="pre">
+    <a href="/page/8/" class="pre">
         Prev
     </a>
     
-    
-    <a href="/page/3/" class="next">
-        Next
-    </a>
     
     
 </div>

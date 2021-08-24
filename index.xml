@@ -6,7 +6,16 @@
     <description>Recent content on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Aug 2021 10:49:27 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Aug 2021 23:02:40 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin 高阶函数与特性，让代码飞起！</title>
+      <link>https://gojun.me/posts/kotlin-advanced-function/</link>
+      <pubDate>Tue, 24 Aug 2021 23:02:40 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/kotlin-advanced-function/</guid>
+      <description>转自：掘金 王远道 https://juejin.cn/post/6949128725900296200 Google在2017年的时候就开始推广Kotlin语言作为Android开发的首选语言，现在都1202了，发现身边不少小伙伴还是全部用Java作为开发语言，对Kotlin的理解还停</description>
+    </item>
+    
     <item>
       <title>通俗易懂了解 Android 设计模式 - 建造者模式</title>
       <link>https://gojun.me/posts/android-builder-mode/</link>
