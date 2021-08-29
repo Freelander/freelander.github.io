@@ -2,11 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://gojun.me/tags/android/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
     <loc>https://gojun.me/categories/</loc>
-    <lastmod>2021-08-24T23:02:40+08:00</lastmod>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/</loc>
-    <lastmod>2021-08-24T23:02:40+08:00</lastmod>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/android-memento-mode/</loc>
+    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/kotlin/</loc>
     <lastmod>2021-08-24T23:02:40+08:00</lastmod>
@@ -17,23 +35,8 @@
     <loc>https://gojun.me/posts/kotlin-advanced-function/</loc>
     <lastmod>2021-08-24T23:02:40+08:00</lastmod>
   </url><url>
-    <loc>https://gojun.me/posts/</loc>
-    <lastmod>2021-08-24T23:02:40+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/</loc>
-    <lastmod>2021-08-24T23:02:40+08:00</lastmod>
-  </url><url>
     <loc>https://gojun.me/tags/%E8%BD%AC%E8%BD%BD/</loc>
     <lastmod>2021-08-24T23:02:40+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/android/</loc>
-    <lastmod>2021-08-21T10:49:27+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2021-08-21T10:49:27+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2021-08-21T10:49:27+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/posts/android-builder-mode/</loc>
     <lastmod>2021-08-21T10:49:27+08:00</lastmod>

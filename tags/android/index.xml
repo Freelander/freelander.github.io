@@ -6,7 +6,16 @@
     <description>Recent content in Android on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Aug 2021 10:49:27 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 12:12:27 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通俗易懂了解 Android 设计模式 - 备忘录模式</title>
+      <link>https://gojun.me/posts/android-memento-mode/</link>
+      <pubDate>Sun, 29 Aug 2021 12:12:27 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/android-memento-mode/</guid>
+      <description>介绍 备忘录模式是三大设计模式中的行为型模式一种，用于保存对象当前状态，并且在之后可以重新恢复此状态。 值得注意的是备忘录模式实现方式要保证保存的对象状态不能被对象从外部访问，目的保护好被保存的这些对象状</description>
+    </item>
+    
     <item>
       <title>通俗易懂了解 Android 设计模式 - 建造者模式</title>
       <link>https://gojun.me/posts/android-builder-mode/</link>
