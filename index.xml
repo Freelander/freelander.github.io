@@ -6,7 +6,16 @@
     <description>Recent content on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 29 Aug 2021 12:12:27 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Sep 2021 18:04:21 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jenkins 用户权限管理指南</title>
+      <link>https://gojun.me/posts/jenkins-user-manage/</link>
+      <pubDate>Sat, 11 Sep 2021 18:04:21 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/jenkins-user-manage/</guid>
+      <description>新增用户 路径：Manage Jenkins &amp;ndash;》Manage User &amp;ndash;》Create User 安装权限管理插件 插件名称：Role-based Authorization Strategy 全局配置 路径：Manage Jenkins &amp;ndash;》Configure</description>
+    </item>
+    
     <item>
       <title>通俗易懂了解 Android 设计模式 - 备忘录模式</title>
       <link>https://gojun.me/posts/android-memento-mode/</link>

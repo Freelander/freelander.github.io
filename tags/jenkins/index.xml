@@ -6,7 +6,16 @@
     <description>Recent content in Jenkins on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Sep 2019 21:51:40 +0000</lastBuildDate><atom:link href="https://gojun.me/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Sep 2021 18:04:21 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jenkins 用户权限管理指南</title>
+      <link>https://gojun.me/posts/jenkins-user-manage/</link>
+      <pubDate>Sat, 11 Sep 2021 18:04:21 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/jenkins-user-manage/</guid>
+      <description>新增用户 路径：Manage Jenkins &amp;ndash;》Manage User &amp;ndash;》Create User 安装权限管理插件 插件名称：Role-based Authorization Strategy 全局配置 路径：Manage Jenkins &amp;ndash;》Configure</description>
+    </item>
+    
     <item>
       <title>MacOs 最全的 Jenkins Android 自动打包构建教程</title>
       <link>https://gojun.me/posts/jenkins/</link>
