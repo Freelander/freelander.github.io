@@ -123,20 +123,38 @@
 <h2 id="分支命名规范">分支命名规范</h2>
 <h3 id="需求开发分支命名规范">需求开发分支命名规范</h3>
 <blockquote>
-<p>版本号_开发人名称首字母_需求简述</p>
+<p>版本号_开发人姓名首字母_需求简述</p>
 </blockquote>
-<p>例如：feature/6.15.0_hgj_优化AfterPay介绍页面</p>
-<p>若使用 git-flow 工具命令创建</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow feature start 6.15.0_hgj_优化AfterPay介绍页面
+<p>例如：feature/7.33.0_hgj_BG类目页Popular等排序页面rmmds梳理</p>
+<p>推荐使用 git flow 命令创建</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow feature start 7.33.0_hgj_BG类目页Popular等排序页面rmmds梳理
 </code></pre></div><h3 id="发版分支命名规范">发版分支命名规范</h3>
 <blockquote>
 <p>发版的版本号</p>
 </blockquote>
-<p>例如：release/6.15.0</p>
-<p>若使用 git-flow 工具命令创建</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow release start 6.15.0
+<p>例如：release/7.33.0</p>
+<p>推荐使用 git flow 命令创建</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git flow release start 7.33.0
 </code></pre></div><h3 id="效果展示">效果展示</h3>
-<p>
+<table>
+<thead>
+<tr>
+<th>规范前</th>
+<th>规范后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/07/company-project-git-03.png">
+<img src="/images/2021/07/company-project-git-03.png" alt="Local Image"  />
+</a>
+</div>
+
+</td>
+<td>
 
 <div class="fancybox">
 <a data-fancybox="demo" href="/images/2021/07/company-project-git-02.png">
@@ -144,7 +162,10 @@
 </a>
 </div>
 
-</p>
+</td>
+</tr>
+</tbody>
+</table>
 <h2 id="git-commit-规范">Git Commit 规范</h2>
 <p>为了更加方便查找 git commit 的日志，因此有必要在 commit 的时候进行备注说明类型。</p>
 <p>参考阮老师的文章：<a href="https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html">地址</a></p>
