@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on GoJun</title>
+    <link>https://gojun.me/tags/nginx/</link>
+    <description>Recent content in Nginx on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Oct 2021 19:43:01 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac 上 Nginx 的使用及入门</title>
+      <link>https://gojun.me/posts/nginx/</link>
+      <pubDate>Tue, 12 Oct 2021 19:43:01 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/nginx/</guid>
+      <description>安装 推荐 Mac 电脑上内置 homebrew 工具安装。 安装 Nginx： brew install nginx 卸载 Nginx： brew uninstall nginx 常用操作 启动 Nginx： sudo nginx 停止 Nginx： sudo nginx -s stop 热重启 Nginx： sudo nginx -s reload 强制停止 Nginx： sudo pkill -9 nginx 配置文件 经常要用到</description>
+    </item>
+    
+  </channel>
+</rss>

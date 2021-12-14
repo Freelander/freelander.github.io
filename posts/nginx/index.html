@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Mac 上 Nginx 的使用及入门 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="安装 推荐 Mac 电脑上内置 homebrew 工具安装。 安装 Nginx： brew install nginx 卸载 Nginx： brew uninstall nginx 常用操作 启动 Nginx： sudo nginx 停止 Nginx： sudo nginx -s stop 热重启 Nginx： sudo nginx -s reload 强制停止 Nginx： sudo pkill -9 nginx 配置文件 经常要用到" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="https://gojun.me/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.mecss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+            <li>
+                <a href="/projects/">Projects</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://gojun.me">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://gojun.me/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/nginx/'>Mac 上 Nginx 的使用及入门</a></h2>
+                        <span class="date">2021.10.12</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="安装">安装</h3>
+<p>推荐 Mac 电脑上内置 homebrew 工具安装。</p>
+<p>安装 Nginx：</p>
+<p><code>brew install nginx</code></p>
+<p>卸载 Nginx：</p>
+<p><code>brew uninstall nginx</code></p>
+<h3 id="常用操作">常用操作</h3>
+<p>启动 Nginx：</p>
+<p><code>sudo nginx</code></p>
+<p>停止 Nginx：</p>
+<p><code>sudo nginx -s stop</code></p>
+<p>热重启 Nginx：</p>
+<p><code>sudo nginx -s reload</code></p>
+<p>强制停止 Nginx：</p>
+<p><code>sudo pkill -9 nginx</code></p>
+<h3 id="配置文件">配置文件</h3>
+<p>经常要用到的几个文件路径：</p>
+<ol>
+<li><code>/usr/local/etc/nginx/nginx.conf</code> （nginx 配置文件路径）</li>
+<li><code>/usr/local/Cellar/nginx/1.21.0</code>（nginx 的安装路径）</li>
+<li><code>/usr/local/var/log/nginx</code> (nginx 默认的日志路径)</li>
+<li><code>/usr/local/var/www</code> （nginx 服务器默认的根目录）</li>
+</ol>
+<h3 id="使用场景">使用场景</h3>
+<h4 id="一将域名转发到本地端口">一、将域名转发到本地端口</h4>
+<h5 id="1-配置-nginx-文件规则">1. 配置 nginx 文件规则</h5>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">server {
+    listen 80;
+    # 访问的域名
+    server_name jenkins.gojun.me;
+    
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
+        # 转发本地端口地址
+        proxy_pass http://127.0.0.1:8080;
+        proxy_ssl_session_reuse off;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+    }
+}
+</code></pre></div><h5 id="2-修改-hosts-文件">2. 修改 hosts 文件</h5>
+<p><code>sudo vi /etc/hosts</code></p>
+<p>修改内容如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+# 本机的 IP 对应 nginx 配置的 server_name
+192.168.1.103   jenkins.gojun.me
+255.255.255.255 broadcasthost
+::1             localhost
+</code></pre></div><h5 id="3-操作完记得重启-nginx">3. 操作完记得重启 Nginx</h5>
+<div class="highlight"><pre class="chroma"><code class="language-s" data-lang="s"><span class="n">sudo</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">s</span> <span class="n">reload</span>
+</code></pre></div><h3 id="效果">效果</h3>
+<p>配置完成后看看效果：</p>
+<h4 id="本地端口访问">本地端口访问</h4>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/09/nginx-01.png">
+<img src="/images/2021/09/nginx-01.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<h4 id="自定义域名访问">自定义域名访问</h4>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2021/09/nginx-02.png">
+<img src="/images/2021/09/nginx-02.png" alt="img"  />
+</a>
+</div>
+
+</p>
+<h3 id="局域网访问">局域网访问</h3>
+<h3 id="给域名进行加密签名">给域名进行加密签名</h3>
+<h3 id="学习资料">学习资料</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/34943332">8分钟带你深入浅出搞懂 Nginx</a></li>
+<li><a href="https://juejin.cn/post/6844904129987526663">连前端都看得懂的《Nginx 入门指南》</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/108740468">用Nginx做端口转发（反向代理）</a></li>
+<li><a href="https://www.jianshu.com/p/1372a097a770">nginx域名配置</a></li>
+</ul>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://gojun.me/tags/nginx/">Nginx</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="https://gojun.me/js/jquery-3.5.1.min.js"></script>
+<link href="https://gojun.me/css/fancybox.min.css" rel="stylesheet">
+<script src="https://gojun.me/js/fancybox.min.js"></script>
+<script src="https://gojun.me/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>
