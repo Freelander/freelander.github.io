@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自动化 on GoJun</title>
+    <link>https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+    <description>Recent content in 自动化 on GoJun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Jan 2022 18:45:37 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firebase 集成 Slack 并实现自动化监控</title>
+      <link>https://gojun.me/posts/firebase-slack/</link>
+      <pubDate>Sun, 16 Jan 2022 18:45:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/firebase-slack/</guid>
+      <description>为什么要集成 Slack？ Firebase 可将一些崩溃信息同步到 Slack 频道，而 Slack Api 又支持对频道的信息进行监控，在这前提下可以搞点事情了，实现企业微信沟通群里实时留意应用的崩溃信息，同时也可将崩溃信息存入本地数据库，第二天</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="GoJun" />
+	
+	
+	
+	<title>Firebase 集成 Slack 并实现自动化监控 ｜ GoJun</title>
+	
+    
+    
+    <meta name="description" content="为什么要集成 Slack？ Firebase 可将一些崩溃信息同步到 Slack 频道，而 Slack Api 又支持对频道的信息进行监控，在这前提下可以搞点事情了，实现企业微信沟通群里实时留意应用的崩溃信息，同时也可将崩溃信息存入本地数据库，第二天" />
+    
+
+    
+    
+    <meta name="keywords" content="Hugo, theme, zozo" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="https://gojun.me/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.mecss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://gojun.me/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+            <li>
+                <a href="/projects/">Projects</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://gojun.me">
+                    <span>GoJun</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title">为向往生活努力奋斗！</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/freelander" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://gojun.me/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/firebase-slack/'>Firebase 集成 Slack 并实现自动化监控</a></h2>
+                        <span class="date">2022.01.16</span>
+                    </div>
+                    <div class="post_content markdown"><h3 id="为什么要集成-slack">为什么要集成 Slack？</h3>
+<p>Firebase 可将一些崩溃信息同步到 Slack 频道，而 Slack Api 又支持对频道的信息进行监控，在这前提下可以搞点事情了，实现企业微信沟通群里实时留意应用的崩溃信息，同时也可将崩溃信息存入本地数据库，第二天利用爬虫脚本对昨天崩溃信息进行二次追踪，留意崩溃数量是否上升。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_01.png">
+<img src="/images/2022/01/firebase_slack_01.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>以下就开始一步一步实现。</p>
+<h3 id="创建-app">创建 App</h3>
+<p><a href="https://api.slack.com/apps">https://api.slack.com/apps</a></p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_02.png">
+<img src="/images/2022/01/firebase_slack_02.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_03.png">
+<img src="/images/2022/01/firebase_slack_03.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h3 id="incoming-webhooks">Incoming Webhooks</h3>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_04.png">
+<img src="/images/2022/01/firebase_slack_04.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h4 id="add-new-webhook-to-worksapce">Add New Webhook to Worksapce</h4>
+<p>创建 Webhook 添加到已创建的频道</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_05.png">
+<img src="/images/2022/01/firebase_slack_05.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>添加完之后回到刚页面你会看到 Webhook URL，将其复制。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_06.png">
+<img src="/images/2022/01/firebase_slack_06.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h3 id="关联-firebase">关联 Firebase</h3>
+<p>安装 Slack</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_07.png">
+<img src="/images/2022/01/firebase_slack_07.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>将上面复制的 Webhook URL 填写进去及对应频道</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_08.png">
+<img src="/images/2022/01/firebase_slack_08.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>再对应用进行配置</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_09.png">
+<img src="/images/2022/01/firebase_slack_09.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>发送测试消息，到频道查看是否收到消息。</p>
+<p><strong>至此已完成了 Slack 频道创建及关联到 Firebase，下面开启脚本监控之路</strong></p>
+<h3 id="使用脚本前配置">使用脚本前配置</h3>
+<p>下图中左边栏红色框住的几个菜单下面一步一步带大家进行相关配置。</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_10.png">
+<img src="/images/2022/01/firebase_slack_10.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h4 id="oauth--permissions">OAuth &amp; Permissions</h4>
+<p>1、滚动到 <strong>Bot Token Scopes</strong>，点击 <strong>Add an OAuth Scope</strong>，添加 <strong>chat:write</strong>；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_11.png">
+<img src="/images/2022/01/firebase_slack_11.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>2、滚动回到顶部 OAuth &amp; Permissions，看到 <strong>OAuth Tokens for Your Workspace</strong>，点击 <strong>Install App to Workspace</strong>，允许授权之后会生成 <strong>Bot User OAuth Access Token</strong>，复制记录等下脚本需要用到；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_12.png">
+<img src="/images/2022/01/firebase_slack_12.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h4 id="socket-mode">Socket Mode</h4>
+<p>1、开启 Socket Mode，Token 名称 自己随便起一个，生成之后将获得 <strong>App Level Token</strong>，复制记录等下脚本需要用到；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_13.png">
+<img src="/images/2022/01/firebase_slack_13.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_14.png">
+<img src="/images/2022/01/firebase_slack_14.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h4 id="event-subscriptions">Event Subscriptions</h4>
+<p>1、开启 Events；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_15.png">
+<img src="/images/2022/01/firebase_slack_15.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>2、滚动底部展开 <strong>Subscribe to bot events</strong>，点击 <strong>Add Bot User Event</strong>，添加下图几个事件；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_16.png">
+<img src="/images/2022/01/firebase_slack_16.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>3、然后点击保存。</p>
+<h3 id="token-信息保存到环境变量中">Token 信息保存到环境变量中</h3>
+<p>为了安全将脚本需要用到的 Token 信息保存到环境变量当中，若不考虑安全性可直接脚本使用，以下示例适用于 Mac 系统；</p>
+<p>1、编写环境变量文件；</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo vi ~/.bash_profile
+</code></pre></div><p>2、添加需要的 Token 信息；</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">SLACK_SIGNING_SECRET</span><span class="o">=</span>9666xxxxxxxx
+<span class="c1"># Bot User OAuth Token</span>
+<span class="nb">export</span> <span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-xxxxx-xxxx
+<span class="c1"># App Level Token</span>
+<span class="nb">export</span> <span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-1-xxxx-xxxxxx
+</code></pre></div><p>3、保存退出，并执行生效。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">source ~/.bash_profile
+</code></pre></div><h3 id="编写脚本">编写脚本</h3>
+<p>上面一切到准备好了之后，可以开始编写脚本啦！</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@slack/bolt&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">({</span>
+    <span class="nx">token</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_BOT_TOKEN</span><span class="p">,</span>
+    <span class="nx">signingSecret</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_SIGNING_SECRET</span><span class="p">,</span>
+    <span class="nx">socketMode</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// add this
+</span><span class="c1"></span>    <span class="nx">appToken</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_APP_TOKEN</span><span class="p">,</span> <span class="c1">// add this
+</span><span class="c1"></span>    <span class="nx">port</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span>
+<span class="p">});</span>
+
+<span class="c1">// 监听接收到的信息为 hello 时，并自动回复 Hey there $userName
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">message</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">say</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// say() sends a message to the channel where the event was triggered
+</span><span class="c1"></span>    <span class="kr">await</span> <span class="nx">say</span><span class="p">(</span><span class="sb">`Hey there &lt;@</span><span class="si">${</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="si">}</span><span class="sb">&gt;!`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 监听渠道接收到的信息
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">event</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">event</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// fired when `app_home_opened` event is received
+</span><span class="c1"></span>    <span class="c1">// do work
+</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`channel: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">channel</span><span class="si">}</span><span class="sb"> and message: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="p">(</span><span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Start the app
+</span><span class="c1"></span>    <span class="kr">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;⚡️ Bolt app is running!&#39;</span><span class="p">);</span>
+<span class="p">})();</span>
+
+</code></pre></div><h3 id="测试">测试</h3>
+<p>1、运行脚本；</p>
+<p>2、将我们上面创建的 App 添加到测试频道上；</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_17.png">
+<img src="/images/2022/01/firebase_slack_17.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>3、发送 hello 信息</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_18.png">
+<img src="/images/2022/01/firebase_slack_18.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<p>
+
+<div class="fancybox">
+<a data-fancybox="demo" href="/images/2022/01/firebase_slack_19.png">
+<img src="/images/2022/01/firebase_slack_19.png" alt="image"  />
+</a>
+</div>
+
+</p>
+<h3 id="结束">结束</h3>
+<p>至此完成了 Firebase 平台集成 Slack，应用相关的崩溃信息会同步到 Slack 频道上，同时利用 Slack Api，实现了对频道接收到的信息监控，该操作可将崩溃信息存入数据库又或者同步到企业微信群，后续也可进行崩溃追踪。</p>
+<h3 id="文档">文档</h3>
+<ol>
+<li><a href="https://support.google.com/firebase/answer/9005934?hl=zh-Hans">将 Slack 集成添加到您的项目中</a></li>
+<li><a href="https://slack.com/intl/zh-cn/help/articles/115005265063-%E9%80%82%E7%94%A8%E4%BA%8E-Slack-%E7%9A%84-Incoming-Webhook">连接工具和自动执行任务</a></li>
+<li><a href="https://www.slack.com/services/new/incoming-webhook">打开激活 Incoming Webhook</a></li>
+<li><a href="https://api.slack.com/messaging/webhooks">Sending messages using Incoming Webhooks</a></li>
+<li><a href="https://slack.dev/bolt-js/tutorial/getting-started">Node Bolt 脚本使用指南</a></li>
+</ol>
+</div>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+                                    
+                                    <a href="https://gojun.me/tags/firebase/">Firebase</a>
+                                    
+                                    <a href="https://gojun.me/tags/slack/">Slack</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="https://gojun.me/js/jquery-3.5.1.min.js"></script>
+<link href="https://gojun.me/css/fancybox.min.css" rel="stylesheet">
+<script src="https://gojun.me/js/fancybox.min.js"></script>
+<script src="https://gojun.me/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-142037913-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</body>
+
+</html>

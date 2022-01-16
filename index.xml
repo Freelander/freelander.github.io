@@ -6,7 +6,16 @@
     <description>Recent content on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Oct 2021 19:43:01 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jan 2022 18:45:37 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firebase 集成 Slack 并实现自动化监控</title>
+      <link>https://gojun.me/posts/firebase-slack/</link>
+      <pubDate>Sun, 16 Jan 2022 18:45:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/firebase-slack/</guid>
+      <description>为什么要集成 Slack？ Firebase 可将一些崩溃信息同步到 Slack 频道，而 Slack Api 又支持对频道的信息进行监控，在这前提下可以搞点事情了，实现企业微信沟通群里实时留意应用的崩溃信息，同时也可将崩溃信息存入本地数据库，第二天</description>
+    </item>
+    
     <item>
       <title>Mac 上 Nginx 的使用及入门</title>
       <link>https://gojun.me/posts/nginx/</link>

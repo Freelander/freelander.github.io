@@ -6,7 +6,34 @@
     <description>Recent content in Tags on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Oct 2021 19:43:01 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jan 2022 18:45:37 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firebase</title>
+      <link>https://gojun.me/tags/firebase/</link>
+      <pubDate>Sun, 16 Jan 2022 18:45:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/firebase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slack</title>
+      <link>https://gojun.me/tags/slack/</link>
+      <pubDate>Sun, 16 Jan 2022 18:45:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/slack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自动化</title>
+      <link>https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+      <pubDate>Sun, 16 Jan 2022 18:45:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Nginx</title>
       <link>https://gojun.me/tags/nginx/</link>
