@@ -263,7 +263,7 @@
 </p>
 <p>3、然后点击保存。</p>
 <h3 id="token-信息保存到环境变量中">Token 信息保存到环境变量中</h3>
-<p>为了安全将脚本需要用到的 Token 信息保存到环境变量当中，若不考虑安全性可直接脚本使用，以下示例适用于 Mac 系统；</p>
+<p>为了安全将脚本需要用到的 Token 信息保存到环境变量当中，若不考虑安全性可直接在脚本中使用，以下示例适用于 Mac 系统；</p>
 <p>1、编写环境变量文件；</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo vi ~/.bash_profile
 </code></pre></div><p>2、添加需要的 Token 信息；</p>
@@ -274,7 +274,8 @@
 <span class="nb">export</span> <span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-1-xxxx-xxxxxx
 </code></pre></div><p>3、保存退出，并执行生效。</p>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">source ~/.bash_profile
-</code></pre></div><h3 id="编写脚本">编写脚本</h3>
+</code></pre></div><p>注意：部分系统使用的环境变量在 <strong>.zshrc</strong>，只需要替换上面 .bash_profile 即可。</p>
+<h3 id="编写脚本">编写脚本</h3>
 <p>上面一切到准备好了之后，可以开始编写脚本啦！</p>
 <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@slack/bolt&#39;</span><span class="p">);</span>
 
@@ -292,7 +293,7 @@
 </span><span class="c1"></span>    <span class="kr">await</span> <span class="nx">say</span><span class="p">(</span><span class="sb">`Hey there &lt;@</span><span class="si">${</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="si">}</span><span class="sb">&gt;!`</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// 监听渠道接收到的信息
+<span class="c1">// 监听频道接收到的信息
 </span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">event</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">event</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="c1">// fired when `app_home_opened` event is received
 </span><span class="c1"></span>    <span class="c1">// do work
@@ -318,7 +319,7 @@
 </div>
 
 </p>
-<p>3、发送 hello 信息</p>
+<p>3、发送 hello 信息。</p>
 <p>
 
 <div class="fancybox">
