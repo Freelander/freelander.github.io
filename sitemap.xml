@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gojun.me/categories/</loc>
-    <lastmod>2022-01-16T18:45:37+08:00</lastmod>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/fir/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/pgyer/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/python/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/app-package-upload/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/categories/%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</loc>
+    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/firebase/</loc>
     <lastmod>2022-01-16T18:45:37+08:00</lastmod>
@@ -11,19 +35,7 @@
     <loc>https://gojun.me/posts/firebase-slack/</loc>
     <lastmod>2022-01-16T18:45:37+08:00</lastmod>
   </url><url>
-    <loc>https://gojun.me/</loc>
-    <lastmod>2022-01-16T18:45:37+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/posts/</loc>
-    <lastmod>2022-01-16T18:45:37+08:00</lastmod>
-  </url><url>
     <loc>https://gojun.me/tags/slack/</loc>
-    <lastmod>2022-01-16T18:45:37+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/</loc>
-    <lastmod>2022-01-16T18:45:37+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/categories/%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</loc>
     <lastmod>2022-01-16T18:45:37+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
@@ -202,9 +214,6 @@
   </url><url>
     <loc>https://gojun.me/categories/tools/</loc>
     <lastmod>2018-03-24T22:29:52+00:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/python/</loc>
-    <lastmod>2018-03-13T23:27:22+00:00</lastmod>
   </url><url>
     <loc>https://gojun.me/categories/python/</loc>
     <lastmod>2018-03-13T23:27:22+00:00</lastmod>

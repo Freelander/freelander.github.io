@@ -93,6 +93,37 @@
 
 <div class="post animated fadeInDown">
     <div class="post_title">
+        <h2><a href='/posts/flutter-maven/'>Flutter 自动打包并将 aar 文件上传到 Maven</a></h2>
+    </div>
+    
+    <div class="list">
+        <div class="post_content markdown">
+            <p>思路 先执行 flutter pub get 获取项目最新依赖插件。 对 flutter module 进行打包成 aar，因为是上传到 maven 的，只要 release 版本即可。 对打包出来的 aar 文件，简单粗暴使用 mvn deploy 指令进行上传到 maven。 上传完之后，提示如何引入到项目。 完整构建脚......</p>
+        </div>
+    </div>
+    
+    <div class="post_footer">
+        <div class="meta">
+            <div class="info">
+                <span class="field">
+                    <i class="ri-map-pin-time-line"></i>
+                    <span class="date">2020.04.26</span>
+                </span>
+                
+                <span class="field tags">
+                    <i class="ri-stack-line"></i>
+                    
+                    <a href="https://gojun.me/tags/flutter/">Flutter</a>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="post animated fadeInDown">
+    <div class="post_title">
         <h2><a href='/posts/flutter-channel/'>Android 与 Flutter 之间通信</a></h2>
     </div>
     
@@ -170,37 +201,6 @@
                 <span class="field">
                     <i class="ri-map-pin-time-line"></i>
                     <span class="date">2020.02.18</span>
-                </span>
-                
-                <span class="field tags">
-                    <i class="ri-stack-line"></i>
-                    
-                    <a href="https://gojun.me/tags/flutter/">Flutter</a>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="post animated fadeInDown">
-    <div class="post_title">
-        <h2><a href='/posts/flutter-font/'>Flutter 如何使用自定义字体</a></h2>
-    </div>
-    
-    <div class="list">
-        <div class="post_content markdown">
-            <p>1. 导入字体包 在项目路径新创建 fonts 文件夹，里面存放自定义字体包。 注意这个文件夹的路径需要放到主目录下，如果在 asstes 文件夹下创建在 iOS 那边打出来的产物会出现无法应用到自定义字体的问题。 2. 在 pubspec.yaml 中声明字体 flutter: fonts: - family: Hind Siliguri......</p>
-        </div>
-    </div>
-    
-    <div class="post_footer">
-        <div class="meta">
-            <div class="info">
-                <span class="field">
-                    <i class="ri-map-pin-time-line"></i>
-                    <span class="date">2020.02.01</span>
                 </span>
                 
                 <span class="field tags">

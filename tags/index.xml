@@ -6,7 +6,34 @@
     <description>Recent content in Tags on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Jan 2022 18:45:37 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jan 2022 22:34:38 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fir</title>
+      <link>https://gojun.me/tags/fir/</link>
+      <pubDate>Sun, 23 Jan 2022 22:34:38 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/fir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pgyer</title>
+      <link>https://gojun.me/tags/pgyer/</link>
+      <pubDate>Sun, 23 Jan 2022 22:34:38 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/pgyer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://gojun.me/tags/python/</link>
+      <pubDate>Sun, 23 Jan 2022 22:34:38 +0800</pubDate>
+      
+      <guid>https://gojun.me/tags/python/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Firebase</title>
       <link>https://gojun.me/tags/firebase/</link>
@@ -229,15 +256,6 @@
       <pubDate>Sat, 24 Mar 2018 22:29:52 +0000</pubDate>
       
       <guid>https://gojun.me/tags/tools/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://gojun.me/tags/python/</link>
-      <pubDate>Tue, 13 Mar 2018 23:27:22 +0000</pubDate>
-      
-      <guid>https://gojun.me/tags/python/</guid>
       <description></description>
     </item>
     
