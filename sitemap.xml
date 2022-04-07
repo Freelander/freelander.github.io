@@ -2,25 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gojun.me/categories/</loc>
-    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+    <loc>https://gojun.me/tags/android/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
   </url><url>
-    <loc>https://gojun.me/tags/fir/</loc>
-    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
+    <loc>https://gojun.me/categories/android/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/categories/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/databinding/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/viewbindings/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/posts/data-binding-two-way/</loc>
+    <lastmod>2022-04-07T23:40:37+08:00</lastmod>
+  </url><url>
+    <loc>https://gojun.me/tags/fir/</loc>
     <lastmod>2022-01-23T22:34:38+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/pgyer/</loc>
     <lastmod>2022-01-23T22:34:38+08:00</lastmod>
   </url><url>
-    <loc>https://gojun.me/posts/</loc>
-    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
-  </url><url>
     <loc>https://gojun.me/tags/python/</loc>
-    <lastmod>2022-01-23T22:34:38+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/</loc>
     <lastmod>2022-01-23T22:34:38+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/posts/app-package-upload/</loc>
@@ -52,9 +67,6 @@
   </url><url>
     <loc>https://gojun.me/posts/jenkins-user-manage/</loc>
     <lastmod>2021-09-11T18:04:21+08:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/android/</loc>
-    <lastmod>2021-08-29T12:12:27+08:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2021-08-29T12:12:27+08:00</lastmod>
@@ -179,20 +191,11 @@
     <loc>https://gojun.me/posts/xcode-hot-key/</loc>
     <lastmod>2019-07-31T23:54:29+00:00</lastmod>
   </url><url>
-    <loc>https://gojun.me/categories/android/</loc>
-    <lastmod>2019-07-06T22:58:05+00:00</lastmod>
-  </url><url>
     <loc>https://gojun.me/posts/android-change-font/</loc>
     <lastmod>2019-07-06T22:58:05+00:00</lastmod>
   </url><url>
     <loc>https://gojun.me/tags/font/</loc>
     <lastmod>2019-07-06T22:58:05+00:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/databinding/</loc>
-    <lastmod>2019-06-13T23:37:07+00:00</lastmod>
-  </url><url>
-    <loc>https://gojun.me/tags/viewbindings/</loc>
-    <lastmod>2019-06-13T23:37:07+00:00</lastmod>
   </url><url>
     <loc>https://gojun.me/posts/android-viewbindings/</loc>
     <lastmod>2019-06-13T23:37:07+00:00</lastmod>

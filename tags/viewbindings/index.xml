@@ -6,7 +6,16 @@
     <description>Recent content in ViewBindings on GoJun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 13 Jun 2019 23:37:07 +0000</lastBuildDate><atom:link href="https://gojun.me/tags/viewbindings/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Apr 2022 23:40:37 +0800</lastBuildDate><atom:link href="https://gojun.me/tags/viewbindings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Data Binding 的双向绑定巧妙实现 EditText 文本监听</title>
+      <link>https://gojun.me/posts/data-binding-two-way/</link>
+      <pubDate>Thu, 07 Apr 2022 23:40:37 +0800</pubDate>
+      
+      <guid>https://gojun.me/posts/data-binding-two-way/</guid>
+      <description>前言 若项目使用 Data Binding 框架时，实现对 EditText 控件的文本输入监听，主要有三种方法： 事件绑定 BindingAdapter 注解 双向绑定 本文主要讲解第三种方法《双向绑定》，当你懂得用起来之后会发现真香。 需求背景 “在输入框右下角实时展示输入内容的</description>
+    </item>
+    
     <item>
       <title>是时候让你项目用上 ViewBindings 了</title>
       <link>https://gojun.me/posts/android-viewbindings/</link>
