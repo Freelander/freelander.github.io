@@ -8,6 +8,15 @@
     <language>en</language>
     <lastBuildDate>Thu, 07 Apr 2022 23:40:37 +0800</lastBuildDate><atom:link href="https://gojun.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>关于我</title>
+      <link>https://gojun.me/about/</link>
+      <pubDate>Wed, 18 May 2022 13:31:07 +0800</pubDate>
+      
+      <guid>https://gojun.me/about/</guid>
+      <description>这里是一位靠谱的 Android 开发工程师个人简历，目前只考虑 广州。 如果您有靠谱的 Android 开发工作欢迎推荐，请邮件我索要完整的简历，发邮件时请使用公司邮箱并说明公司信息，谢谢。 以下是我的邮箱： huanggaojun13@gmail.com 个人信息 本科 5 年 Android 开发经验</description>
+    </item>
+    
+    <item>
       <title>使用 Data Binding 的双向绑定巧妙实现 EditText 文本监听</title>
       <link>https://gojun.me/posts/data-binding-two-way/</link>
       <pubDate>Thu, 07 Apr 2022 23:40:37 +0800</pubDate>
